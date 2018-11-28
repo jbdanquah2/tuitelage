@@ -46,9 +46,9 @@
                         <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
                         <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
                     </form>
-                    <p class="notice"> <a class="text-center" href="#">
+                    <div class="notic text-center"> <a class="" href="#">
                             or are you a company? create account here!
-                        </a></p>
+                        </a></div>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 <div class="card">
                     <div class="card-body t-body">
                         <h5 class="card-title">Customer Service Tips</h5>
-                        <p class="card-text">Customer Service is the one department that deals directly with our prcious customers. Start with this free lesson and buld yourself or team for awesome service to your precious customers</p> <a href="#" class="btn btn-danger">Start Lesson</a>
+                        <p class="card-text">Customer Service is the one department that deals directly with our prcious customers. Start with this free lesson and buld yourself or team for awesome service to your precious customers</p> <a href="#" class="btn btn-danger">View Lesson</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 <div class="card">
                     <div class="card-body t-body">
                         <h5 class="card-title">Sell Anything Anywhere</h5>
-                        <p class="card-text">Sales is the one department that can not be overlooked by any organisation. Start with this free lesson and build yourself to sell out there</p> <a href="#" class="btn btn-danger">Start Lesson</a>
+                        <p class="card-text">Sales is the one department that can not be overlooked by any organisation. Start with this free lesson and build yourself to sell out there</p> <a href="#" class="btn btn-danger">View Lesson</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 <div class="card">
                     <div class="card-body t-body">
                         <h5 class="card-title">Agile Development - The best Parts</h5>
-                        <p class="card-text">Agile development is the most come name in today where Web Aps Development is everywhere and making it big. Get all the important tips and tricks from this free lesson. Enjoy! </p> <a href="#" class="btn btn-danger">Start Lesson</a>
+                        <p class="card-text">Agile development is the most come name in today where Web Aps Development is everywhere and making it big. Get all the important tips and tricks from this free lesson. Enjoy! </p> <a href="#" class="btn btn-danger">View Lesson</a>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                 <div class="card">
                     <div class="card-body t-body">
                         <h5 class="card-title">Leaders can be made</h5>
-                        <p class="card-text">Leadership is an important skills to aquire. No organisation can thrive without it. Leaders of today affect change, make decisons, guide others, ensures the work is done etc. </p> <a href="#" class="btn btn-danger">Start Lesson</a>
+                        <p class="card-text">Leadership is an important skills to aquire. No organisation can thrive without it. Leaders of today affect change, make decisons, guide others, ensures the work is done etc. </p> <a href="#" class="btn btn-danger">View Lesson</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
 
         <div class="row">
             <div class="col-sm-12 text-center">
-                <a class="readmore" href="#"><button> See more lessons</button></a>
+                <a class="readmore" href="#"><button class="btn btn-dark"> See more lessons</button></a>
             </div>
         </div>
 
