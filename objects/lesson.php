@@ -24,34 +24,34 @@ class Lesson{
                 FROM
                     " . $this->table_name . "
                 ORDER BY
-                    lessonName";  
+                    RAND()";  
  
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
  
-        while($r = $stmt->fetch(PDO::FETCH_ASSOC)){
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-
-          $lessonName = $r['lessonName'];
-            $lessonSummary = $r['lessonSummary'];
+            $lessonId = $row['lessonId'];
+            $lessonName = $row['lessonName'];
+            $lessonSummary = $row['lessonSummary'];
 
          echo ' 
 
-         <div class=" col-sm-6 t-material">
-            <div class="card">
+         
+            <div class="card  t-material" id="lesson_t">
                 <div class="card-body t-body">
-                    <h5 class="card-title"> ';                       
-                          echo $lessonName;
-                echo '   </h5>
-                    <p class="card-text">';
-                    echo $lessonSummary ;
-                    echo '</p><a href="#" class="btn btn-danger">View Lesson</a>
+                    <h5 class="card-title"> '                       
+                          . $lessonName . 
+                 '   </h5>
+                    <p class="card-text">' .
+                    $lessonSummary .
+                    '</p><a href="index.php?lessonView='. $lessonId .'" class="btn btn-danger">View Lesson</a>
                 </div>
             </div>
-             </div>
+             
         ';
             
-        return $stmt;
+        // return $stmt;
     }
     }
     

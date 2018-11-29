@@ -139,7 +139,19 @@ nav {
 
 }
 
-.t-body {
+
+#lesson_t {
+    display: inline-block !important;
+    width: 45%;
+    margin: 20px;
+    /*    flex-wrap: wrap;*/
+    /*        width: 500px;*/
+    /*    min-width: 30%;*/
+    /*    min-height: 400px;
+    */
+}
+
+*/ .t-body {
     padding: 25px;
 }
 

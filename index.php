@@ -65,13 +65,15 @@ $lesson = new lesson($db);
 </div>
 
 <div class="container">
+    <div class="row">
+        <section class="col-sm-11 offset-sm-1 col-sm-6">
 
 
+            <?php  $stmt = $lesson->read(); ?>
 
 
-    <?php  $stmt = $lesson->read(); ?>
-
-    <!--
+        </section>
+        <!--
         <div class=" col-sm-5 offset-sm-1 t-material">
             <div class="card">
                 <div class="card-body t-body">
@@ -81,10 +83,10 @@ $lesson = new lesson($db);
             </div>
         </div>
 -->
-
+    </div>
 
     <div class="row">
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-12 text-center">
             <a class="readmore" href="#"><button class="btn btn-dark"> See more lessons</button></a>
         </div>
     </div>
