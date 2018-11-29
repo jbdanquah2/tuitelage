@@ -10,82 +10,81 @@ include_once 'objects/lesson.php';
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
-
- 
-// pass connection to objects
 $lesson = new lesson($db);
+   
+  
+
  
  ?>
 
 
 <!--    <div class="container">-->
-<div class="row" id="home">
-    <div class="col-sm-9 col-md-7 col-lg-5 " id="sidiv">
-        <div class="card card-signin my-5">
-            <div class="card-body">
-                <h3 class="card-title text-center">Login</h3>
-                <form class="form-signin">
-                    <div class="form-label-group">
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></div>
-                    <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> </div>
-                    <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1">Remember password</label>
-                    </div>
-                    <button class="btn btn-lg btn-default bg-dark btn-block text-uppercase" type="submit">Sign in</button>
-                    <hr class="my-4">
-                    <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
-                    <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
-                </form>
-                <div class="notic text-center"> <a class="" href="#">
-                        or are you a company? create account here!
-                    </a></div>
+<div class="container-fluid wrap">
+    <div class="row" id="home">
+        <div class="col-sm-9 col-md-7 col-lg-5 ">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Login</h3>
+                    <form class="form-signin">
+                        <div class="form-label-group">
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></div>
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> </div>
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Remember password</label>
+                        </div>
+                        <button class="btn btn-lg btn-default bg-dark btn-block text-uppercase" type="submit">Sign in</button>
+                        <hr class="my-4">
+                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+                    </form>
+                    <div class="notic text-center"> <a class="" href="#">
+                            or are you a company? create account here!
+                        </a></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--</div>-->
-<hr>
-<div class="row">
-    <div class="col-sm-12 t-material text-center">
-        <div class="card">
-            <div class="card-body t-body">
-                <h4 class="card-title">Sign in above or explore lessons below</h4>
-                <form class="form-inline home-search">
-                    <input class="form-control" type="text" placeholder="Search favorite lesson">
-                    <button class="btn btn-success-outline bg-dark" type="submit">Search </button>
-                </form>
+    <!--</div>-->
+    <hr>
+    <div class="row">
+        <div class="col-sm-12 t-material text-center">
+            <div class="card">
+                <div class="card-body t-body">
+                    <h4 class="card-title">Sign in above or explore lessons below</h4>
+                    <form class="form-inline home-search">
+                        <input class="form-control" type="text" placeholder="Search favorite lesson">
+                        <button class="btn btn-success-outline bg-dark" type="submit">Search </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
-
-
 
 <div class="container">
-    <?php
-    $stmt = $lesson->read();
-    while ($row_lesson = $stmt -> fetch(PDO::FETCH_ASSOC)){
-        extract($row_lesson);
-        $lessonName = $row_lesson['lessonName'];
-        $lessonSummary = $row_lesson['lessonSummary'];
-        
-     echo  "<div class='row'>";
-  echo '<div class="col-sm-6 t-material">';
-        echo '<div class="card">';
-            echo '<div class="card-body t-body">';
-                echo '<h5 class="card-title">$lessonName</h5>';
-               echo '<p class="card-text">{$lessonSummary}</p> <a href="#" class="btn btn-danger">View Lesson</a>';
-            echo '</div>';
-        echo '</div>';
-    echo '</div>';
 
-   echo '</div>';
-    }
-?>
+
+
+
+    <?php  $stmt = $lesson->read(); ?>
+
+    <!--
+        <div class=" col-sm-5 offset-sm-1 t-material">
+            <div class="card">
+                <div class="card-body t-body">
+                    <h5 class="card-title">Leadership is learnable</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum voluptas, alias, doloremque blanditiis architecto recusandae, ut labore nesciunt eligendi nemo dolorem ducimus enim fuga in. Error vel quod esse iure.</p> <a href="#" class="btn btn-danger">View Lesson</a>
+                </div>
+            </div>
+        </div>
+-->
+
+
     <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-6 text-center">
             <a class="readmore" href="#"><button class="btn btn-dark"> See more lessons</button></a>
         </div>
     </div>
