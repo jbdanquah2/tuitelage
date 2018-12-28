@@ -13,7 +13,7 @@ class Lesson{
  
     public function __construct($db){
         $this->conn = $db;
-        echo " i'm also connected";
+//        echo " i'm also connected";
     }
  
     // used by select drop-down list
@@ -34,22 +34,27 @@ class Lesson{
             $lessonId = $row['lessonId'];
             $lessonName = $row['lessonName'];
             $lessonSummary = $row['lessonSummary'];
+            $descriptiveImage = $row['descriptiveImage'];
+echo '
 
-         echo ' 
 
-         
-            <div class="card  t-material" id="lesson_t">
-                <div class="card-body t-body">
-                    <h5 class="card-title"> '                       
-                          . $lessonName . 
-                 '   </h5>
-                    <p class="card-text">' .
-                    $lessonSummary .
-                    '</p><a href="index.php?lessonView='. $lessonId .'" class="btn btn-danger">View Lesson</a>
-                </div>
-            </div>
-             
-        ';
+<div class="card  t-material" id="lesson_t">
+    <div class="card-body t-body">
+    <img  class="card-img fixed_image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+    <div class="card-img-overlay">
+        <h5 class="card-title"> '
+            . $lessonName .
+            ' </h5>
+    </div>
+        <p class="card-text">' .
+            $lessonSummary .
+            '</p>
+            <a href="index.php?lessonView='. $lessonId .'" class="btn btn-danger">View Lesson</a>
+    
+    </div>
+</div>
+
+';
             
         // return $stmt;
     }
@@ -74,7 +79,7 @@ class Lesson{
  
         // bind values 
         $stmt->bindParam(":lessonName", $this->lessonName);
-        $stmt->bindParam(":lessonSummary", $this->lessonName);
+        $stmt->bindParam(":lessonSummary", $this->lessonSummary);
         $stmt->bindParam(":descriptiveImage", $this->descriptiveImage);
        
  

@@ -63,7 +63,24 @@ nav {
     margin: 0 0 0 30px;
 }
 
+nav #welcome_wlc {
+    position: relative !important;
+    width: 100% !important;
+    color: #fefefe !important;
+    text-align: right !important;
+}
 
+hr {
+    border-color: #fdfdfd;
+}
+
+.hrline {
+    padding: 0;
+    margin: 0;
+    height: 5px;
+    border-color: #fff;
+
+}
 
 .card-signin {
     width: 100%;
@@ -144,21 +161,23 @@ nav {
     display: inline-block !important;
     width: 45%;
     margin: 20px;
-    /*    flex-wrap: wrap;*/
-    /*        width: 500px;*/
-    /*    min-width: 30%;*/
-    /*    min-height: 400px;
-    */
+
 }
 
-*/ .t-body {
+.t-body {
     padding: 25px;
 }
 
 .t-body .card-text {
-    padding: 50px 0px 25px;
+    padding: 20px 0px 25px;
 }
 
+
+
+.fixed_image {
+    margin: 0 !important;
+    padding: 0;
+}
 
 .t-quiz {
     color: #fefefe;

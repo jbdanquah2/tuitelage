@@ -1,22 +1,47 @@
 <?php
 // set page headers
-$page_title = "Tuitelage";
+$page_title = "Tuitelage.com";
+$motive = 'Want the best place to start your self development quest? Start here!  <form class="form-inline home-search">
+            <input class="form-control" type="text" placeholder="Search favorite lesson">
+            <button class="btn btn-success-outline bg-dark" type="submit">Search </button>
+        </form>';
 include_once "layout_header.php";
 
 // include database and object files
 include_once 'config/connection.php';
 include_once 'objects/lesson.php';
- 
+include_once 'objects/crud.php';
+session_start();
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
+$crud = new crud($db);
    
-  
+
+if (isset($_SESSION['user']) != "") {
+header("Location: company_page.php");
+}
+if (isset($_POST['signin_btn'])) {
+    
+$userName = $_POST['userName']; 
+$pssword = $_POST['pssword'];
+
+
+$row = $crud->getUser($userName);
+
+if ($row['pssword'] == $pssword) {
+$_SESSION['user'] = $row['firstName'];
+$_SESSION['userCompany'] = $row['companyName'];
+header("Location: company_page.php");
+} else {
+echo("Wrong Credentials");
+}
+
+}
 
  
  ?>
-
 
 <!--    <div class="container">-->
 <div class="container-fluid wrap">
@@ -25,21 +50,21 @@ $lesson = new lesson($db);
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h3 class="card-title text-center">Login</h3>
-                    <form class="form-signin">
+                    <form method="post" class="form-signin">
                         <div class="form-label-group">
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></div>
+                            <input type="email" id="inputEmail" name="userName" class="form-control" placeholder="Email address" required></div>
                         <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> </div>
+                            <input type="password" name="pssword" id="inputPassword" class="form-control" placeholder="Password" required> </div>
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                             <label class="custom-control-label" for="customCheck1">Remember password</label>
                         </div>
-                        <button class="btn btn-lg btn-default bg-dark btn-block text-uppercase" type="submit">Sign in</button>
+                        <button name="signin_btn" class="btn btn-lg btn-default bg-dark btn-block text-uppercase" type="submit">Sign in</button>
                         <hr class="my-4">
                         <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
                         <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
                     </form>
-                    <div class="notic text-center"> <a class="" href="#">
+                    <div class="notic text-center"> <a class="" href="signup.php">
                             or are you a company? create account here!
                         </a></div>
                 </div>
@@ -67,10 +92,19 @@ $lesson = new lesson($db);
 <div class="container">
     <div class="row">
         <section class="col-sm-11 offset-sm-1 col-sm-6">
+            <?php
+            try{
+             $stmt = $lesson->read(); 
 
 
-            <?php  $stmt = $lesson->read(); ?>
+            }catch(PDOException $exception){
+                echo " ";
+                die();
+//            echo "Connection error: " . $exception->getMessage();
+            }
 
+
+?>
 
         </section>
         <!--

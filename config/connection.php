@@ -16,9 +16,11 @@ class Database{
         try{
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             
-            echo "Connection made";
+            echo "";
         }catch(PDOException $exception){
-            echo "Connection error: " . $exception->getMessage();
+            echo "";
+            die();
+//            echo "Connection error: " . $exception->getMessage();
         }
   
         return $this->conn;
