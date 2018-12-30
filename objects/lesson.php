@@ -49,7 +49,7 @@ echo '
         <p class="card-text">' .
             $lessonSummary .
             '</p>
-            <a href="index.php?lessonView='. $lessonId .'" class="btn btn-danger">View Lesson</a>
+            <a href="lesson-content.php" class="btn btn-danger">View Lesson</a>
     
     </div>
 </div>

@@ -2,7 +2,7 @@
 class Database{
   
     // specify your own database credentials
-    private $host = "localhost";
+    private $host = "localhost"; 
     private $db_name = "tuitlage";
     private $username = "root";
     private $password = "";

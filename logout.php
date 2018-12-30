@@ -18,5 +18,4 @@ unset($_SESSION['userCompany']);
     
 header("Location: index.php");
 }
-
 ?>

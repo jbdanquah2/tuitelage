@@ -66,7 +66,7 @@ public function getUser($userName){
     
 try{
 
-$statement = $this->conn->prepare("SELECT au.userName,au.pssword, p.firstName, c.companyName FROM app_user au join person p on au.personId = p.personId join company_person cp on cp.personId = p.personId join company c on cp.companyId = c.companyId WHERE au.userName=:userName");
+$statement = $this->conn->prepare("SELECT au.userName,au.pssword, au.userStatus, p.firstName, c.companyName FROM app_user au join person p on au.personId = p.personId join company_person cp on cp.personId = p.personId join company c on cp.companyId = c.companyId WHERE au.userName=:userName");
 $statement->execute(array(":userName"=>$userName));
 $dataRows = $statement->fetch(PDO::FETCH_ASSOC);
 

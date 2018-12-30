@@ -1,17 +1,18 @@
 <?php
+session_start();
 // set page headers
 
-$page_title = "Company.Tuitelage.com";
+$page_title = "Tuitelage.com Members Area";
 $motive = 'Search your favorite lessons.  <form class="form-inline home-search">
             <input class="form-control" type="text" placeholder="Search favorite lesson">
             <button class="btn btn-success-outline bg-dark" type="submit">Search </button>
         </form>';
-include_once "layout_header.php";
+
 
 // include database and object files
 include_once 'config/connection.php';
 include_once 'objects/lesson.php';
-session_start();
+
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
@@ -23,14 +24,13 @@ if(!isset($_SESSION['user']))
 header("Location: index.php");
 }
 
-
-
+include_once "layout_header.php";
 ?>
 
 <link href="style/tuitlage_css.css" rel="stylesheet" type="text/css" />
 <p>
-    Welcome
-    <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany']; ?>&nbsp;<a href="logout.php?logout">Sign Out</a>
+    <small>Welcome
+        <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
 </p>
 <div class="container-fluid col-12">
 

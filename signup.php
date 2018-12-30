@@ -2,13 +2,15 @@
 // set page headers
 $page_title = "Tuitelage.com/signup";
 $motive = "Do you have a company? Sign Up here to start!";
-include_once "layout_header.php";
+
 
 // include database and object files
 include_once 'config/connection.php';
 include_once 'objects/lesson.php';
 include_once 'objects/crud.php';
 
+
+include_once "layout_header.php";
 
  
 // get database connection

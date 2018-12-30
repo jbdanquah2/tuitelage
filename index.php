@@ -1,56 +1,64 @@
 <?php
+session_start();
 // set page headers
 $page_title = "Tuitelage.com";
 $motive = 'Want the best place to start your self development quest? Start here!  <form class="form-inline home-search">
             <input class="form-control" type="text" placeholder="Search favorite lesson">
             <button class="btn btn-success-outline bg-dark" type="submit">Search </button>
         </form>';
-include_once "layout_header.php";
+
+
 
 // include database and object files
 include_once 'config/connection.php';
 include_once 'objects/lesson.php';
 include_once 'objects/crud.php';
-session_start();
+
+
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
 $crud = new crud($db);
-   
-
 if (isset($_SESSION['user']) != "") {
-header("Location: company_page.php");
+header("Location: home.php");
 }
-if (isset($_POST['signin_btn'])) {
-    
-$userName = $_POST['userName']; 
-$pssword = $_POST['pssword'];
-
-
-$row = $crud->getUser($userName);
-
-if ($row['pssword'] == $pssword) {
-$_SESSION['user'] = $row['firstName'];
-$_SESSION['userCompany'] = $row['companyName'];
-header("Location: company_page.php");
-} else {
-echo("Wrong Credentials");
-}
-
-}
-
- 
+include_once "layout_header.php";
  ?>
 
 <!--    <div class="container">-->
 <div class="container-fluid wrap">
-    <div class="row" id="home">
+    <div class="row" id="home-login">
         <div class="col-sm-9 col-md-7 col-lg-5 ">
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h3 class="card-title text-center">Login</h3>
                     <form method="post" class="form-signin">
+                        <?php                    
+if (isset($_POST['signin_btn'])) {
+    
+$userName = $_POST['userName']; 
+$pssword = $_POST['pssword'];
+$status = 'Active';
+
+$row = $crud->getUser($userName);
+
+if ($row['pssword'] == $pssword) {
+    $userStatus = $row['userStatus'] ;   
+    if ($userStatus == $status) {
+        $_SESSION['user'] = $row['firstName'];
+        $_SESSION['userCompany'] = $row['companyName'];
+        header("Location:home.php");
+        }else {
+        echo ("<center id='response' class='text-danger'>User not active</center>");
+    }
+} else {
+echo("<center id='response' class='text-danger'>Wrong Credentials</center>");
+}
+
+}                 
+?>
+
                         <div class="form-label-group">
                             <input type="email" id="inputEmail" name="userName" class="form-control" placeholder="Email address" required></div>
                         <div class="form-label-group">
@@ -89,10 +97,12 @@ echo("Wrong Credentials");
 
 </div>
 
-<div class="container">
+<div class="container lesson-wrap">
+
     <div class="row">
-        <section class="col-sm-11 offset-sm-1 col-sm-6">
-            <?php
+        <center>
+            <div class="col-10 offset-sm-1 ">
+                <?php
             try{
              $stmt = $lesson->read(); 
 
@@ -106,8 +116,8 @@ echo("Wrong Credentials");
 
 ?>
 
-        </section>
-        <!--
+            </div>
+            <!--
         <div class=" col-sm-5 offset-sm-1 t-material">
             <div class="card">
                 <div class="card-body t-body">
@@ -117,6 +127,7 @@ echo("Wrong Credentials");
             </div>
         </div>
 -->
+        </center>
     </div>
 
     <div class="row">
@@ -185,6 +196,10 @@ echo("Wrong Credentials");
     </div>
 
 </div>
+
+<br>
+<br>
+
 <?php
 // footer
 include_once "layout_footer.php";

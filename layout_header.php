@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        <?php echo $page_title; ?>
+        <?php echo $page_title;?>
     </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
