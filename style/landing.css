@@ -65,6 +65,21 @@ nav {
     margin: 0 0 0 30px;
 }
 
+
+@media screen and (max-width: 922px) {
+
+
+    #logo_1 {
+        width: 160px !important;
+        margin: 0 0 0 5px;
+    }
+
+    #_welcome {
+        text-align: center;
+    }
+}
+
+
 nav #welcome_wlc {
     position: relative !important;
     width: 100% !important;
@@ -176,7 +191,7 @@ hr {
 @media screen and (max-width: 922px) {
 
     #lesson_t {
-        width: 90%;
+        width: 100%;
         /*        margin: 0 auto;
         */
         margin: 0 0 30px 0;

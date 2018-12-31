@@ -20,6 +20,11 @@ $lesson = new lesson($db);
 $crud = new crud($db);
 
 
+if(!isset($_SESSION['user']))
+{
+header("Location: home.php");
+}
+
 
 if(isset($_POST['signup_btn'])) {
 $companyName = $_POST['companyName'];
@@ -34,15 +39,14 @@ $pssword = $_POST['pssword'];
     
 if($crud->createUser($companyName, $companyShortName,$companyPhone,$companyEmail,
 $companyWebsite,$firstName,$lastName,$email,$pssword)){
-echo("Registration Successful");
+echo("Registration Successful:  <a href='index.php'>Login Here</a>");
 }
 else{
-echo("Registration Failed");
+echo("Registration Failed. Please try again");
 }
 
-}
-     
- ?>
+}   
+?>
 
 <div class="container">
     <h1 class="well">Registration Form</h1>

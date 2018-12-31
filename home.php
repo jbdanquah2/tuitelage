@@ -28,7 +28,7 @@ include_once "layout_header.php";
 ?>
 
 <link href="style/tuitlage_css.css" rel="stylesheet" type="text/css" />
-<p>
+<p id="_welcome">
     <small>Welcome
         <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
 </p>
@@ -41,11 +41,10 @@ include_once "layout_header.php";
             <!-- Training space start -->
 
             <div class="row">
-                <div class="col-10 offset-sm-1 ">
-                    <div class="row card-columns">
-
-
-                        <?php
+                <center>
+                    <div class="col-10 offset-sm-1 ">
+                        <div class="row card-columns">
+                            <?php
             try{
              $stmt = $lesson->read(); 
 
@@ -55,35 +54,25 @@ include_once "layout_header.php";
                 die();
 //            echo "Connection error: " . $exception->getMessage();
             }
-
-
 ?>
 
 
+                        </div>
                     </div>
-                </div>
+                </center>
 
 
-                <!-- Training space end-->
-
-                <!-- Blog space start -->
-
-                <!--                
-                    
-                    <!-- BLOG space end -->
 
 
                 <br>
                 <hr>
 
-                <!-- Department end -->
+
 
             </div>
         </div>
     </div>
 </div>
-
-
 <?php
 // footer
 include_once "layout_footer.php";

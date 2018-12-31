@@ -53,7 +53,7 @@ if ($row['pssword'] == $pssword) {
         echo ("<center id='response' class='text-danger'>User not active</center>");
     }
 } else {
-echo("<center id='response' class='text-danger'>Wrong Credentials</center>");
+echo("<center id='response' class='text-danger'>Wrong Credentials. Please try again!</center>");
 }
 
 }                 
@@ -112,8 +112,6 @@ echo("<center id='response' class='text-danger'>Wrong Credentials</center>");
                 die();
 //            echo "Connection error: " . $exception->getMessage();
             }
-
-
 ?>
 
             </div>
@@ -196,10 +194,8 @@ echo("<center id='response' class='text-danger'>Wrong Credentials</center>");
     </div>
 
 </div>
-
 <br>
 <br>
-
 <?php
 // footer
 include_once "layout_footer.php";

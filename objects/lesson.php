@@ -40,7 +40,7 @@ echo '
 
 <div class="card  t-material" id="lesson_t">
     <div class="card-body t-body">
-    <img  class="card-img fixed_image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+    <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
     <div class="card-img-overlay">
         <h5 class="card-title"> '
             . $lessonName .
