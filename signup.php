@@ -20,7 +20,7 @@ $lesson = new lesson($db);
 $crud = new crud($db);
 
 
-if(!isset($_SESSION['user']))
+if(isset($_SESSION['user']))
 {
 header("Location: home.php");
 }
@@ -52,7 +52,7 @@ echo("Registration Failed. Please try again");
     <h1 class="well">Registration Form</h1>
     <div class="col-lg-12 well">
         <div class="row">
-            <form method="post" action="">
+            <form method="post" action="signup.php">
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-12 form-group">
@@ -74,7 +74,7 @@ echo("Registration Failed. Please try again");
                             <input type="text" name="companyPhone" placeholder="Enter Phone Number Here.." class="form-control"> </div>
                         <div class="col-sm-4 form-group">
                             <label>Company Email</label>
-                            <input type="text" name="companyEmail" placeholder="Enter Email Address Here.." class="form-control" required> </div>
+                            <input type="email" name="companyEmail" placeholder="Enter Email Address Here.." class="form-control" required> </div>
                         <div class="col-sm-4 form-group">
                             <label>Company Website</label>
                             <input type="text" name="companyWebsite" placeholder="Enter Website Here.." class="form-control">
@@ -92,10 +92,13 @@ echo("Registration Failed. Please try again");
 
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="text" name="email" placeholder="Enter Email Address Here.." class="form-control" required> </div>
+                        <input type="email" name="email" placeholder="Enter Email Address Here.." class="form-control" required> </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" name="pssword" placeholder="Enter Password Here.." class="form-control" required> </div>
+                    <div class="form-group">
+                        <label>Comfirm Password</label>
+                        <input type="password" name="c_pssword" placeholder="Confirm Password Here.." class="form-control" required> </div>
 
                     <button type="submit" name="signup_btn" class="btn btn-lg btn-info">Submit</button>
                 </div>

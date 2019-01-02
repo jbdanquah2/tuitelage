@@ -3,7 +3,7 @@ class Lesson{
  
     // database connection and table name
     private $conn;
-    private $table_name = "lesson";
+//    private $table_name = "lesson";
  
     // object properties
     public $lessonId;
@@ -22,7 +22,7 @@ class Lesson{
         $query = "SELECT
                     lessonId, lessonName, lessonSummary, descriptiveImage
                 FROM
-                    " . $this->table_name . "
+                    lesson
                 ORDER BY
                     RAND()";  
  
@@ -55,10 +55,62 @@ echo '
 </div>
 
 ';
+     
+}
+}
+    
+function readCompanyLesson($companyId){
+    
+    try {
+    //select all data
+        $query = "SELECT
+                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage
+                FROM 
+                    lesson l 
+                JOIN 
+                    company_lesson cl 
+                    ON
+                    l.lessonId = cl.lessonId
+                WHERE 
+                    cl.companyId=:companyId
+                ORDER BY
+                    RAND()";  
+ 
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array(":companyId"=>$companyId));
+
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+            $lessonId = $row['lessonId'];
+            $lessonName = $row['lessonName'];
+            $lessonSummary = $row['lessonSummary'];
+            $descriptiveImage = $row['descriptiveImage'];
+echo '
+<div class="card  t-material" id="lesson_t">
+    <div class="card-body t-body">
+    <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+    <div class="card-img-overlay">
+        <h5 class="card-title"> '
+            . $lessonName .
+            ' </h5>
+    </div>
+        <p class="card-text">' .
+            $lessonSummary .
+            '</p>
+            <a href="lesson-content.php" class="btn btn-danger">View Lesson</a>
+    
+    </div>
+</div>
+';
+            
             
         // return $stmt;
-    }
-    }
+}
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "hey didn't work";
+ }
+ }
     
     function create(){
  
@@ -92,4 +144,5 @@ echo '
     }
  
 }
+    
 ?>

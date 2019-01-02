@@ -28,6 +28,7 @@ include_once "layout_header.php";
 ?>
 
 <link href="style/tuitlage_css.css" rel="stylesheet" type="text/css" />
+
 <p id="_welcome">
     <small>Welcome
         <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
@@ -42,15 +43,17 @@ include_once "layout_header.php";
 
             <div class="row">
                 <center>
-                    <div class="col-10 offset-sm-1 ">
+                    <div class="col-md-11">
                         <div class="row card-columns">
                             <?php
             try{
-             $stmt = $lesson->read(); 
+                $hey = $_SESSION['companyId'];
+                
+$stmt=$lesson->readCompanyLesson($_SESSION['companyId']); 
 
 
             }catch(PDOException $exception){
-                echo " ";
+                echo " didn't wrk";
                 die();
 //            echo "Connection error: " . $exception->getMessage();
             }

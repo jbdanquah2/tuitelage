@@ -3,23 +3,24 @@ session_start();
 // set page headers
 $page_title = "Tuitelage.com";
 $motive = 'Want the best place to start your self development quest? Start here!  <form class="form-inline home-search">
-            <input class="form-control" type="text" placeholder="Search favorite lesson">
-            <button class="btn btn-success-outline bg-dark" type="submit">Search </button>
-        </form>';
+						<input class="form-control" type="text" placeholder="Search favorite lesson">
+						<button class="btn btn-success-outline bg-dark" type="submit">Search </button>
+				</form>';
 
 
 
 // include database and object files
 include_once 'config/connection.php';
 include_once 'objects/lesson.php';
-include_once 'objects/crud.php';
+include_once 'objects/appUser.php';
 
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
-$crud = new crud($db);
+$appUser = new appUser($db);
+
 if (isset($_SESSION['user']) != "") {
 header("Location: home.php");
 }
@@ -34,29 +35,30 @@ include_once "layout_header.php";
                 <div class="card-body">
                     <h3 class="card-title text-center">Login</h3>
                     <form method="post" class="form-signin">
-                        <?php                    
+                        <?php
 if (isset($_POST['signin_btn'])) {
-    
-$userName = $_POST['userName']; 
+
+$userName = $_POST['userName'];
 $pssword = $_POST['pssword'];
 $status = 'Active';
 
-$row = $crud->getUser($userName);
+$row = $appUser->getUser($userName);
 
 if ($row['pssword'] == $pssword) {
-    $userStatus = $row['userStatus'] ;   
-    if ($userStatus == $status) {
-        $_SESSION['user'] = $row['firstName'];
-        $_SESSION['userCompany'] = $row['companyName'];
-        header("Location:home.php");
-        }else {
-        echo ("<center id='response' class='text-danger'>User not active</center>");
-    }
+		$userStatus = $row['userStatus'] ;
+		if ($userStatus == $status) {
+$_SESSION['user'] = $row['firstName'];
+$_SESSION['userCompany'] = $row['companyName'];
+$_SESSION['companyId'] = $row['companyId'];
+				header("Location:home.php");
+				}else {
+				echo ("<center id='response' class='text-danger'>User not active</center>");
+		}
 } else {
 echo("<center id='response' class='text-danger'>Wrong Credentials. Please try again!</center>");
 }
 
-}                 
+}
 ?>
 
                         <div class="form-label-group">
@@ -101,30 +103,20 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please try ag
 
     <div class="row">
         <center>
-            <div class="col-10 offset-sm-1 ">
+            <div class="col-md-11">
                 <?php
-            try{
-             $stmt = $lesson->read(); 
+						try{
+						 $stmt = $lesson->read();
 
 
-            }catch(PDOException $exception){
-                echo " ";
-                die();
-//            echo "Connection error: " . $exception->getMessage();
-            }
+						}catch(PDOException $exception){
+								echo " ";
+								die();
+
+						}
 ?>
+            </div>
 
-            </div>
-            <!--
-        <div class=" col-sm-5 offset-sm-1 t-material">
-            <div class="card">
-                <div class="card-body t-body">
-                    <h5 class="card-title">Leadership is learnable</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum voluptas, alias, doloremque blanditiis architecto recusandae, ut labore nesciunt eligendi nemo dolorem ducimus enim fuga in. Error vel quod esse iure.</p> <a href="#" class="btn btn-danger">View Lesson</a>
-                </div>
-            </div>
-        </div>
--->
         </center>
     </div>
 
