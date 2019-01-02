@@ -1,7 +1,8 @@
 <?php
 session_start();
-// set page headers
-
+$comp_img = $_SESSION['companyLogo'];
+$c_logo = "image/$comp_img";
+$alt_text ="company logo";
 $page_title = "Tuitelage.com Members Area";
 $motive = 'Search your favorite lessons.  <form class="form-inline home-search">
             <input class="form-control" type="text" placeholder="Search favorite lesson">
@@ -35,7 +36,6 @@ include_once "layout_header.php";
 </p>
 <div class="container-fluid col-12">
 
-
     <div class="container ">
         <div class="row">
 
@@ -43,11 +43,10 @@ include_once "layout_header.php";
 
             <div class="row">
                 <center>
-                    <div class="col-md-11">
+                    <div class="col-md-10">
                         <div class="row card-columns">
                             <?php
             try{
-                $hey = $_SESSION['companyId'];
                 
 $stmt=$lesson->readCompanyLesson($_SESSION['companyId']); 
 

@@ -50,6 +50,7 @@ if ($row['pssword'] == $pssword) {
 $_SESSION['user'] = $row['firstName'];
 $_SESSION['userCompany'] = $row['companyName'];
 $_SESSION['companyId'] = $row['companyId'];
+$_SESSION['companyLogo'] = $row['companyLogo'];
 				header("Location:home.php");
 				}else {
 				echo ("<center id='response' class='text-danger'>User not active</center>");

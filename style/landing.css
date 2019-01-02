@@ -60,18 +60,26 @@ nav {
 
 }
 
+
 #logo_1 {
     width: 160px !important;
     margin: 0 0 0 30px;
 }
 
+#comp_img {
+    width: 60px;
+    height: 50px;
+    float: right;
+    max-width: inherit;
+    max-height: inherit
+}
 
 @media screen and (max-width: 922px) {
 
 
     #logo_1 {
         width: 160px !important;
-        margin: 0 0 0 5px;
+        margin: 0 0 0 2px;
     }
 
     #_welcome {

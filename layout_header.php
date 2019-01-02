@@ -1,6 +1,7 @@
 <?php    
-    $motive =" ";
-
+  global $motive ;
+    global $c_logo ;
+    global $alt_text ;
 
 ?>
 
@@ -40,8 +41,9 @@
         </div>
         <div class="col-2">
             <div class="row">
+
                 <!-- company logo -->
-                <img onclick="" src="image/log.png" id="comp_img" alt="Card image cap">
+                <img src="<?php echo $c_logo;?>" id="comp_img" alt="<?php echo $alt_text;?>">
             </div>
         </div>
 
