@@ -7,7 +7,7 @@
         return false;
     });
     $('.prev').click(function () {
-        $('.carousel').carousel('prev');
+        $('.carousel').c6arousel('prev');
         return false;
     });
 

@@ -41,7 +41,7 @@ echo '
 <div class="card  t-material" id="lesson_t">
     <div class="card-body t-body">
     <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
-    <div class="card-img-overlay">
+    <div class="car-img-overlay">
         <h5 class="card-title"> '
             . $lessonName .
             ' </h5>
@@ -49,7 +49,7 @@ echo '
         <p class="card-text">' .
             $lessonSummary .
             '</p>
-            <a href="lesson-content.php" class="btn btn-danger">View Lesson</a>
+            <a href="lessonContent.php?lessonId='.$lessonId.'" class="btn btn-danger">View Lesson</a>
     
     </div>
 </div>
@@ -78,39 +78,50 @@ function readCompanyLesson($companyId){
  
         $stmt = $this->conn->prepare($query);
         $stmt->execute(array(":companyId"=>$companyId));
-
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-
-            $lessonId = $row['lessonId'];
-            $lessonName = $row['lessonName'];
-            $lessonSummary = $row['lessonSummary'];
-            $descriptiveImage = $row['descriptiveImage'];
-echo '
-<div class="card  t-material" id="lesson_t">
-    <div class="card-body t-body">
-    <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
-    <div class="card-img-overlay">
-        <h5 class="card-title"> '
-            . $lessonName .
-            ' </h5>
-    </div>
-        <p class="card-text">' .
-            $lessonSummary .
-            '</p>
-            <a href="lesson-content.php" class="btn btn-danger">View Lesson</a>
+        
+        
+            
+return $stmt;        
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "Sorry Something went wrong. Contact Admin";
+ }
+ }
+   
     
-    </div>
-</div>
-';
-            
-            
-        // return $stmt;
-}
+    
+function readLessonDetail($LessonId){
+    
+    try {
+    //select all data
+        $query = "SELECT
+                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage
+                FROM 
+                    lesson l 
+                JOIN 
+                    company_lesson cl 
+                    ON
+                    l.lessonId = cl.lessonId
+                WHERE 
+                    cl.lessonId=:LessonId
+                ORDER BY
+                    RAND()";  
+ 
+    $statement = $this->conn->prepare($query);
+    $statement->execute(array(":LessonId"=>$LessonId));
+    $detailRows = $statement->fetch(PDO::FETCH_ASSOC);
+
+           
+return $detailRows;
+
 }catch (PDOException $ex){
 echo $ex->getMessage();
         echo "hey didn't work";
  }
  }
+      
+    
+    
     
     function create(){
  

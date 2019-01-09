@@ -1,5 +1,5 @@
 <?php
-// set page headers
+$hrline ='<hr class="hrline">';
 $page_title = "Tuitelage.com/signup";
 $motive = "Do you have a company? Sign Up here to start!";
 

@@ -17,7 +17,8 @@ body {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.wrap {
+.wrap,
+.container-fluid {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -42,7 +43,7 @@ body {
 nav {
     padding: 0 !important;
     margin: 0 !important;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 .motive,
@@ -66,20 +67,44 @@ nav {
     margin: 0 0 0 30px;
 }
 
+#comp_short_name {
+    text-align: right;
+    color: #fff;
+    line-height: inherit;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
 #comp_img {
-    width: 60px;
+    width: 80px;
     height: 50px;
     float: right;
     max-width: inherit;
-    max-height: inherit
+    max-height: inherit;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 922px) {
+    .home-search button {
+        width: 100%;
+    }
+
+    #comp_short_name {
+        text-align: right;
+    }
+
+    #col,
+    #c_s_n {
+        padding: 0 4px 0 0;
+        margin: 0;
+    }
+
 
 
     #logo_1 {
         width: 160px !important;
-        margin: 0 0 0 2px;
+        margin: 0 0 0 5px !important;
     }
 
     #_welcome {
@@ -219,7 +244,7 @@ hr {
 }
 
 .t-body .card-text {
-    padding: 20px 0px 25px;
+    padding: 20px 0px 15px;
 }
 
 

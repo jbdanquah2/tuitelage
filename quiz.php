@@ -1,5 +1,5 @@
 <?php
-// set page headers
+$hrline ='<hr class="hrline">';
 $page_title = "Tuitelage";
 $motive = "The best you can be comes from what you read. Let's have some fun studying!";
 
