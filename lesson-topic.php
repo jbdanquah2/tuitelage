@@ -89,7 +89,7 @@ echo '
                 <?php echo $description; ?>
             </p>
             <br>
-            <video src="video/<?php echo videoUrl ?>" class="img-responsive" loop controls></video>
+            <video src="video/<?php echo $videoUrl; ?>" class="img-responsive" loop controls></video>
             <br>
         </div>
         <br>
