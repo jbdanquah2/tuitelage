@@ -7,7 +7,7 @@ $motive = "Do you have a company? Sign Up here to start!";
 // include database and object files
 include_once 'config/connection.php';
 include_once 'objects/lesson.php';
-include_once 'objects/crud.php';
+include_once 'objects/appUser.php';
 
 
 include_once "layout_header.php";
@@ -17,7 +17,7 @@ include_once "layout_header.php";
 $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
-$crud = new crud($db);
+$appUser = new appUser($db);
 
 
 if(isset($_SESSION['user']))
@@ -36,18 +36,23 @@ $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $pssword = $_POST['pssword'];
+$c_pssword = $_POST['c_pssword'];
     
-if($crud->createUser($companyName, $companyShortName,$companyPhone,$companyEmail,
+    if($pssword != $c_pssword){
+        echo "Password Do not match";
+       
+    }else if($appUser->createUser($companyName, $companyShortName,$companyPhone,$companyEmail,
 $companyWebsite,$firstName,$lastName,$email,$pssword)){
 echo("Registration Successful:  <a href='index.php'>Login Here</a>");
 }
 else{
 echo("Registration Failed. Please try again");
+    
 }
 
 }   
 ?>
-
+<link rel="stylesheet" href="style/signup.css" type="text/css">
 <div class="container">
     <h1 class="well">Registration Form</h1>
     <div class="col-lg-12 well">
@@ -67,7 +72,6 @@ echo("Registration Failed. Please try again");
                             <label>Industry</label>
                             <input type="text" name="companyIndustry" placeholder="Enter Type of Industry Here.." class="form-control"> </div>
                     </div>
-
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>Company Phone</label>
@@ -77,10 +81,8 @@ echo("Registration Failed. Please try again");
                             <input type="email" name="companyEmail" placeholder="Enter Email Address Here.." class="form-control" required> </div>
                         <div class="col-sm-4 form-group">
                             <label>Company Website</label>
-                            <input type="text" name="companyWebsite" placeholder="Enter Website Here.." class="form-control">
-                        </div>
+                            <input type="text" name="companyWebsite" placeholder="Enter Website Here.." class="form-control"> </div>
                     </div>
-
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>First Name</label>
@@ -89,7 +91,6 @@ echo("Registration Failed. Please try again");
                             <label>Last Name</label>
                             <input type="text" name="lastName" placeholder="Enter Last Name Here.." class="form-control" required> </div>
                     </div>
-
                     <div class="form-group">
                         <label>Email Address</label>
                         <input type="email" name="email" placeholder="Enter Email Address Here.." class="form-control" required> </div>
@@ -99,7 +100,6 @@ echo("Registration Failed. Please try again");
                     <div class="form-group">
                         <label>Comfirm Password</label>
                         <input type="password" name="c_pssword" placeholder="Confirm Password Here.." class="form-control" required> </div>
-
                     <button type="submit" name="signup_btn" class="btn btn-lg btn-info">Submit</button>
                 </div>
             </form>
@@ -111,4 +111,3 @@ echo("Registration Failed. Please try again");
 // footer
 include_once "layout_footer.php";
 ?>
-<link rel="stylesheet" href="style/signup.css">

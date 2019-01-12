@@ -103,11 +103,12 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
             </div>
         </div>
     </div>
-    <div class="container lesson-wrap">
-        <div class="row">
-            <center>
-                <div class="col-md-11">
-                    <?php
+    <div class="container-fluid col-12">
+        <div class="container lesson-wrap">
+            <div class="row">
+                <center>
+                    <div class="col-md-11">
+                        <?php
 						try{
 						 $stmt = $lesson->read();
 
@@ -118,14 +119,15 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
 
 						}
 ?>
+                    </div>
+                </center>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a class="readmore" href="#">
+                        <button class="btn btn-dark"> See more lessons</button>
+                    </a>
                 </div>
-            </center>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <a class="readmore" href="#">
-                    <button class="btn btn-dark"> See more lessons</button>
-                </a>
             </div>
         </div>
     </div>

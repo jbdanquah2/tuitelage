@@ -39,10 +39,11 @@ echo '
 
 
 <div class="card  t-material" id="lesson_t">
-    <div class="card-body t-body">
+    
     <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+    <div class="card-body t-body">
     <div class="car-img-overlay">
-        <h5 class="card-title"> '
+        <h5 class="card-title text-center"> '
             . $lessonName .
             ' </h5>
     </div>
@@ -95,7 +96,7 @@ function readLessonDetail($LessonId){
     try {
     //select all data
         $query = "SELECT
-                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage
+                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage, l.additionalDetails
                 FROM 
                     lesson l 
                 JOIN 
@@ -119,8 +120,55 @@ echo $ex->getMessage();
         echo "hey didn't work";
  }
  }
-      
     
+    
+function readTopic($LessonId){
+    
+    try {
+        $query = "SELECT t.topicId,
+    t.topicName, t.description, t.videoUrl
+FROM
+    topic t
+        JOIN
+    lesson_topic lt ON t.topicId = lt.topicId
+WHERE
+    lt.lessonId=:LessonId";  
+ 
+    $statement = $this->conn->prepare($query);
+    $statement->execute(array(":LessonId"=>$LessonId));
+//    $detailRows = $statement->fetch(PDO::FETCH_ASSOC);
+
+           
+return $statement;
+
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "hey didn't work";
+ }
+ }
+    
+    
+function readTopicDetail($topicId){
+    
+    try {
+        $query = "SELECT topicId,
+    topicName, description, videoUrl
+FROM
+    topic 
+WHERE
+topicId=:topicId";  
+ 
+    $statement = $this->conn->prepare($query);
+    $statement->execute(array(":topicId"=>$topicId));
+// $detailRows = $statement->fetch(PDO::FETCH_ASSOC);
+           
+return $statement;
+
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "hey didn't work";
+ }
+ }
     
     
     function create(){
@@ -153,6 +201,26 @@ echo $ex->getMessage();
         }
  
     }
+    
+    
+    // truncate string at word
+function truncate($string, $limit, $break =" ", $pad = "...") {  
+	
+	if (strlen($string) <= $limit) return $string;
+	
+	if (false !== ($max = strpos($string, $break, $limit))) {
+		 
+		if ($max < strlen($string) - 1) {
+			
+			$string = substr($string, 0, $max) . $pad;
+			
+		}
+		
+	}
+	
+	return $string;
+	
+}
  
 }
     

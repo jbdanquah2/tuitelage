@@ -32,13 +32,15 @@ include_once "layout_header.php";
 <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
         <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a> </p>
 <div class="container-fluid col-12">
-    <div class="container ">
+    <div class="container">
         <div class="row">
-            <!-- Training space start -->
             <center>
                 <div class="col-md-10">
-                    <div class="row card-columns">
-                        <?php
+                    <!--
+                    <div class="container">
+                        <div class="row card-columns">
+-->
+                    <?php
                         
 $stmt=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -55,12 +57,12 @@ echo
                             <div class="card-body t-body">
 
                                 <div class="car-img-overlay">
-                                    <h5 class="card-title">'.
+                                    <h5 class="card-title text-center">'.
                                         $lessonName . ' 
                                     </h5>
                                 </div>
-                                <p class="card-text">'.
-                                    $lessonSummary .'
+                                <p class="card-text text-justify">'.
+                    $lesson->truncate($lessonSummary, 130) .'
                                     </p>
                     
                  <form action="lessonContent.php" method="GET">
@@ -78,11 +80,12 @@ echo
 //                die();
 //            }
 ?>
-                    </div>
                 </div>
+
+                <br>
+                <hr>
+
             </center>
-            <br>
-            <hr>
         </div>
     </div>
 </div>

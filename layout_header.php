@@ -23,7 +23,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="style/landing.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="style/sidebar.css" type="text/css">
 
 
 </head>

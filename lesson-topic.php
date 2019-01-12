@@ -25,11 +25,14 @@ if(!isset($_SESSION['user']))
 header("Location: index.php");
 }
 
-if (isset($_GET['lessonId'])){
-    $_SESSION['lessonId'] = $_GET['lessonId'];
-    $dataRows=$lesson->readLessonDetail($_SESSION['lessonId']);
-    $lessonName = $dataRows['lessonName'];
-    $lessonSummary = $dataRows['lessonSummary'];
+if (isset($_GET['topicId'])){
+//    $lessonId = $_GET['lessonId'];
+    $topicId = $_GET['topicId'];
+    $detailRows=$lesson->readTopicDetail($topicId);
+    $topicRows = $detailRows->fetch(PDO::FETCH_ASSOC);
+    $topicName = $topicRows['topicName'];
+    $description = $topicRows['description'];
+    $videoUrl = $topicRows['videoUrl'];
 }
 ?>
 <link rel="stylesheet" href="style/lessonContent.css">
@@ -50,11 +53,12 @@ if (isset($_GET['lessonId'])){
 
     <?php
                         
-$topic=$lesson->readTopic($_SESSION['lessonId']);
+$topic=$lesson->readTopicDetail($topicId);
 while($topicRow = $topic->fetch(PDO::FETCH_ASSOC)) {
 
 $topicId    = $topicRow['topicId'];
 $topicName = $topicRow['topicName'];
+
       
 echo '
         <a href="lesson-topic.php?topicId='.$topicId.'">'.$topicName.'</a>';            
@@ -77,15 +81,15 @@ echo '
                 <button class="openbtn" onclick="openNav()">☰Menu </button>
                 <br id="brSU">
                 <h2 id="lessonN" class="card-title">
-                    <?php echo $lessonName; ?>
+                    <?php echo $topicName; ?>
                 </h2>
             </div>
             <br>
             <p id="lessonS" class="text-justify">
-                <?php echo $lessonSummary; ?>
+                <?php echo $description; ?>
             </p>
             <br>
-            <video src="video/233546130647_status_675f833f18bf4d5982df260166e2ca53_001.mp4" class="img-responsive" loop controls></video>
+            <video src="video/<?php echo videoUrl ?>" class="img-responsive" loop controls></video>
             <br>
         </div>
         <br>

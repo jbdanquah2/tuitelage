@@ -1,12 +1,15 @@
-body {
-    font-family: "Lato", sans-serif;
-}
+/*  
+
+=======================================
+               LESSON PAGE
+=======================================
+*/
 
 .sidebar {
     height: 100%;
-    width: 150px;
+    width: 200px;
     position: fixed;
-    z-index: 100;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: #111;
@@ -18,7 +21,7 @@ body {
 .sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -28,12 +31,16 @@ body {
     color: #f1f1f1;
 }
 
+.sidebar a:active {
+    color: #fc3;
+}
+
 .sidebar .closebtn {
-    position: absolute;
-    top: 5px;
+    position: relative;
+    top: 8px;
     right: 25px;
     font-size: 36px;
-    margin-left: 50px;
+    margin-left: 100px;
 }
 
 #lessonN {
@@ -42,6 +49,7 @@ body {
 
 #lessonS {
     margin-bottom: 1px;
+    padding: 0 50px;
 }
 
 video {
@@ -76,8 +84,8 @@ video {
 }
 
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 750px) {
+/* On smaller screens, where height is less than 750px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-width: 922px) {
     .sidebar {
         padding-top: 15px;
     }
@@ -85,4 +93,23 @@ video {
     .sidebar a {
         font-size: 18px;
     }
+
+    #lessonN {
+        padding: 0 5px;
+        font-size: 25px;
+        display: block;
+        margin-top: 20px;
+
+    }
+
+    #lessonS {
+        padding: 0 5px;
+        text-align: justify;
+    }
+
+    video {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
 }
