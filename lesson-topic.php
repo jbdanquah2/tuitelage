@@ -30,7 +30,7 @@ if (isset($_GET['topicId'])){
     $topicId = $_GET['topicId'];
     $detailRows=$lesson->readTopicDetail($topicId);
     $topicRows = $detailRows->fetch(PDO::FETCH_ASSOC);
-    $topicName = $topicRows['topicName'];
+    $topicNameCap = $topicRows['topicName'];
     $description = $topicRows['description'];
     $videoUrl = $topicRows['videoUrl'];
 }
@@ -53,12 +53,11 @@ if (isset($_GET['topicId'])){
 
     <?php
                         
-$topic=$lesson->readTopicDetail($topicId);
+$topic=$lesson->readTopic($_SESSION['lessonId']);
 while($topicRow = $topic->fetch(PDO::FETCH_ASSOC)) {
 
 $topicId    = $topicRow['topicId'];
 $topicName = $topicRow['topicName'];
-
       
 echo '
         <a href="lesson-topic.php?topicId='.$topicId.'">'.$topicName.'</a>';            
@@ -75,13 +74,13 @@ echo '
 
 <div id="main">
     <center>
-        <div class="col-md-9 card">
+        <div id="lessonView" class="col-md-9 card">
             <br>
             <div>
                 <button class="openbtn" onclick="openNav()">☰Menu </button>
                 <br id="brSU">
                 <h2 id="lessonN" class="card-title">
-                    <?php echo $topicName; ?>
+                    <?php echo $topicNameCap; ?>
                 </h2>
             </div>
             <br>
