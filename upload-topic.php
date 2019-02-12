@@ -113,7 +113,7 @@ echo '<option value="'.$lessonId.'">'.$lessonName.'</option>';
                 <!-- Topic video-->
                 <div class="card text-black mb-3">
                     <div class="card-header"><strong>Video:</strong></div>
-                    <input class="form-control btn btn-outline-dark" type="file" name="videoUrl">
+                    <input class="form-control btn btn-outline-dark" type="file" name="videoUrl" required>
                     <br>
                     <input type="submit" class="btn btn-danger" name="newTopicBtn">
                 </div>

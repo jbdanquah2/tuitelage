@@ -2,9 +2,9 @@
 session_start();
 $hrline ='<hr class="hrline">';
 $page_title = "Tuitelage.com";
-$motive = 'Want the best place to start your self development quest? Start here!  <form class="form-inline home-search">
-						<input class="form-control" type="text" placeholder="Search favorite lesson">
-						<button class="btn btn-success-outline bg-dark" type="submit">Search </button>
+$motive = 'Want the best place to start your self development quest? Start here!  <form method="post"  action="index.php" class="form-inline home-search">
+						<input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
+						<button class="btn btn-success-outline bg-dark" type="submit" name="search">Search</button>
 				</form>';
 
 include_once "layout_header.php";
@@ -27,7 +27,7 @@ header("Location: home.php");
 
  ?>
 
-<div class="container-fluid col-12">
+<div class="container-fluid col-12 _wrapper">
     <!--    <div class="container">-->
     <div class="container-fluid wrap">
         <div class="row" id="home-login">
@@ -102,9 +102,9 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                 <div class="card">
                     <div class="card-body t-body">
                         <h4 class="card-title">Sign in above or explore lessons below</h4>
-                        <form class="form-inline home-search">
-                            <input class="form-control" type="text" placeholder="Search favorite lesson">
-                            <button class="btn btn-success-outline bg-dark" type="submit">Search </button>
+                        <form method="post" class="form-inline home-search">
+                            <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
+                            <button name="search" class="btn btn-success-outline bg-dark" type="submit">Search </button>
                         </form>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                 <center>
                     <div class="col-md-11">
                         <?php
-                        
+if (!isset($_POST['search'])) {                       
 $stmt=$lesson->readCompanyLesson(26);
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -151,10 +151,10 @@ echo
             </div>'
             ;
 }
-//            }catch(PDOException $exception){
-//                echo " Sorry something went wrong";
-//                die();
-//            }
+}else{
+    $searchForm = $_POST['searchForm'];
+   $stmt=$lesson->searchForQueryString($searchForm,26);
+}
 ?>
 
                     </div>

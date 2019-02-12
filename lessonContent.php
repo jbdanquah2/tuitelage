@@ -92,10 +92,14 @@ echo '
             <br>
             <video src="video/<?php echo $videoOverview; ?>" class="img-responsive" loop controls autoplay></video>
             <br>
+            <br>
+            <br>
         </div>
         <br>
     </center>
 </div>
+<br>
+<br>
 <?php
 // footer
 include_once "layout_footer.php";

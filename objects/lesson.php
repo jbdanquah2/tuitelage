@@ -235,6 +235,85 @@ echo $ex->getMessage();
     }
     
     
+    public function searchForQueryString($queryString,$companyId){
+        if(!$queryString){
+            echo "
+    <div class='container-fluid col-12'>
+        <div class='container lesson-wrap'>
+
+           <div class='row'>
+                <center>
+                    <div class='col-md-11'>
+                    <div class='card  t-material' id='lesson_t'>
+                    Please enter a word or phrase to search
+                    </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>"
+                 
+                ;
+        }else{
+          $query =  "SELECT
+                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage
+                FROM 
+                    lesson l 
+                JOIN 
+                    company_lesson cl 
+                    ON
+                    l.lessonId = cl.lessonId
+                WHERE 
+                    cl.companyId=:companyId 
+                AND
+                    (lessonName LIKE :queryString or `lessonSummary` LIKE :queryString) 
+                ORDER BY
+                    RAND()";
+     
+    
+//    $query = "SELECT * FROM `xxxx` WHERE (`xxxxxxx` like :queryString or `xxxxx` like :queryString) ";
+
+    $stmt = $this->conn->prepare($query);
+    $queryString = '%' . $queryString . '%';
+        $stmt->bindParam(":queryString", $queryString);
+        $stmt->bindParam(":companyId", $companyId);
+//    $stmt->bindParam('queryString', $queryString, PDO::PARAM_STR);
+
+    $stmt->execute();
+//    if(empty($row) or $row == false)
+//       return array();
+//    else
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+{
+            $lessonId = $row['lessonId'];
+            $lessonName = $row['lessonName'];
+            $lessonSummary = $row['lessonSummary'];
+            $descriptiveImage = $row['descriptiveImage'];
+echo '
+
+
+<div class="card  t-material" id="lesson_t">
+    
+    <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+    <div class="card-body t-body">
+    <div class="car-img-overlay">
+        <h5 class="card-title text-center"> '
+            . $lessonName .
+            ' </h5>
+    </div>
+        <p class="card-text">' .
+            $lessonSummary .
+            '</p>
+            <a href="#" class="btn btn-danger">View Lesson</a>
+    
+    </div>
+</div>
+
+';
+ }    
+}
+}}
+    
     // truncate string at word
 function truncate($string, $limit, $break =" ", $pad = "...") {  
 	

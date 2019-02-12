@@ -65,7 +65,8 @@ echo("Registration Failed. Please try again");
 }   
 ?>
 <link rel="stylesheet" href="style/signup.css" type="text/css">
-<div class="container">
+
+<div id="_signup" class="container">
     <h1 class="well">Registration Form</h1>
     <div class="col-lg-12 well">
         <div class="row">

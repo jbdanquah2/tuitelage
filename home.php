@@ -15,9 +15,9 @@ header("Location: index.php");
 
 $hrline ='<hr class="hrline">';
 
-$motive = 'Search your favorite lessons.  <form class="form-inline home-search">
-            <input class="form-control" type="text" placeholder="Search favorite lesson">
-            <button id="motive-search" class="btn btn-success-outline bg-dark" type="submit">Search </button>
+$motive = 'Search your favorite lessons.  <form method="post" class="form-inline home-search">
+            <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
+            <button id="motive-search" class="btn btn-success-outline bg-dark" type="submit" name="search">Search </button>
         </form>';
 
 // include database and object files
@@ -56,7 +56,7 @@ include_once "layout_header.php";
                         <div class="row card-columns">
 -->
                     <?php
-                        
+ if (!isset($_POST['search'])){                       
 $stmt=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -90,6 +90,10 @@ echo
             </div>'
             ;
 }
+     }else{
+      $searchForm = $_POST['searchForm'];
+   $stmt=$lesson->searchForQueryString($searchForm,$_SESSION['companyId']);
+ }
 //            }catch(PDOException $exception){
 //                echo " Sorry something went wrong";
 //                die();

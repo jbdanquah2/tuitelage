@@ -80,7 +80,7 @@ $detailRows=$lesson->createLesson($lessonName, $lessonSummary, $descriptiveImage
                 <div class="card text-black  mb-3" id="cards_holder_item">
                     <div class="card-header"><b>Enter Lesson Summary</b></div>
                     <div class="card-body">
-                        <textarea class="form-control" rows="5" placeholder="lesson Summary" name="lessonSummary">
+                        <textarea class="form-control" rows="5" placeholder="lesson Summary" name="lessonSummary" required>
                       </textarea>
                         <br>
                         <button class="btn btn-danger" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span></button>
@@ -89,12 +89,12 @@ $detailRows=$lesson->createLesson($lessonName, $lessonSummary, $descriptiveImage
                 <!-- Descriptive Image-->
                 <div class="card text-black mb-3">
                     <div class="card-header"><strong><b>Descriptive Image:</b></strong>
-                    </div><input class="form-control btn btn-outline-dark" type="file" name="descriptiveImage">
+                    </div><input class="form-control btn btn-outline-dark" type="file" name="descriptiveImage" required>
                 </div>
                 <!-- Lesson video-->
                 <div class="card text-black mb-3">
                     <div class="card-header"><strong><b>Introductory Video:</b></strong>
-                    </div><input class="form-control btn btn-outline-dark" type="file" name="videoOverview">
+                    </div><input class="form-control btn btn-outline-dark" type="file" name="videoOverview" required>
                 </div>
                 <br>
                 <div class="card text-black mb-3">

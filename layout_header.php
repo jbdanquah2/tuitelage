@@ -33,31 +33,20 @@
     </div>
     <?php echo $hrline; ?>
     <nav id="navb" class="navbar sticky-top navbar-expand-sm  bg-dark navbar-dark">
-        <!--        <div id="col" class="col-md-3">-->
-        <header class="nav_header"> <a href="index.php"><img id="logo_1" class="img-responsive" src="image/logo.jpg" alt="Tuitelage logo"></a></header>
-        <div id="header-right">
+        <div id="col" class="col-3">
+            <header class="nav_header"> <a href="index.php"><img id="logo_1" class="img-responsive" src="image/logo.jpg" alt="Tuitelage logo"></a></header>
+
+        </div>
+        <div id="c_s_n" class="col-7">
             <h5 id="comp_short_name">
                 <?php echo $comp_short_name;?>
             </h5>
-            <!-- company logo -->
-            <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
         </div>
-        <!--
-</div>
--->
-        <!--
-<div id="c_s_n" class="col-md-7">
-
-</div>
--->
-        <!--
-<div class="col-md-2 ">
-    <div class="row ">
--->
-
-        <!--
-</div>
-</div>
--->
+        <div id="div-comp" class="col-2">
+            <div id="_c-2" class="row">
+                <!-- company logo -->
+                <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
+            </div>
+        </div>
 
     </nav>
