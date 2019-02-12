@@ -1,0 +1,823 @@
+           body {
+               background-color: whitesmoke;
+           }
+
+           .div_trans_effect {
+               background-color: transparent;
+               border-color: rgba(0, 0, 0, 0.3);
+
+           }
+
+           .div_back {
+
+               color: rgb(0, 0, 0);
+               background-color: lightgrey;
+               background-size: cover;
+           }
+
+           p {
+               font-family: Adobe Garamond Pro Bold;
+               font-size: 14pt;
+
+
+           }
+
+           .nav_div {
+               background-color: blue;
+               height: 80px;
+
+
+           }
+
+           .cover_div {
+               position: center;
+           }
+
+           .about_blog {
+               border-left: 4px solid black;
+               height: 300px;
+               position: center;
+
+           }
+
+
+
+           #grad {
+               background: red;
+               /* For browsers that do not support gradients */
+               background: -webkit-linear-gradient(red, yellow);
+               /* For Safari 5.1 to 6.0 */
+               background: -o-linear-gradient(red, yellow);
+               /* For Opera 11.1 to 12.0 */
+               background: -moz-linear-gradient(red, yellow);
+               /* For Firefox 3.6 to 15 */
+               background: linear-gradient(red, yellow);
+               /* Standard syntax */
+           }
+
+           #animate_background {
+               width: 300px;
+               height: 200px;
+               background: white;
+               -webkit-animation: mymove 5s infinite;
+               /* Chrome, Safari, Opera */
+               animation: mymove 5s infinite;
+           }
+
+           #add_new_topic {}
+
+           form select {
+               border-radius: 30px;
+           }
+
+           /* Chrome, Safari, Opera */
+           @-webkit-keyframes mymove {
+               from {
+                   background-color: white;
+               }
+
+               to {
+                   background-color: green;
+               }
+           }
+
+           /* Standard syntax */
+           @keyframes mymove {
+               from {
+                   background-color: white;
+               }
+
+               to {
+                   background-color: green;
+               }
+           }
+
+           #animate_borders {
+               width: 300px;
+               height: 200px;
+               border: 10px solid coral;
+               /*-webkit-animation: mymove 5s infinite;  Chrome, Safari, Opera 
+    animation: mymove 5s infinite;*/
+           }
+
+           /* Chrome, Safari, Opera */
+           @-webkit-keyframes mymove {
+               50% {
+                   border-color: lightblue;
+               }
+           }
+
+           /* Standard syntax */
+           @keyframes mymove {
+               50% {
+                   border-color: lightblue;
+               }
+           }
+
+           #animate_expand {
+               background-color: inherit;
+               border: 1px solid green;
+               -webkit-animation: mymove 2s;
+               /* Chrome, Safari, Opera */
+               animation: mymove 2s;
+
+           }
+
+           h3 {
+               background-color: inherit;
+               border: 1px inherit;
+               -webkit-animation: mymove 1s;
+               /* Chrome, Safari, Opera */
+               animation: mymove 1s;
+           }
+
+           /* Chrome, Safari, Opera */
+           @-webkit-keyframes mymove {
+               50% {
+                   padding: 50px;
+               }
+           }
+
+           /* Standard syntax */
+           @keyframes mymove {
+               50% {
+                   padding: 50px;
+               }
+           }
+
+           #stretch_img {
+               width: 25%;
+               height: 35%;
+               background: inherit;
+               -webkit-transition: width 5s;
+               /* For Safari 3.1 to 6.0 */
+               transition: width 5s;
+           }
+
+           .card img {
+               width: 14rem;
+               height: 200px;
+               border-bottom-right-radius: 17px;
+           }
+
+           nav img {
+               float: left;
+               width: 150px;
+               height: 60px;
+               /*max-height: inherit;*/
+               /*max-width: inherit;*/
+           }
+
+           nav #comp_img {
+               float: right;
+               width: 83px;
+               max-width: inherit;
+               /*   height: 65px;*/
+               max-height: inherit;
+
+           }
+
+           nav #nav_about {}
+
+           nav img:hover {
+               -webkit-box-shadow: -1px 9px 40px -12px rgba(255, 255, 255, 0.8);
+               -moz-box-shadow: -1px 9px 40px -12px rgba(255, 255, 255, 0.8);
+               box-shadow: -1px 9px 40px -12px rgba(255, 255, 255, 0.8);
+           }
+
+           nav {
+               position: fixed;
+               top: 0;
+               width: inherit;
+           }
+
+           .card:hover {
+               -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 255, 0.8);
+               -moz-box-shadow: -1px 9px 40px -12px rgba(0, 0, 255, 0.8);
+               box-shadow: -1px 9px 40px -12px rgba(0, 0, 255, 0.8);
+               transition: 0.5s;
+           }
+
+           div .card {
+               -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+               -moz-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+               box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+               width: 18rem;
+           }
+
+           div #cards_holder {
+               max-width: inherit;
+               width: inherit;
+           }
+
+           div #cards_holder_item {
+               max-width: inherit;
+               width: inherit;
+           }
+
+           #stretch {
+               width: 100px;
+               height: 100px;
+               background: inherit;
+               -webkit-transition: width 5s;
+               /* For Safari 3.1 to 6.0 */
+               transition: width 5s;
+           }
+
+           #open_btn {
+               display: inline;
+               width: 60px !important;
+               font-size: 12px !important;
+               cursor: pointer;
+               background-color: #111;
+               color: white;
+               padding: 5px 5px;
+               border: none;
+               float: left;
+           }
+
+           #open_btn:hover {
+               color: white;
+           }
+
+           #side_item {
+               size: inherit;
+               overflow: auto;
+           }
+
+           /* placing html on images */
+           video {
+               width: 80%;
+               height: 300px;
+               border-top-style: solid;
+               border-top-color: rgb(0, 0, 0);
+               border-top-left-radius: 30px;
+               border-top-right-radius: 30px;
+               border-bottom-left-radius: 30px;
+               border-bottom-right-radius: 30px;
+               -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+               -moz-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+               box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+               transition: 0.5s;
+
+           }
+
+           video:hover {
+               -webkit-box-shadow: -1px 90px 40px -12px rgba(0, 0, 0, 0.8);
+               -moz-box-shadow: -1px 90px 40px -12px rgba(0, 0, 0, 0.8);
+               box-shadow: -1px 9px 90px -12px rgba(0, 0, 0, 0.8);
+
+           }
+
+           audio {
+               width: 80%;
+
+               border-top-style: solid;
+               border-top-color: rgb(0, 0, 0);
+               border-top-left-radius: 30px;
+               border-top-right-radius: 30px;
+               border-bottom-left-radius: 30px;
+               border-bottom-right-radius: 30px;
+               -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+               -moz-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+               box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+           }
+
+           .vidbody {
+               background-color: whitesmoke;
+               color: black;
+               width: inherit;
+               height: 100px;
+           }
+
+           .vidbody:hover {
+               background-color: blue;
+               color: white;
+               -webkit-transition: 5s;
+               transition: 5s;
+           }
+
+           .ig_container {
+               position: relative;
+               text-align: center;
+               color: white;
+           }
+
+           .bottom-left {
+               position: absolute;
+               bottom: 8px;
+               left: 16px;
+           }
+
+           .top-left {
+               position: absolute;
+               top: 8px;
+               left: 16px;
+               color: black;
+               border-bottom-style: solid;
+               border-bottom-color: #f44336;
+           }
+
+           .top-right {
+               position: absolute;
+               top: 8px;
+               right: 16px;
+           }
+
+           .bottom-right {
+               position: absolute;
+               bottom: 8px;
+               right: 16px;
+           }
+
+           .centered {
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+           }
+
+           #summary {
+               display: block;
+               overflow-y: auto;
+               height: 30px;
+               width: 10%;
+
+           }
+
+           #summary:hover {
+               overflow-y: auto;
+               height: 300px;
+               width: 100%;
+               -webkit-box-shadow: -1px 9px 40px -12px rgba(30, 15, 238, 0.349);
+               -moz-box-shadow: -1px 9px 40px -12px rgba(30, 15, 238, 0.349);
+               box-shadow: -1px 9px 40px -12px rgba(30, 15, 238, 0.349);
+           }
+
+
+
+           .header_line {
+               height: 10px;
+               width: 6px;
+
+           }
+
+           nav.header {
+               color: white;
+
+           }
+
+           .nav_header {
+               color: white;
+
+           }
+
+
+           hr {
+               color: black;
+           }
+
+           #border_div_s {
+               border-top-style: solid;
+               border-right-style: solid;
+               border-bottom-style: solid;
+               border-left-style: solid;
+               border-width: 0.3px;
+               background-color: rgba(0, 0, 0, 0.6);
+               border-radius: 25px;
+
+           }
+
+           #logo_size {
+               size: 100%;
+               border-bottom-color: white;
+
+           }
+
+           #blog_card {
+               back
+           }
+
+           #main_border_div_s {
+
+               background-color: rgba(255, 255, 255, 0.5);
+
+
+           }
+
+           #main_thing_design {
+               color: black;
+
+
+           }
+
+           #main {
+               -webkit-transition: width 0.5s;
+               margin-right: 8.3%;
+           }
+
+           .sign_out:hover {
+               border-bottom-width: 60px;
+               border-bottom-color: red;
+           }
+
+           .salutation {
+               position: relative;
+               align-content: right;
+               padding-left: 30%;
+           }
+
+           #d_pee_blog {
+               width: 40px;
+               height: 40px;
+
+           }
+
+           .d_pee {
+               width: 35px;
+               height: 35px;
+           }
+
+           .card_div {
+               background-color: rgba(255, 255, 255, 0.6);
+               /*width:inherit;*/
+               width: 100%;
+               border-width: 5px;
+               border-left:
+                   border-radius: 25px;
+           }
+
+           .blog_div {
+               margin: auto;
+               width: 60%;
+               padding: 10px;
+
+
+           }
+
+           .header_color_train {
+
+               color: black;
+               max-height: 15%;
+               text-align: left;
+               border-radius: 15px;
+               width: inherit;
+           }
+
+           .scroll_nav {
+
+               overflow-y: auto;
+               height: 900px;
+               width: inherit;
+
+
+           }
+
+           .scroll_card_train {
+
+               overflow-x: auto;
+               overflow-y: auto;
+               height: 490px;
+               width: inherit;
+           }
+
+           .scroll_card_department {
+
+               overflow-x: auto;
+               height: 180px;
+               width: inherit;
+
+           }
+
+
+
+           /* scroll-bar */
+           /* width */
+           ::-webkit-scrollbar {
+               width: 10px;
+           }
+
+           /* Track */
+           ::-webkit-scrollbar-track {
+               box-shadow: inset 0 0 5px grey;
+               border-radius: 35px;
+           }
+
+           /* Handle */
+           ::-webkit-scrollbar-thumb {
+               background: rgba(0, 0, 0, 0.6);
+               border-radius: 35px;
+           }
+
+           /* Handle on hover */
+           ::-webkit-scrollbar-thumb:hover {
+               background: grey;
+           }
+
+           /*scrollbar*/
+
+
+
+           #stay_top {
+               overflow: hidden;
+               position: fixed;
+               left: 0;
+               top: 10;
+               width: 100%;
+               position: relative;
+           }
+
+           /* This is to make a fixed navbar*/
+           .main_nav {
+               padding: 16px;
+               margin-top: 30px;
+               height: 1500px;
+               /* Used in this example to enable scrolling */
+           }
+
+           a {
+               float: left;
+               display: block;
+               color: #f2f2f2;
+               text-align: center;
+               padding: 14px 16px;
+               text-decoration: none;
+           }
+
+           /* Change background on mouse-over */
+           .main_nav a:hover {
+               background: #ddd;
+               color: black;
+           }
+
+           /* Main content */
+           .main {
+               margin-top: 30px;
+               /* Add a top margin to avoid content overlay */
+           }
+
+
+           /* this is an animation to change the menu icon to an "X" */
+           .hold_this {
+               display: inline-block;
+               cursor: pointer;
+           }
+
+           .bar1,
+           .bar2,
+           .bar3 {
+               width: 35px;
+               height: 5px;
+               background-color: #333;
+               margin: 6px 0;
+               transition: 0.4s;
+           }
+
+           .change .bar1 {
+               -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+               transform: rotate(-45deg) translate(-9px, 6px);
+           }
+
+           .change .bar2 {
+               opacity: 0;
+           }
+
+           .change .bar3 {
+               -webkit-transform: rotate(45deg) translate(-8px, -8px);
+               transform: rotate(45deg) translate(-8px, -8px);
+           }
+
+           /* drop down that will inherit */
+
+           #panel,
+           #flip {
+               padding: 5px;
+               text-align: center;
+               background-color: #e5eecc;
+               border: solid 1px #c3c3c3;
+           }
+
+           #panel {
+               padding: 50px;
+               display: none;
+           }
+
+           #panel.form {
+               padding: 50px;
+               display: none;
+           }
+
+           /* footer*/
+           footer {
+               background-color: black;
+               width: 100%;
+               background-color: #051505;
+               color: gray;
+               border-style: dashed;
+           }
+
+           /*links responsiveness */
+           a:link {
+               color: green;
+               background-color: transparent;
+               text-decoration: none
+           }
+
+           a:visited {
+               color: pink;
+               background-color: transparent;
+               text-decoration: none
+           }
+
+           a:hover {
+               color: green;
+               background-color: transparent;
+               text-decoration: underline
+           }
+
+           a:active {
+               color: yellow;
+               background-color: transparent;
+               text-decoration: underline
+           }
+
+           /* a side bar that hovers */
+           #mySidenav a {
+               position: absolute;
+               /* Position them relative to the browser window */
+               left: -80px;
+               /* Position them outside of the screen */
+               transition: 0.3s;
+               /* Add transition on hover */
+               padding: 15px;
+               /* 15px padding */
+               width: 100px;
+               /* Set a specific width */
+               text-decoration: none;
+               /* Remove underline */
+               font-size: 20px;
+               /* Increase font size */
+               color: white;
+               /* White text color */
+               border-radius: 0 5px 5px 0;
+               /* Rounded corners on the top right and bottom right side */
+           }
+
+           #mySidenav a:hover {
+               left: 0;
+               /* On mouse-over, make the elements appear as they should */
+           }
+
+           /* The about link: 20px from the top with a green background */
+           .about_div {
+               border-width: 6px;
+               border-color: black;
+               background-color: rgba(0, 0, 0, 0.6);
+           }
+
+           .about_container {
+               background-image: url("img/back2.jpg");
+               width: inherit;
+               height: inherit;
+           }
+
+           #blog {
+               top: 80px;
+               background-color: #2196F3;
+               /* Blue */
+           }
+
+           #projects {
+               top: 140px;
+               background-color: #f44336;
+               /* Red */
+           }
+
+           #contact {
+               top: 200px;
+               background-color: #555
+                   /* Light Black */
+           }
+
+           /*sidebar*/
+           /* The navigation menu links */
+           .sidebar {
+               height: 100%;
+               /* 100% Full-height */
+               width: 0;
+               /* 0 width - change this with JavaScript */
+               position: fixed;
+               /* Stay in place */
+               z-index: 1;
+               /* Stay on top */
+               top: 0;
+               left: 0;
+               background-color: #111;
+               /* Black*/
+               overflow-x: hidden;
+               /* Disable horizontal scroll */
+               padding-top: 60px;
+               /* Place content 60px from the top */
+               transition: 0.5s;
+               /* 0.5 second transition effect to slide in the sidebar */
+           }
+
+           /* The sidebar links */
+           .sidebar a {
+               padding: 8px 8px 8px 32px;
+               text-decoration: none;
+               font-size: 25px;
+               color: #818181;
+               display: block;
+               transition: 0.3s;
+           }
+
+           /* When you mouse over the navigation links, change their color */
+           .sidebar a:hover {
+               color: #f1f1f1;
+           }
+
+           /* Position and style the close button (top right corner) */
+           .sidebar .closebtn {
+               position: absolute;
+               top: 0;
+               right: 25px;
+               font-size: 36px;
+               margin-left: 50px;
+           }
+
+           /* The button used to open the sidebar */
+           .openbtn {
+               font-size: 20px;
+               cursor: pointer;
+               background-color: #111;
+               color: white;
+               padding: 10px 15px;
+               border: none;
+           }
+
+           .openbtn:hover {
+               background-color: #444;
+           }
+
+           /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+           #main {
+               transition: margin-left .5s;
+               /* If you want a transition effect */
+               padding: 20px;
+           }
+
+           /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+           @media screen and (max-height: 450px) {
+               .sidebar {
+                   padding-top: 15px;
+               }
+
+               .sidebar a {
+                   font-size: 18px;
+               }
+           }
+
+           /* side bar which hovers */
+
+
+           #mySidenav button {
+               position: absolute;
+               left: -80px;
+               transition: 0.3s;
+               padding: 15px;
+               width: 100px;
+               text-decoration: none;
+               font-size: 20px;
+               color: white;
+               border-radius: 0 5px 5px 0;
+           }
+
+           #mySidenav button:hover {
+               left: 0;
+           }
+
+           .div_content {
+               background-color: rgba(128, 128, 128, 0.7);
+               border-color: black;
+
+           }
+
+
+           #blog {
+               top: 80px;
+               background-color: #2196F3;
+           }
+
+           #projects {
+               top: 140px;
+               background-color: #f44336;
+           }
+
+           #contact {
+               top: 200px;
+               background-color: #555
+           }
+
+
+           /* To the top button*/

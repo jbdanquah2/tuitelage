@@ -7,9 +7,9 @@
 
 .sidebar {
     height: 100%;
-    width: 200px;
+    width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     left: 0;
     background-color: #111;
@@ -18,11 +18,13 @@
     padding-top: 60px;
 }
 
-.sidebar a {
-    padding: 8px 8px 8px 32px;
+.sidebar .topic {
+    padding: 12px 8px 8px 20px;
     text-decoration: none;
+    border-bottom: 1px solid #222;
+    border-top: 1px solid #222;
     font-size: 18px;
-    color: #818181;
+    color: #a1a1a1;
     display: block;
     transition: 0.3s;
 }
@@ -38,13 +40,14 @@
 .sidebar .closebtn {
     position: relative;
     top: 8px;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 100px;
+    right: 30px;
+    font-size: 16px !important;
+    margin-left: 190px;
+    text-decoration: none;
 }
 
 #lessonView {
-    border-color: #fff !important;
+    border-color: #fff 2px !important;
 }
 
 #lessonN {
@@ -54,12 +57,23 @@
 #lessonS {
     margin-bottom: 1px;
     padding: 0 50px;
-    z-index: 100;
+    /*    z-index: 100;
+    */
 }
 
 video {
     margin-top: 1px !important;
     padding-top: 1px !important;
+    width: 80%;
+    height: 450px;
+    border-top-style: solid;
+    border-top-color: rgb(0, 0, 0);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+    box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+
 }
 
 .openbtn {
@@ -70,6 +84,7 @@ video {
     background-color: #111;
     color: white;
     padding: 5px 5px;
+    margin-left: 5px;
     border: none;
     float: left;
 }
@@ -81,6 +96,7 @@ video {
 #main {
     transition: margin-left .5s;
     padding: 0px;
+
 }
 
 #navb {
@@ -88,11 +104,20 @@ video {
     padding: 16px;
 }
 
+#main form button {
+    text-align: right;
+}
 
 /* On smaller screens, where height is less than 750px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-width: 922px) {
+    .sidebar .closebtn {
+        top: 25px;
+        padding: 15px 5px 40px !important;
+    }
+
     .sidebar {
-        padding-top: 15px;
+        padding-top: 5px;
+
     }
 
     .sidebar a {
@@ -115,6 +140,8 @@ video {
     video {
         margin-top: 0;
         padding-top: 0;
+        height: 300px;
+        width: 100%;
     }
 
 }

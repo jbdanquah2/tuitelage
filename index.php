@@ -7,7 +7,7 @@ $motive = 'Want the best place to start your self development quest? Start here!
 						<button class="btn btn-success-outline bg-dark" type="submit">Search </button>
 				</form>';
 
-
+include_once "layout_header.php";
 
 // include database and object files
 include_once 'config/connection.php';
@@ -24,13 +24,14 @@ $appUser = new appUser($db);
 if (isset($_SESSION['user']) != "") {
 header("Location: home.php");
 }
-include_once "layout_header.php";
+
  ?>
+
 <div class="container-fluid col-12">
     <!--    <div class="container">-->
     <div class="container-fluid wrap">
         <div class="row" id="home-login">
-            <div class="col-sm-9 col-md-7 col-lg-5 ">
+            <div id="colu" class="col-lg-3 ">
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h3 class="card-title text-center">Login</h3>
@@ -41,6 +42,7 @@ if (isset($_POST['signin_btn'])) {
 $userName = $_POST['userName'];
 $pssword = $_POST['pssword'];
 $status = 'Active';
+    
 
 $row = $appUser->getUser($userName);
 
@@ -48,6 +50,7 @@ if ($row['pssword'] == $pssword) {
     try {
 		$userStatus = $row['userStatus'] ;
 		if ($userStatus == $status) {
+$_SESSION['userName'] = explode("@","$userName")[0];   
 $_SESSION['user'] = $row['firstName'];
 $_SESSION['userCompany'] = $row['companyName'];
 $_SESSION['companyShortName'] = $row['companyShortName'];
@@ -76,15 +79,20 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                                 <label class="custom-control-label" for="customCheck1">Remember password</label>
                             </div>
                             <button name="signin_btn" class="btn btn-lg btn-default bg-dark btn-block text-uppercase" type="submit">Sign in</button>
+                            <!--
                             <hr class="my-4">
                             <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
                             <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+-->
                         </form>
                         <div class="notic text-center"> <a class="" href="signup.php">
                                 or are you a company? create account here!
                             </a></div>
                     </div>
                 </div>
+            </div>
+            <div id="_display-col" class="col-lg-9 ">
+                <h4 class="text-center" id="_display">Wisdom => <br> the application of knowledge!</h4>
             </div>
         </div>
         <!--</div>-->
@@ -109,16 +117,46 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                 <center>
                     <div class="col-md-11">
                         <?php
-						try{
-						 $stmt = $lesson->read();
+                        
+$stmt=$lesson->readCompanyLesson(26);
+while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
+$lessonId = $rows['lessonId'];
+$lessonName = $rows['lessonName'];
+$lessonSummary = $rows['lessonSummary'];
+$descriptiveImage = $rows['descriptiveImage'];
+      
+echo
+                        
+                        '<div class="card  t-material" id="lesson_t">
+                        <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+                            <div class="card-body t-body">
 
-						}catch(PDOException $exception){
-								echo " ";
-								die();
-
-						}
+                                <div class="car-img-overlay">
+                                    <h5 class="card-title text-center">'.
+                                        $lessonName . ' 
+                                    </h5>
+                                </div>
+                                <p class="card-text text-justify">'.
+                    $lesson->truncate($lessonSummary, 130) .'
+                                    </p>
+                    
+                 <form action="lessonContent.php" method="GET">
+                    <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
+                    View Lesson!</a>
+                    </form>
+                    
+                 </div>
+                 
+            </div>'
+            ;
+}
+//            }catch(PDOException $exception){
+//                echo " Sorry something went wrong";
+//                die();
+//            }
 ?>
+
                     </div>
                 </center>
             </div>
@@ -138,7 +176,7 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                 <div class="card-body t-body">
                     <h3 class="card-title">Believe you know enough? take a quiz here</h3> <a href="#" class="btn btn-primary">Take a Quiz</a>
                     <p class="card-text q-text">A quiz is a good way to try yourself of to see how much you already know.
-                        <br /> <a href="#">Choose a topic to take a quiz</a></p>
+                        <br /> <a class="choose" href="#">Choose a topic to take a quiz</a></p>
                 </div>
             </div>
         </div>

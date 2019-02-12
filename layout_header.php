@@ -1,15 +1,11 @@
 <?php    
   global $motive ;
-    global $c_logo ;
-    global $alt_text ;
+    global $c_logo;
+    global $alt_text;
     global $comp_short_name;
  global $hrline;
 
 ?>
-
-
-
-
 <!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
@@ -23,34 +19,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="style/landing.css" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
+    <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
 
 </head>
 
 <body>
     <?php echo $hrline; ?>
-    <div class="text-center">
+    <div class="mot text-center">
         <h5 class="motive">
             <?php echo $motive;?>
         </h5>
     </div>
     <?php echo $hrline; ?>
     <nav id="navb" class="navbar sticky-top navbar-expand-sm  bg-dark navbar-dark">
-        <div id="col" class="col-3">
-            <header class="nav_header"> <a href="index.php"><img id="logo_1" class="img-responsive" src="image/logo.jpg" alt="Tuitelage logo"></a></header>
-
-        </div>
-        <div id="c_s_n" class="col-7">
+        <!--        <div id="col" class="col-md-3">-->
+        <header class="nav_header"> <a href="index.php"><img id="logo_1" class="img-responsive" src="image/logo.jpg" alt="Tuitelage logo"></a></header>
+        <div id="header-right">
             <h5 id="comp_short_name">
                 <?php echo $comp_short_name;?>
             </h5>
+            <!-- company logo -->
+            <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
         </div>
-        <div class="col-2">
-            <div class="row">
-                <!-- company logo -->
-                <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
-            </div>
-        </div>
+        <!--
+</div>
+-->
+        <!--
+<div id="c_s_n" class="col-md-7">
+
+</div>
+-->
+        <!--
+<div class="col-md-2 ">
+    <div class="row ">
+-->
+
+        <!--
+</div>
+</div>
+-->
 
     </nav>
-    <hr class="hrline">

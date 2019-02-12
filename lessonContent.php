@@ -1,12 +1,22 @@
 <?php
 session_start();
 $hrline ="";
-$comp_short_name =$_SESSION['companyShortName'];
-$comp_img = $_SESSION['companyLogo'];
-$c_logo = "image/$comp_img";
-$alt_text ="company logo";
-$page_title = "Tuitelage.com Members Area";
 $motive = "";
+
+if($_SESSION['companyId'] != 26) {
+
+    $comp_short_name =$_SESSION['companyShortName'];
+    $comp_img = $_SESSION['companyLogo'];
+    $c_logo = "image/$comp_img";
+    $alt_text ="company logo";
+    $page_title = "Tuitelage.com Members Area";        
+        if(!isset($_SESSION['user']))
+{
+header("Location: index.php");
+}
+    }
+
+
 
 include_once "layout_header.php";
 
@@ -30,23 +40,19 @@ if (isset($_GET['lessonId'])){
     $dataRows=$lesson->readLessonDetail($_SESSION['lessonId']);
     $lessonName = $dataRows['lessonName'];
     $lessonSummary = $dataRows['lessonSummary'];
+    $videoOverview = $dataRows['videoOverview'];
 }
 ?>
-<link rel="stylesheet" href="style/lessonContent.css">
-
-<center>
-
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;<a href="logout.php?logout">Sign Out</a></small>
-
-    </p>
-</center>
+<p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+        <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
+    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
 
 <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <br>
-    <a href="lessonContent.php?lessonId=<?php echo $_SESSION['lessonId'] ?>">Overview</a>
+    <a style="font-size:16px; color:#999;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+    <br>
+    <br>
+    <a class="topic" href="lessonContent.php?lessonId=<?php echo $_SESSION['lessonId'] ?>">Overview</a>
 
     <?php
                         
@@ -57,7 +63,7 @@ $topicId    = $topicRow['topicId'];
 $topicName = $topicRow['topicName'];
       
 echo '
-        <a href="lesson-topic.php?topicId='.$topicId.'">'.$topicName.'</a>';            
+        <a class="topic" onclick="closeNav()" href="lesson-topic.php?topicId='.$topicId.'">'.$topicName.'</a>';            
                     
 }
 ?>
@@ -68,7 +74,6 @@ echo '
 <a href="#">Topic 4</a>
 -->
 </div>
-
 <div id="main">
     <center>
         <div class="col-md-9 card">
@@ -76,16 +81,16 @@ echo '
             <div>
                 <button class="openbtn" onclick="openNav()">☰Menu </button>
                 <br id="brSU">
-                <h2 id="lessonN" class="card-title">
-                    <?php echo $lessonName; ?>
-                </h2>
+                <h3 id="lessonN" class="card-title">
+                    <?php echo strtoupper($lessonName); ?>
+                </h3>
             </div>
             <br>
             <p id="lessonS" class="text-justify">
                 <?php echo $lessonSummary; ?>
             </p>
             <br>
-            <video src="video/233546130647_status_675f833f18bf4d5982df260166e2ca53_001.mp4" class="img-responsive" loop controls></video>
+            <video src="video/<?php echo $videoOverview; ?>" class="img-responsive" loop controls autoplay></video>
             <br>
         </div>
         <br>
@@ -95,4 +100,3 @@ echo '
 // footer
 include_once "layout_footer.php";
 ?>
-<script src="js/script.js"></script>

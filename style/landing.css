@@ -6,16 +6,19 @@
 
 
 body {
+    position: relative;
     overflow-x: hidden;
     font-family: "Lato", sans-serif;
     width: 100%;
-    background: #f9f9f9;
+    background: #a2a2a2;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f9f9f9, #f9f9f9, #f9f9f9);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #f9f9f9, #f9f9f9, #f9f9f9);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding-bottom: 0;
+    margin-bottom: 0;
+
 }
 
 .wrap,
@@ -23,6 +26,10 @@ body {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    position: relative;
+    top: -25px;
+
+    ;
 }
 
 #home-login {
@@ -31,20 +38,45 @@ body {
     padding: 2px;
     margin: 0;
     width: 100%;
-    background-image: url(../image/back-home1.jpg);
+    background-image: url(../image/earth-11047_1920.jpg);
     /*    background-position: left right;
     */
-    background-repeat: round;
+    background-repeat: space;
     font-family: Arial, Helvetica, sans-serif;
+    height: 600px !important;
 
 }
 
+nav {
+    opacity: 0.9;
+    /*    z-index: 3;
+    */
+}
 
 .nav_header,
 nav {
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box;
+}
+
+#com-menu {
+    border: #333 solid;
+    position: relative;
+    z-index: 100;
+    right: 0;
+    float: right;
+    width: 20%;
+    background: #333;
+    display: none;
+
+}
+
+#com-menu a {
+    padding: 10px;
+    display: block;
+    background: #333;
+    color: #fefefe;
 }
 
 .motive,
@@ -64,47 +96,104 @@ nav {
 
 
 #logo_1 {
-    width: 160px !important;
-    margin: 0 0 0 30px;
+    width: 130px !important;
+    height: 50px;
+    margin: 0 0 0 5px;
+    opacity: 1;
+}
+
+#header-right {
+    height: 50px;
+    width: auto;
+    position: relative;
+/*    float: right;
+    */    right: 0;
+    overflow: auto;
+
 }
 
 #comp_short_name {
-    text-align: right;
+    height: 50px;
+    width: auto;
+    position: relative;
+
+    right: 0;
+    /*    text-align: right;
+    */
     color: #fff;
     line-height: inherit;
     padding-bottom: 0;
     margin-bottom: 0;
+    display: inline;
 }
 
+#_c-2 {
+    margin-right: 0;
+    padding-right: 0;
+    text-align: right;
+}
 
 #comp_img {
     width: 80px;
     height: 50px;
-    float: right;
+/*    position: relative;
+    */    float: right;
+    margin: 0 0 0 10px;
+    right: 0;
     max-width: inherit;
     max-height: inherit;
     overflow: hidden;
+    display: inline;
+
+}
+
+#_home {
+    /*
+    position: relative;
+    z-index: -10;
+*/
+    overflow: auto;
+
 }
 
 @media screen and (max-width: 922px) {
+    #com-menu {
+        width: 100%;
+        top: 0;
+        right: 0;
+    }
+
+    #com-menu a {
+        display: block !important;
+
+    }
+
+    #home-login .card-signin,
+    .card-body {
+        width: 100%;
+    }
+
     .home-search button {
         width: 100%;
     }
 
     #comp_short_name {
         text-align: right;
+        display: inline;
     }
 
     #col,
     #c_s_n {
-        padding: 0 4px 0 0;
+        padding: 150px 0 15px;
         margin: 0;
+        color: white !important;
     }
 
 
 
     #logo_1 {
-        width: 160px !important;
+        width: 130px !important;
+        width: 50px;
         margin: 0 0 0 5px !important;
     }
 
@@ -140,19 +229,47 @@ hr {
 
 }
 
+#colu {
+    width: 100%;
+    margin-top: 40px;
+}
+
+#_display-col {
+    width: 100%;
+    margin-top: 200px;
+
+}
+
+#_display {
+    color: #fc3;
+    padding: 100px 100px 50px 100px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 100px 100px 100px 100px;
+    -moz-border-radius: 100px 100px 100px 100px;
+    -webkit-border-radius: 100px 100px 100px 100px;
+    font-family: cursive;
+    font-size: 2.7em;
+}
+
 .card-signin {
     width: 100%;
-    border: 0;
+    border: 1 #fff;
     border-radius: 1rem;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: sans-serif;
+
 }
 
 .card-signin .card-title {
     margin-bottom: 1.5rem;
     letter-spacing: 4px;
-
+    color: #fefefe;
+    /*    color: #fc3;
+    */
     font-weight: 500;
     font-size: 1.8rem;
+    margin-top: 40px;
 }
 
 .card-signin .card-body {
@@ -232,13 +349,14 @@ hr {
         margin: 0 0 30px 0;
 
     }
-/*
-.lesson-wrap {
-    padding: 25px;
-    text-align: center;
+
 
 }
-*/
+
+
+.choose {
+
+    color: #fefefe;
 }
 
 
@@ -266,6 +384,14 @@ hr {
     padding: 20px 0 20px 0 !important;
 }
 
+.jumbotron .container,
 .jumbotron {
-    z-index: 1000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#foot {
+    padding-bottom: 50px;
+    /*    margin-bottom: 50px;
+    */
 }

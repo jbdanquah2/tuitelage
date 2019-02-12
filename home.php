@@ -1,11 +1,20 @@
 <?php
 session_start();
-$hrline ='<hr class="hrline">';
+    if($_SESSION['companyId'] != 26) {
 $comp_short_name =$_SESSION['companyShortName'];
 $comp_img = $_SESSION['companyLogo'];
 $c_logo = "image/$comp_img";
-$alt_text ="company logo";
-$page_title = "Tuitelage.com Members Area";
+$alt_text =" ";
+$page_title = "Tuitelage.com Members Area";        
+        if(!isset($_SESSION['user']))
+{
+header("Location: index.php");
+}
+    }
+      
+
+$hrline ='<hr class="hrline">';
+
 $motive = 'Search your favorite lessons.  <form class="form-inline home-search">
             <input class="form-control" type="text" placeholder="Search favorite lesson">
             <button id="motive-search" class="btn btn-success-outline bg-dark" type="submit">Search </button>
@@ -21,17 +30,23 @@ $db = $database->getConnection();
 $lesson = new lesson($db);
 
 
-if(!isset($_SESSION['user']))
-{
-header("Location: index.php");
-}
 
 include_once "layout_header.php";
 ?>
+<div id="com-menu" class="col-lg-6 col-sm-10">
+    <a href="" class="btn-light">Manage Lessons</a>
+    <a href="" class="btn-light">Company Profile</a>
+    <a href="" class="btn-light">Add Users</a>
+    <a href="" class=" btn-light">Profile</a>
+    <a href="" class="btn-light">Log out</a>
+</div>
+
 
 <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
-        <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a> </p>
-<div class="container-fluid col-12">
+        <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
+    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
+
+<div id="_home" class="container-fluid col-12">
     <div class="container">
         <div class="row">
             <center>
@@ -89,6 +104,7 @@ echo
         </div>
     </div>
 </div>
+
 <?php
 // footer
 include_once "layout_footer.php";

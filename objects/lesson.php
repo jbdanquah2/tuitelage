@@ -50,7 +50,7 @@ echo '
         <p class="card-text">' .
             $lessonSummary .
             '</p>
-            <a href="lessonContent.php?lessonId='.$lessonId.'" class="btn btn-danger">View Lesson</a>
+            <a href="#" class="btn btn-danger">View Lesson</a>
     
     </div>
 </div>
@@ -96,7 +96,7 @@ function readLessonDetail($LessonId){
     try {
     //select all data
         $query = "SELECT
-                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage, l.additionalDetails
+                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage, l.videoOverview
                 FROM 
                     lesson l 
                 JOIN 
@@ -171,29 +171,61 @@ echo $ex->getMessage();
  }
     
     
-    function create(){
+    function createLesson($lessonName, $lessonSummary, $descriptiveImage, $videoOverview, $createdBy, $updatedBy, $companyId){
  
         //write query
-        $query = "INSERT INTO
-                    " . $this->table_name . "
-                SET
-                    lessonName=:lessonName, lessonSummary=:lessonSummary, descriptiveImage=:descriptiveImage";
+        $query = "INSERT INTO lesson (lessonName, lessonSummary, descriptiveImage, videoOverview, createdBy, updatedBy)
+        VALUES(:lessonName,:lessonSummary,:descriptiveImage,
+                :videoOverview, :createdBy, :updatedBy);
+              
+              SET @lastId = last_insert_id();
+              
+              INSERT INTO company_lesson (companyId, lessonId, createdBy, updatedBy)
+              VALUES(:companyId,@lastId, :createdBy, :updatedBy); 
+                ";
  
         $stmt = $this->conn->prepare($query);
  
-        // posted values
-        $this->lessonName=htmlspecialchars(strip_tags($this->name));
-        $this->lessonSummary=htmlspecialchars(strip_tags($this->price));
-        $this->descriptiveImage=htmlspecialchars(strip_tags($this->description));
+        $stmt->bindParam(":lessonName", $lessonName);
+        $stmt->bindParam(":lessonSummary", $lessonSummary);
+        $stmt->bindParam(":descriptiveImage", $descriptiveImage);
+        $stmt->bindParam(":videoOverview", $videoOverview);
+        $stmt->bindParam(":createdBy", $createdBy);
+        $stmt->bindParam(":updatedBy", $updatedBy);
+        $stmt->bindParam(":companyId", $companyId);
+
+        
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
  
+    }
     
+    function createTopic($lessonId, $topicName, $description, $videoUrl, $createdBy, $updatedBy){
  
-        // bind values 
-        $stmt->bindParam(":lessonName", $this->lessonName);
-        $stmt->bindParam(":lessonSummary", $this->lessonSummary);
-        $stmt->bindParam(":descriptiveImage", $this->descriptiveImage);
-       
+        //write query
+        $query = "INSERT INTO topic (
+        topicName, description, videoUrl, createdBy, updatedBy)
+        VALUES(:topicName, :description, :videoUrl, :createdBy, :updatedBy);
+              
+              SET @lastId = last_insert_id();
+              
+              INSERT INTO lesson_topic (lessonId, topicId , createdBy, updatedBy)
+              VALUES(:lessonId, @lastId, :createdBy, :updatedBy); 
+                ";
  
+        $stmt = $this->conn->prepare($query);
+ 
+        $stmt->bindParam(":topicName", $topicName);
+        $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":videoUrl", $videoUrl);
+        $stmt->bindParam(":lessonId", $lessonId);
+        $stmt->bindParam(":createdBy", $createdBy);
+        $stmt->bindParam(":updatedBy", $updatedBy);
+
+        
         if($stmt->execute()){
             return true;
         }else{

@@ -35,43 +35,34 @@ if (isset($_GET['topicId'])){
     $videoUrl = $topicRows['videoUrl'];
 }
 ?>
-<link rel="stylesheet" href="style/lessonContent.css">
-
 <center>
+    <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+            <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
+        <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
 
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;<a href="logout.php?logout">Sign Out</a></small>
-
-    </p>
 </center>
-
 <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <br>
-    <a href="lessonContent.php?lessonId=<?php echo $_SESSION['lessonId'] ?>">Overview</a>
-
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+    <br>
+    <a href="home.php">Home</a>
+    <br>
+    <br>
+    <a class="topic" href="lessonContent.php?lessonId=<?php echo $_SESSION['lessonId'] ?>">Overview</a>
     <?php
                         
 $topic=$lesson->readTopic($_SESSION['lessonId']);
 while($topicRow = $topic->fetch(PDO::FETCH_ASSOC)) {
 
-$topicId    = $topicRow['topicId'];
-$topicName = $topicRow['topicName'];
-      
+    $topicId    = $topicRow['topicId'];
+    $topicName = $topicRow['topicName'];
+
 echo '
-        <a href="lesson-topic.php?topicId='.$topicId.'">'.$topicName.'</a>';            
-                    
+        <a class="topic" onclick="closeNav()" href="lesson-topic.php?topicId='.$topicId.'">'.$topicName.'</a>';     
 }
 ?>
-    <!--
-<a href="#">Topic 1</a>
-<a href="#">Topic 2</a>
-<a href="#">Topic 3</a>
-<a href="#">Topic 4</a>
--->
+    <a href="logout.php" t>Logout</a>
 </div>
-
 <div id="main">
     <center>
         <div id="lessonView" class="col-md-9 card">
@@ -79,16 +70,16 @@ echo '
             <div>
                 <button class="openbtn" onclick="openNav()">☰Menu </button>
                 <br id="brSU">
-                <h2 id="lessonN" class="card-title">
-                    <?php echo $topicNameCap; ?>
-                </h2>
+                <h3 id="lessonN" class="card-title">
+                    <?php echo strtoupper($topicNameCap); ?>
+                </h3>
             </div>
             <br>
             <p id="lessonS" class="text-justify">
                 <?php echo $description; ?>
             </p>
             <br>
-            <video src="video/<?php echo $videoUrl; ?>" class="img-responsive" loop controls></video>
+            <video src="video/<?php echo $videoUrl; ?>" class="img-responsive" loop controls autoplay></video>
             <br>
         </div>
         <br>

@@ -15,7 +15,10 @@ if(isset($_GET['logout']))
 session_destroy();
 unset($_SESSION['user']);
 unset($_SESSION['userCompany']);
-    
+unset($_SESSION['companyShortName']);
+unset($_SESSION['companyId']);
+unset($_SESSION['companyLogo']);
+unset($_SESSION['lessonId']);
 header("Location: index.php");
 }
 ?>

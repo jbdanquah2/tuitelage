@@ -15,6 +15,7 @@ public function createUser($companyName,
                            $companyPhone,
                            $companyEmail,
                            $companyWebsite,
+                           $companyLogo,
                            $firstName,
                            $lastName,
                            $email,
@@ -38,8 +39,8 @@ set @lastId = last_insert_id();
 
 INSERT INTO app_user(personId, userName, pssword) VALUES (@lastId,:email,:pssword);
 
-INSERT INTO company(companyName,companyShortName,companyPhone, companyEmail,companyWebsite) VALUES (:companyName, :companyShortName, :companyPhone, :companyEmail,
-:companyWebsite);
+INSERT INTO company(companyName,companyShortName,companyPhone, companyEmail,companyWebsite,companyLogo) VALUES (:companyName, :companyShortName, :companyPhone, :companyEmail,
+:companyWebsite, :companyLogo);
 
 set @lastId_Company = last_insert_id();
 INSERT INTO company_person(companyId,personId) VALUES (@lastId_Company, @lastId);
@@ -57,6 +58,7 @@ $statement->bindparam(":companyShortName",$companyShortName);
 $statement->bindparam(":companyPhone",$companyPhone);
 $statement->bindparam(":companyEmail",$companyEmail);
 $statement->bindparam(":companyWebsite",$companyWebsite);
+$statement->bindparam(":companyLogo",$companyLogo);
 
     
 $statement->execute();

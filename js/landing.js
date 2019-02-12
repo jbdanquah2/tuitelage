@@ -7,8 +7,8 @@
         return false;
     });
     $('.prev').click(function () {
-        $('.carousel').c6arousel('prev');
+        $('.carousel').carousel('prev');
         return false;
     });
 
-})(jQuery);
+})();
