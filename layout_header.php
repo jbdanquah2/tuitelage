@@ -20,8 +20,6 @@
     <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="style/landing.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
-    <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -33,11 +31,11 @@
     </div>
     <?php echo $hrline; ?>
     <nav id="navb" class="navbar sticky-top navbar-expand-sm  bg-dark navbar-dark">
-        <div id="col" class="col-3">
+        <div id="col" class="col-2">
             <header class="nav_header"> <a href="index.php"><img id="logo_1" class="img-responsive" src="image/logo.jpg" alt="Tuitelage logo"></a></header>
-
         </div>
-        <div id="c_s_n" class="col-7">
+        <a href="home.php"><img id="home-icon" src="icon/baseline_home_black_18dp.png" alt=""></a>
+        <div id="c_s_n" class="col-9">
             <h5 id="comp_short_name">
                 <?php echo $comp_short_name;?>
             </h5>
@@ -48,5 +46,4 @@
                 <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
             </div>
         </div>
-
     </nav>

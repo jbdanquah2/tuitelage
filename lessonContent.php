@@ -2,22 +2,27 @@
 session_start();
 $hrline ="";
 $motive = "";
-
-if($_SESSION['companyId'] != 26) {
-
+    if($_SESSION['companyId'] != 26) {
     $comp_short_name =$_SESSION['companyShortName'];
-    $comp_img = $_SESSION['companyLogo'];
-    $c_logo = "image/$comp_img";
+    $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
-    $page_title = "Tuitelage.com Members Area";        
-        if(!isset($_SESSION['user']))
+    $page_title = "Tuitelage.com Members Area";  
+    $at = ' @ ';
+    $comp_name = $_SESSION['userCompany'];
+        
+    }else {
+    $_SESSION['userCompany']=$_SESSION['user'];
+    $page_title = "Welcome {$_SESSION['userCompany']}!";
+    $comp_short_name = $_SESSION['user'];
+     $c_logo = "image/{$_SESSION['companyLogo']}";
+    $at = '';
+    $comp_name = '';
+}
+
+if(!isset($_SESSION['user']))
 {
 header("Location: index.php");
 }
-    }
-
-
-
 include_once "layout_header.php";
 
 // include database and object files
@@ -29,12 +34,6 @@ $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
 
-
-if(!isset($_SESSION['user']))
-{
-header("Location: index.php");
-}
-
 if (isset($_GET['lessonId'])){
     $_SESSION['lessonId'] = $_GET['lessonId'];
     $dataRows=$lesson->readLessonDetail($_SESSION['lessonId']);
@@ -44,7 +43,7 @@ if (isset($_GET['lessonId'])){
 }
 ?>
 <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
-        <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
+        <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
     <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
 
 <div id="mySidebar" class="sidebar">

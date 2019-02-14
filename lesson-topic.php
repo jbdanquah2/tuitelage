@@ -1,13 +1,29 @@
 <?php
 session_start();
 $hrline ="";
-$comp_short_name =$_SESSION['companyShortName'];
-$comp_img = $_SESSION['companyLogo'];
-$c_logo = "image/$comp_img";
-$alt_text ="company logo";
-$page_title = "Tuitelage.com Members Area";
 $motive = "";
+ if($_SESSION['companyId'] != 26) {
+    $comp_short_name =$_SESSION['companyShortName'];
+    $c_logo = "image/{$_SESSION['companyLogo']}";
+    $alt_text ="company logo";
+    $page_title = "Tuitelage.com Members Area";  
+    $at = ' @ ';
+    $comp_name = $_SESSION['userCompany'];
+        
+    }else {
+    $_SESSION['userCompany']=$_SESSION['user'];
+    $page_title = "Welcome {$_SESSION['userCompany']}!";
+    $comp_short_name = $_SESSION['user'];
+     $c_logo = "image/{$_SESSION['companyLogo']}";
+    $at = '';
+    $comp_name = '';
+}
 
+
+if(!isset($_SESSION['user']))
+{
+header("Location: index.php");
+}
 include_once "layout_header.php";
 
 // include database and object files
@@ -20,11 +36,6 @@ $db = $database->getConnection();
 $lesson = new lesson($db);
 
 
-if(!isset($_SESSION['user']))
-{
-header("Location: index.php");
-}
-
 if (isset($_GET['topicId'])){
 //    $lessonId = $_GET['lessonId'];
     $topicId = $_GET['topicId'];
@@ -35,12 +46,10 @@ if (isset($_GET['topicId'])){
     $videoUrl = $topicRows['videoUrl'];
 }
 ?>
-<center>
-    <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
-            <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
-        <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
+<p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+        <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
+    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
 
-</center>
 <div id="mySidebar" class="sidebar">
     <br>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>

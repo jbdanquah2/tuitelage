@@ -4,7 +4,7 @@ $hrline ='<hr class="hrline">';
 $page_title = "Tuitelage.com";
 $motive = 'Want the best place to start your self development quest? Start here!  <form method="post"  action="index.php" class="form-inline home-search">
 						<input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
-						<button class="btn btn-success-outline bg-dark" type="submit" name="search">Search</button>
+						<button class="btn btn-success-outline bg-dark sbtn" type="submit" name="search">Search</button>
 				</form>';
 
 include_once "layout_header.php";
@@ -55,7 +55,11 @@ $_SESSION['user'] = $row['firstName'];
 $_SESSION['userCompany'] = $row['companyName'];
 $_SESSION['companyShortName'] = $row['companyShortName'];
 $_SESSION['companyId'] = $row['companyId'];
-$_SESSION['companyLogo'] = $row['companyLogo'];
+            if($_SESSION['companyId'] ==  26){
+           $_SESSION['companyLogo'] = $row['avatar'];    
+            }else{
+            $_SESSION['companyLogo'] = $row['companyLogo'];
+            }
 				header("Location:home.php");
 				}else {
 				echo ("<center id='response' class='text-danger'>User not active</center>");
@@ -75,27 +79,26 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                             <div class="form-label-group">
                                 <input type="password" name="pssword" id="inputPassword" class="form-control" placeholder="Password" required> </div>
                             <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                <input type="checkbox" class="_link custom-control-input " id="customCheck1">
+                                <label class="custom-control-label _link" for="customCheck1">Remember password</label>
                             </div>
                             <button name="signin_btn" class="btn btn-lg btn-default bg-dark btn-block text-uppercase" type="submit">Sign in</button>
-                            <!--
-                            <hr class="my-4">
-                            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
-                            <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
--->
                         </form>
-                        <div class="notic text-center"> <a class="" href="signup.php">
-                                or are you a company? create account here!
-                            </a></div>
+                        <div class="text-center">
+                            <a class="_link" href="signup.php">
+                                create company account here!
+                            </a>
+                            <a class="_link" href="signup-2.php">or sign up here to explore</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id="_display-col" class="col-lg-9 ">
-                <h4 class="text-center" id="_display">Wisdom => <br> the application of knowledge!</h4>
+            <div id="_display-col" class="col-lg-9 text-center">
+                <h4 class="text-center" id="_display">
+                    <img src="icon/baseline_devices_other_black_48dp.png" alt="">
+                    Wisdom => <br> the application of knowledge!</h4>
             </div>
         </div>
-        <!--</div>-->
         <hr>
         <div class="row">
             <div class="col-sm-12 t-material text-center">
@@ -214,6 +217,7 @@ echo
         </div>
     </div>
 </div>
+
 <br>
 <br>
 <?php

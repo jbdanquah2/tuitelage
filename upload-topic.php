@@ -1,12 +1,25 @@
 <?php
   session_start();
 $hrline ="";
-$comp_short_name =$_SESSION['companyShortName'];
-$comp_img = $_SESSION['companyLogo'];
-$c_logo = "image/$comp_img";
-$alt_text ="company logo";
-$page_title = "Tuitelage.com Members Area";
 $motive = "";
+
+if($_SESSION['companyId'] != 26) {
+    $comp_short_name =$_SESSION['companyShortName'];
+    $c_logo = "image/{$_SESSION['companyLogo']}";
+    $alt_text ="company logo";
+    $page_title = "Tuitelage.com Members Area";  
+    $at = ' @ ';
+    $comp_name = $_SESSION['userCompany'];
+        
+    }else {
+    $_SESSION['userCompany']=$_SESSION['user'];
+    $page_title = "Welcome {$_SESSION['userCompany']}!";
+    $comp_short_name = $_SESSION['user'];
+     $c_logo = "image/{$_SESSION['companyLogo']}";
+    $at = '';
+    $comp_name = '';
+}
+
 
 include_once "layout_header.php";
 
@@ -42,7 +55,7 @@ $lessonId = $_POST['lessons'];
 <center>
     <p class="alert alert-light" role="alert" id="_welcome">
         <small>Welcome
-            <?php echo ucwords($_SESSION['user'].' @ '. $_SESSION['userCompany']);?>&nbsp;<a href="logout.php?logout">Sign Out</a></small>
+            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
     </p>
 </center>
 
@@ -105,7 +118,7 @@ echo '<option value="'.$lessonId.'">'.$lessonName.'</option>';
                         <textarea class="form-control" rows="5" placeholder="lesson Summary" name="description" required>
                         </textarea>
                         <br>
-                        <button class="btn btn-danger" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span>
+                        <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </div>
                 </div>
@@ -115,7 +128,7 @@ echo '<option value="'.$lessonId.'">'.$lessonName.'</option>';
                     <div class="card-header"><strong>Video:</strong></div>
                     <input class="form-control btn btn-outline-dark" type="file" name="videoUrl" required>
                     <br>
-                    <input type="submit" class="btn btn-danger" name="newTopicBtn">
+                    <input type="submit" class="btn btn-dark" name="newTopicBtn">
                 </div>
             </form>
         </div>

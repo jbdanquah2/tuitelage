@@ -1,20 +1,23 @@
 <?php
 session_start();
-    if($_SESSION['companyId'] != 26) {
-$comp_short_name =$_SESSION['companyShortName'];
-$comp_img = $_SESSION['companyLogo'];
-$c_logo = "image/$comp_img";
-$alt_text =" ";
-$page_title = "Tuitelage.com Members Area";        
-        if(!isset($_SESSION['user']))
-{
-header("Location: index.php");
+if($_SESSION['companyId'] != 26) {
+    $comp_short_name =$_SESSION['companyShortName'];
+    $c_logo = "image/{$_SESSION['companyLogo']}";
+    $alt_text ="company logo";
+    $page_title = "Tuitelage.com Members Area";  
+    $at = ' @ ';
+    $comp_name = $_SESSION['userCompany'];
+        
+    }else {
+    $_SESSION['userCompany']=$_SESSION['user'];
+    $page_title = "Welcome {$_SESSION['userCompany']}!";
+    $comp_short_name = $_SESSION['user'];
+     $c_logo = "image/{$_SESSION['companyLogo']}";
+    $at = '';
+    $comp_name = '';
 }
-    }
-      
 
 $hrline ='<hr class="hrline">';
-
 $motive = 'Search your favorite lessons.  <form method="post" class="form-inline home-search">
             <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
             <button id="motive-search" class="btn btn-success-outline bg-dark" type="submit" name="search">Search </button>
@@ -29,9 +32,13 @@ $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
 
-
+if(!isset($_SESSION['user']))
+        {
+            header("Location: index.php");
+        }
 
 include_once "layout_header.php";
+
 ?>
 <div id="com-menu" class="col-lg-6 col-sm-10">
     <a href="" class="btn-light">Manage Lessons</a>
@@ -43,7 +50,7 @@ include_once "layout_header.php";
 
 
 <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
-        <?php echo $_SESSION['user'].' @ '. $_SESSION['userCompany'];?>&nbsp;</small><a href="logout.php?logout">Sign Out</a>
+        <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
     <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
 
 <div id="_home" class="container-fluid col-12">
@@ -66,7 +73,6 @@ $lessonSummary = $rows['lessonSummary'];
 $descriptiveImage = $rows['descriptiveImage'];
       
 echo
-                        
                         '<div class="card  t-material" id="lesson_t">
                         <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
                             <div class="card-body t-body">
@@ -78,8 +84,7 @@ echo
                                 </div>
                                 <p class="card-text text-justify">'.
                     $lesson->truncate($lessonSummary, 130) .'
-                                    </p>
-                    
+                                    </p>                 
                  <form action="lessonContent.php" method="GET">
                     <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
                     View Lesson!</a>
@@ -94,21 +99,14 @@ echo
       $searchForm = $_POST['searchForm'];
    $stmt=$lesson->searchForQueryString($searchForm,$_SESSION['companyId']);
  }
-//            }catch(PDOException $exception){
-//                echo " Sorry something went wrong";
-//                die();
-//            }
 ?>
                 </div>
-
                 <br>
                 <hr>
-
             </center>
         </div>
     </div>
 </div>
-
 <?php
 // footer
 include_once "layout_footer.php";

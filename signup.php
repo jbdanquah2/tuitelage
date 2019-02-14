@@ -68,10 +68,10 @@ echo("Registration Failed. Please try again");
 
 <div id="_signup" class="container">
     <h1 class="well">Registration Form</h1>
-    <div class="col-lg-12 well">
-        <div class="row">
+    <div class="row">
+        <div class="col-lg-12 well">
             <form method="post" action="signup.php" enctype="multipart/form-data">
-                <div class="col-sm-12">
+                <div class="col-sm-8 offset-2">
                     <div class="row">
                         <div class="col-sm-12 form-group">
                             <label>Company Name</label>
@@ -83,7 +83,7 @@ echo("Registration Failed. Please try again");
                             <input type="text" name="companyShortName" placeholder="Vodafone" class="form-control"> </div>
                         <div class="col-sm-6 form-group">
                             <label>Company Logo</label>
-                            <input type="file" name="companyLogo" placeholder="Enter Type of Industry Here.." class="form-control" required> </div>
+                            <input type="file" name="companyLogo" placeholder="Company Logo" class="form-control" required> </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
@@ -113,7 +113,7 @@ echo("Registration Failed. Please try again");
                     <div class="form-group">
                         <label>Comfirm Password</label>
                         <input type="password" name="c_pssword" placeholder="Confirm Password Here.." class="form-control" required> </div>
-                    <button type="submit" name="signup_btn" class="btn btn-lg btn-info">Submit</button>
+                    <button type="submit" name="signup_btn" class="btn btn-md btn-dark">Submit</button>
                 </div>
             </form>
         </div>

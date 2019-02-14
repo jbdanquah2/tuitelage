@@ -235,12 +235,11 @@ echo $ex->getMessage();
     }
     
     
-    public function searchForQueryString($queryString,$companyId){
+    public function searchForQueryString($queryString,$companyId){ 
         if(!$queryString){
             echo "
-    <div class='container-fluid col-12'>
+<div class='container-fluid col-12'>
         <div class='container lesson-wrap'>
-
            <div class='row'>
                 <center>
                     <div class='col-md-11'>
@@ -251,9 +250,7 @@ echo $ex->getMessage();
                 </center>
             </div>
         </div>
-    </div>"
-                 
-                ;
+    </div>" ;
         }else{
           $query =  "SELECT
                     l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage
@@ -269,20 +266,11 @@ echo $ex->getMessage();
                     (lessonName LIKE :queryString or `lessonSummary` LIKE :queryString) 
                 ORDER BY
                     RAND()";
-     
-    
-//    $query = "SELECT * FROM `xxxx` WHERE (`xxxxxxx` like :queryString or `xxxxx` like :queryString) ";
-
     $stmt = $this->conn->prepare($query);
     $queryString = '%' . $queryString . '%';
         $stmt->bindParam(":queryString", $queryString);
         $stmt->bindParam(":companyId", $companyId);
-//    $stmt->bindParam('queryString', $queryString, PDO::PARAM_STR);
-
     $stmt->execute();
-//    if(empty($row) or $row == false)
-//       return array();
-//    else
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 {
             $lessonId = $row['lessonId'];
@@ -290,10 +278,7 @@ echo $ex->getMessage();
             $lessonSummary = $row['lessonSummary'];
             $descriptiveImage = $row['descriptiveImage'];
 echo '
-
-
-<div class="card  t-material" id="lesson_t">
-    
+<div class="card  t-material" id="lesson_t">   
     <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
     <div class="card-body t-body">
     <div class="car-img-overlay">
@@ -302,10 +287,9 @@ echo '
             ' </h5>
     </div>
         <p class="card-text">' .
-            $lessonSummary .
+           $this->truncate($lessonSummary, 130) .
             '</p>
-            <a href="#" class="btn btn-danger">View Lesson</a>
-    
+            <a href="lessonContent.php?lessonId='.$lessonId.'" class="btn btn-danger">View Lesson</a>
     </div>
 </div>
 

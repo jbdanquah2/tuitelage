@@ -73,11 +73,60 @@ return false;
 }
 
     
+public function createGuestUser($avatar,
+                           $firstName,
+                           $lastName,
+                           $email,
+                           $pssword)
+{
+    
+try{
+       
+$stmt = $this->conn->prepare("SELECT userName FROM app_user WHERE userName=:email"); 
+$stmt->bindparam(":email",$email); 
+   $stmt->execute();
+if ($stmt->rowCount() > 0) {
+     echo "Username or email already exist - ";
+    return false;
+}else{
+    
+$statement = $this->conn->prepare(
+"INSERT INTO person(firstName,lastName, email, avatar) VALUES (:firstName,:lastName,:email, :avatar);
+
+set @lastId = last_insert_id();
+
+INSERT INTO app_user(personId, userName, pssword, userType) VALUES (@lastId,:email,:pssword,'guest');
+
+
+INSERT INTO company_person(companyId,personId) VALUES (26, @lastId);
+
+");
+    
+$statement->bindparam(":firstName",$firstName);
+$statement->bindparam(":lastName",$lastName);
+$statement->bindparam(":email",$email); 
+$statement->bindparam(":pssword",$pssword); 
+$statement->bindparam(":avatar",$avatar);
+
+    
+$statement->execute();
+
+return true;
+
+} 
+}catch (PDOException $ex){
+echo "Sorry unable to register. Please again";
+return false;
+}
+}
+
+    
+    
 public function getUser($userName){
     
 try{
 
-$statement = $this->conn->prepare("SELECT au.userName,au.pssword, au.userStatus, p.firstName, c.companyName,c.companyShortName, c.companyId, c.companyLogo FROM app_user au JOIN person p on au.personId = p.personId JOIN company_person cp on cp.personId = p.personId JOIN company c on cp.companyId = c.companyId WHERE au.userName=:userName");
+$statement = $this->conn->prepare("SELECT au.userName,au.pssword, au.userType, au.userStatus, p.firstName, p.avatar, c.companyName,c.companyShortName, c.companyId, c.companyLogo FROM app_user au JOIN person p on au.personId = p.personId JOIN company_person cp on cp.personId = p.personId JOIN company c on cp.companyId = c.companyId WHERE au.userName=:userName");
 $statement->execute(array(":userName"=>$userName));
 $dataRows = $statement->fetch(PDO::FETCH_ASSOC);
 
