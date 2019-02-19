@@ -82,6 +82,7 @@ echo '
                 <h3 id="lessonN" class="card-title">
                     <?php echo strtoupper($topicNameCap); ?>
                 </h3>
+                <?php    echo ' <a href="quiz.php?getQuiz='.$_SESSION['lessonId'].'"><small>Take a Quiz</small></a>'; ?>
             </div>
             <br>
             <p id="lessonS" class="text-justify">

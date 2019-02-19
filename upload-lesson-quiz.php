@@ -80,7 +80,7 @@ $lessonId = $_POST['lessons'];
                 <br id="brSU">
                 <br>
                 <h3 id="lessonN" class="card-title">
-                    Upload Topic
+                    Lesson Quiz
                 </h3>
                 <br>
             </div>
@@ -108,31 +108,36 @@ echo '<option value="'.$lessonId.'">'.$lessonName.'</option>';
 
                 </div>
                 <!-- Select Topic-->
-                <div class="card text-black  mb-3" id="cards_holder_item" style="width:100%">
-                    <div class="card-header"><b>Add a Topic</b></div>
-                    <div class="card-body">
-                        <input class="form-control" type="text" name="topicName" required>
-
-                    </div>
-                </div>
                 <div class="card text-black  mb-3" id="cards_holder_item">
-                    <div class="card-header"><strong>Enter Topic Summary</strong></div>
+                    <div class="card-header"><strong>Enter A Question for the Lesson</strong></div>
                     <div class="card-body">
-                        <textarea class="form-control" rows="5" placeholder="lesson Summary" name="description" required>
+                        <textarea class="form-control" rows="5" placeholder="lesson Summary" name="tQuestion" required>
                         </textarea>
                         <br>
                         <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </div>
                 </div>
+                <div class="card text-black  mb-3" id="cards_holder_item">
+                    <div class="card-header"><b>Option A</b></div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" name="toptionA" required>
 
-                <!-- Topic video-->
-                <div class="card text-black mb-3">
-                    <div class="card-header"><strong>Video:</strong></div>
-                    <input class="form-control btn btn-outline-dark" type="file" name="videoUrl" required>
-                    <br>
-                    <input type="submit" class="btn btn-dark" name="newTopicBtn">
+                    </div>
                 </div>
+                <div class="card text-black  mb-3" id="cards_holder_item">
+                    <div class="card-header"><b>Option B</b></div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" name="toptionB" required>
+                    </div>
+                </div>
+                <div class="card text-black  mb-3" id="cards_holder_item">
+                    <div class="card-header"><b>Option C</b></div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" name="toptionC" required>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-dark" name="newTopicBtn">
             </form>
         </div>
     </center>

@@ -66,12 +66,7 @@ echo '
                     
 }
 ?>
-    <!--
-<a href="#">Topic 1</a>
-<a href="#">Topic 2</a>
-<a href="#">Topic 3</a>
-<a href="#">Topic 4</a>
--->
+
 </div>
 <div id="main">
     <center>
@@ -83,6 +78,7 @@ echo '
                 <h3 id="lessonN" class="card-title">
                     <?php echo strtoupper($lessonName); ?>
                 </h3>
+                <?php    echo ' <a href="quiz.php?getQuiz='.$_SESSION['lessonId'].'"><small>Take a Quiz</small></a>'; ?>
             </div>
             <br>
             <p id="lessonS" class="text-justify">

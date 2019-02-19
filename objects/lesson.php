@@ -65,7 +65,8 @@ function readCompanyLesson($companyId){
     try {
     //select all data
         $query = "SELECT
-                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage
+                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage,
+                    l.videoOverview
                 FROM 
                     lesson l 
                 JOIN 
@@ -88,7 +89,59 @@ echo $ex->getMessage();
         echo "Sorry Something went wrong. Contact Admin";
  }
  }
-   
+    
+function readCompanyLesson2($companyId){
+    
+    try {
+    //select all data
+        $query = "SELECT
+                    l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage,
+                    l.videoOverview
+                FROM 
+                    lesson l 
+                JOIN 
+                    company_lesson cl 
+                    ON
+                    l.lessonId = cl.lessonId
+                WHERE 
+                    cl.companyId=:companyId
+                ORDER BY
+                   l.lessonName";  
+ 
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array(":companyId"=>$companyId));
+        
+        
+            
+return $stmt;        
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "Sorry Something went wrong. Contact Admin";
+ }
+ }
+    
+function deleteCompanyLesson($lessonId){
+    
+    try {
+    //select all data
+        $query = "
+        DELETE
+        FROM topic 
+        WHERE topicId IN 
+        (SELECT topicId FROM lesson_topic WHERE lessonId =:lessonId);
+        
+        DELETE FROM lesson WHERE lessonId =:lessonId;
+        ";  
+ 
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(array(":lessonId"=>$lessonId));
+                
+return true;        
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "Sorry Something went wrong. Contact Admin";
+ }
+ }
     
     
 function readLessonDetail($LessonId){
@@ -239,8 +292,8 @@ echo $ex->getMessage();
         if(!$queryString){
             echo "
 <div class='container-fluid col-12'>
-        <div class='container lesson-wrap'>
-           <div class='row'>
+    <div class='container lesson-wrap'>
+        <div class='row'>
                 <center>
                     <div class='col-md-11'>
                     <div class='card  t-material' id='lesson_t'>
@@ -316,7 +369,57 @@ function truncate($string, $limit, $break =" ", $pad = "...") {
 	return $string;
 	
 }
+    
+    
+function readLessonQuiz($lessonId){
+    
+    try {
+        $query = "SELECT q.quizId, q.question, q.optionA, q.optionB,
+        q.optionC, q.status
+FROM
+    quiz q
+JOIN 
+    quiz_lesson ql on q.quizId = ql.quizId
+WHERE
+ql.lessonId=:lessonId";  
  
+    $statement = $this->conn->prepare($query);
+    $statement->execute(array(":lessonId"=>$lessonId));
+// $detailRows = $statement->fetch(PDO::FETCH_ASSOC);
+           
+return $statement;
+
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "hey didn't work";
+ }
+ }
+    
+function  qRowCount($lessonId){
+    
+    try {
+        $query = "SELECT count(*)
+FROM
+    topic t
+        JOIN
+    lesson_topic lt ON t.topicId = lt.topicId
+WHERE
+    lt.lessonId=:LessonId";  
+ 
+    $statement = $this->conn->prepare($query);
+    $statement->execute(array(":LessonId"=>$lessonId));
+ $detailRows = $statement->fetchColumn();
+
+           
+return $detailRows;
+
+}catch (PDOException $ex){
+echo $ex->getMessage();
+        echo "hey didn't work";
+ }
+    
+}
+
 }
     
 ?>

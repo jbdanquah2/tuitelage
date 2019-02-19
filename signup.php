@@ -71,48 +71,48 @@ echo("Registration Failed. Please try again");
     <div class="row">
         <div class="col-lg-12 well">
             <form method="post" action="signup.php" enctype="multipart/form-data">
-                <div class="col-sm-8 offset-2">
+                <div class="class=" col-md-6 offset-md-3 col-sm-12"">
                     <div class="row">
                         <div class="col-sm-12 form-group">
                             <label>Company Name</label>
-                            <input type="text" name="companyName" placeholder="Vodafone Ghana Ltd" class="form-control" Title="Enter the full name of the company here!" required> </div>
+                            <input type="text" name="companyName" placeholder="eg: Vodafone Ghana Ltd" class="form-control" required> </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>Short Name</label>
-                            <input type="text" name="companyShortName" placeholder="Vodafone" class="form-control"> </div>
+                            <input type="text" name="companyShortName" placeholder="eg: Vodafone" class="form-control"> </div>
                         <div class="col-sm-6 form-group">
                             <label>Company Logo</label>
-                            <input type="file" name="companyLogo" placeholder="Company Logo" class="form-control" required> </div>
+                            <input type="file" name="companyLogo" placeholder="eg: Company Logo" class="form-control" required> </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>Company Phone</label>
-                            <input type="text" name="companyPhone" placeholder="+233245052365" class="form-control"> </div>
+                            <input type="text" name="companyPhone" placeholder="eg: +233245052365" class="form-control"> </div>
                         <div class="col-sm-4 form-group">
                             <label>Company Email</label>
-                            <input type="email" name="companyEmail" placeholder="example@email.com" class="form-control" required> </div>
+                            <input type="email" name="companyEmail" placeholder="eg: example@email.com" class="form-control" required> </div>
                         <div class="col-sm-4 form-group">
                             <label>Company Website</label>
-                            <input type="text" name="companyWebsite" placeholder="www.example.com" class="form-control"> </div>
+                            <input type="text" name="companyWebsite" placeholder="eg: www.example.com" class="form-control"> </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>First Name</label>
-                            <input type="text" name="firstName" placeholder="John" class="form-control" required> </div>
+                            <input type="text" name="firstName" placeholder="eg: John" class="form-control" required> </div>
                         <div class="col-sm-6 form-group">
                             <label>Last Name</label>
-                            <input type="text" name="lastName" placeholder="Doe" class="form-control" required> </div>
+                            <input type="text" name="lastName" placeholder="eg: Doe" class="form-control" required> </div>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" name="email" placeholder="example@email.com" class="form-control" required> </div>
+                        <input type="email" name="email" placeholder="eg: example@email.com" class="form-control" required> </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="pssword" placeholder="Enter Password Here.." class="form-control" required> </div>
+                        <input type="password" name="pssword" placeholder="eg: Enter Password Here.." class="form-control" required> </div>
                     <div class="form-group">
                         <label>Comfirm Password</label>
-                        <input type="password" name="c_pssword" placeholder="Confirm Password Here.." class="form-control" required> </div>
+                        <input type="password" name="c_pssword" placeholder="eg: Confirm Password Here.." class="form-control" required> </div>
                     <button type="submit" name="signup_btn" class="btn btn-md btn-dark">Submit</button>
                 </div>
             </form>

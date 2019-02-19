@@ -69,16 +69,16 @@ echo("Registration Failed. Please try again");
             <h1 class="well">Registration Form</h1>
             <form method="post" action="signup-2.php" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="col-sm-6 offset-3">
+                    <div class="col-md-6 offset-md-3 col-sm-12">
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label>First Name</label>
-                                <input type="text" name="firstName" placeholder="John" class="form-control" required> </div>
+                                <input type="text" name="firstName" placeholder="eg: John" class="form-control" required> </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label>Last Name</label>
-                                <input type="text" name="lastName" placeholder="Doe" class="form-control" required> </div>
+                                <input type="text" name="lastName" placeholder="eg: Doe" class="form-control" required> </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
@@ -88,13 +88,13 @@ echo("Registration Failed. Please try again");
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" name="email" placeholder="example@email.com" class="form-control" required> </div>
+                            <input type="email" name="email" placeholder="eg: example@email.com" class="form-control" required> </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="pssword" placeholder="Enter Password Here.." class="form-control" required> </div>
+                            <input type="password" name="pssword" placeholder="eg: Enter Password Here.." class="form-control" required> </div>
                         <div class="form-group">
                             <label>Comfirm Password</label>
-                            <input type="password" name="c_pssword" placeholder="Confirm Password Here.." class="form-control" required> </div>
+                            <input type="password" name="c_pssword" placeholder="eg: Confirm Password Here.." class="form-control" required> </div>
                         <button type="submit" name="signup_btn" class="btn btn-md btn-dark">Submit</button>
                     </div>
                 </div>
