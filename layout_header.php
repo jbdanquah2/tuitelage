@@ -30,7 +30,7 @@
         </h5>
     </div>
     <?php echo $hrline; ?>
-    <nav id="navb" class="navbar sticky-top navbar-expand-sm  bg-dark navbar-dark">
+    <nav id="navb" class="navbar sticky-top navbar-expand-sm  bg-dark navbar-dark shadow">
         <div id="col" class="col-2">
             <header class="nav_header"> <a href="index.php"><img id="logo_1" class="img-responsive" src="image/logo.jpg" alt="Tuitelage logo"></a></header>
         </div>

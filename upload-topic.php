@@ -68,7 +68,7 @@ $lessonId = $_POST['lessons'];
     <a class="topic" href="upload-topic.php">Create Topic</a>
     <a class="topic" href="upload-lesson-quiz.php">Create Lesson Quiz</a>
     <a class="topic" href="upload-topic-quiz.php">Create Topic Quiz</a>
-    <a class="topic" href="#">Review Lesson</a>
+    <a class="topic" href="lesson-review.php">Review Lesson</a>
     <a class="topic" href="#">Review Quiz</a>
 </div>
 <div id="main">

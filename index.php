@@ -26,7 +26,6 @@ header("Location: home.php");
 }
 
  ?>
-
 <div class="container-fluid col-12 _wrapper">
     <!--    <div class="container">-->
     <div class="container-fluid wrap">

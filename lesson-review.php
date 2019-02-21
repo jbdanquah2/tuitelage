@@ -73,7 +73,7 @@ header("Location: index.php");
             <form method="POST">
                 <!-- Select Lesson-->
                 <div class="table-responsive-sm">
-                    <table class="table table-striped table-bordered table-sm">
+                    <table class="table table-striped table-bordered table-sm shadow-lg">
                         <caption>Lessons Review</caption>
                         <tr>
                             <th>Lesson</th>
@@ -99,7 +99,7 @@ $descriptiveImage = $lessonRow['descriptiveImage'];
                                 <a class="btn btn-sm btn-info mr-1 mt-2" href="lessonContent.php?lessonId='.$lessonId.'">
                                 View Lesson
                                 </a>
-                                <a class="btn btn-sm btn-info mt-2" href="#">
+                                <a class="btn btn-sm btn-info mt-2" href="lesson-topic-review.php?lessonId='.$lessonId.'&lessonName='.$lessonName.'">
                                 View Topics</a>
                             </div>
                                 </td>
