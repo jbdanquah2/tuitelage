@@ -54,33 +54,45 @@ $companyShortName = $_POST['companyShortName'];
         echo("Registration Successful:  <a href='index.php'>Login Here</a>");
 }
 else{
-echo("Registration Failed. Please try again");
+echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span>");
     
 }
 
     }else {
-        echo "Sorry this is not a picture";
+        echo "<span class='text-danger mb-0 ml-2'>Sorry this is not a picture</span>";
     }
 
-}   
+}else {
+    $companyName ="";
+    $companyShortName = "";
+    $logoFileName = "";    
+    $companyPhone = "";
+    $companyEmail = "";
+    $companyWebsite = "";
+    $firstName = "";
+    $lastName = "";
+    $email = "";
+    $pssword = "";
+    $c_pssword = "";
+}  
 ?>
 <link rel="stylesheet" href="style/signup.css" type="text/css">
 
 <div id="_signup" class="container">
     <h1 class="well">Registration Form</h1>
     <div class="row">
-        <div class="col-lg-12 well">
+        <div class="col-md-8 offset-md-2 well">
             <form method="post" action="signup.php" enctype="multipart/form-data">
                 <div class="class=" col-md-6 offset-md-3 col-sm-12"">
                     <div class="row">
                         <div class="col-sm-12 form-group">
                             <label>Company Name</label>
-                            <input type="text" name="companyName" placeholder="eg: Vodafone Ghana Ltd" class="form-control" required> </div>
+                            <input value="<?php echo $companyName; ?>" type="text" name="companyName" placeholder="eg: Vodafone Ghana Ltd" class="form-control" required> </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>Short Name</label>
-                            <input type="text" name="companyShortName" placeholder="eg: Vodafone" class="form-control"> </div>
+                            <input value="<?php echo $companyShortName; ?>" type="text" name="companyShortName" placeholder="eg: Vodafone" class="form-control"> </div>
                         <div class="col-sm-6 form-group">
                             <label>Company Logo</label>
                             <input type="file" name="companyLogo" placeholder="eg: Company Logo" class="form-control" required> </div>
@@ -88,31 +100,31 @@ echo("Registration Failed. Please try again");
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>Company Phone</label>
-                            <input type="text" name="companyPhone" placeholder="eg: +233245052365" class="form-control"> </div>
+                            <input value="<?php echo $companyPhone; ?>" type="text" name="companyPhone" placeholder="eg: +233245052365" class="form-control"> </div>
                         <div class="col-sm-4 form-group">
                             <label>Company Email</label>
-                            <input type="email" name="companyEmail" placeholder="eg: example@email.com" class="form-control" required> </div>
+                            <input value="<?php echo $companyEmail; ?>" type="email" name="companyEmail" placeholder="eg: example@email.com" class="form-control" required> </div>
                         <div class="col-sm-4 form-group">
                             <label>Company Website</label>
-                            <input type="text" name="companyWebsite" placeholder="eg: www.example.com" class="form-control"> </div>
+                            <input value="<?php echo $companyWebsite; ?>" type="text" name="companyWebsite" placeholder="eg: www.example.com" class="form-control"> </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>First Name</label>
-                            <input type="text" name="firstName" placeholder="eg: John" class="form-control" required> </div>
+                            <input value="<?php echo $firstName; ?>" type="text" name="firstName" placeholder="eg: John" class="form-control" required> </div>
                         <div class="col-sm-6 form-group">
                             <label>Last Name</label>
-                            <input type="text" name="lastName" placeholder="eg: Doe" class="form-control" required> </div>
+                            <input value="<?php echo $lastName; ?>" type="text" name="lastName" placeholder="eg: Doe" class="form-control" required> </div>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" name="email" placeholder="eg: example@email.com" class="form-control" required> </div>
+                        <input value="<?php echo $email; ?>" type="email" name="email" placeholder="eg: example@email.com" class="form-control" required> </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="pssword" placeholder="eg: Enter Password Here.." class="form-control" required> </div>
+                        <input value="<?php echo $pssword; ?>" type="password" name="pssword" placeholder="eg: Enter Password Here.." class="form-control" required> </div>
                     <div class="form-group">
                         <label>Comfirm Password</label>
-                        <input type="password" name="c_pssword" placeholder="eg: Confirm Password Here.." class="form-control" required> </div>
+                        <input value="<?php echo $c_pssword; ?>" type="password" name="c_pssword" placeholder="eg: Confirm Password Here.." class="form-control" required> </div>
                     <button type="submit" name="signup_btn" class="btn btn-md btn-dark">Submit</button>
                 </div>
             </form>

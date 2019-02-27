@@ -47,3 +47,10 @@
             </div>
         </div>
     </nav>
+    <div id="com-menu" class="col-lg-6 col-sm-10">
+        <a href="" class="btn-light">Manage Lessons</a>
+        <a href="" class="btn-light">Company Profile</a>
+        <a href="" class="btn-light">Add Users</a>
+        <a href="" class=" btn-light">Profile</a>
+        <a href="" class="btn-light">Log out</a>
+    </div>

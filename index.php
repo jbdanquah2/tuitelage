@@ -70,13 +70,16 @@ $_SESSION['companyId'] = $row['companyId'];
 echo("<center id='response' class='text-danger'>Wrong Credentials. Please check & try again!</center>");
 }
 
+}else {
+    $userName = "";
+    $pssword = "";
 }
 ?>
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" name="userName" class="form-control" placeholder="Email address" required>
+                                <input type="email" id="inputEmail" name="userName" class="form-control" placeholder="Email address" value="<?php echo $userName  ?>" required>
                             </div>
                             <div class="form-label-group">
-                                <input type="password" name="pssword" id="inputPassword" class="form-control" placeholder="Password" required> </div>
+                                <input type="password" name="pssword" id="inputPassword" class="form-control" placeholder="Password" value="<?php echo $pssword  ?>" required> </div>
                             <div class="custom-control custom-checkbox mb-3">
                                 <input type="checkbox" class="_link custom-control-input " id="customCheck1">
                                 <label class="custom-control-label _link" for="customCheck1">Remember password</label>

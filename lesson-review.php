@@ -109,7 +109,7 @@ $descriptiveImage = $lessonRow['descriptiveImage'];
                             <td>
                             <div class="btn-group" role="group">
                             <a href="lesson-review.php?update='.$lessonId.'" class="btn btn-sm btn-warning m-1">Update</a>
-                            <a href="#" class="btn btn-sm btn-danger m-1">Delete</a>
+                            <a href="lesson-review.php?delet='.$lessonId.'" class="btn btn-sm btn-danger m-1">Delete</a>
                             </div>
                             </td>';
                             }

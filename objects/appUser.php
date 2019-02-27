@@ -28,7 +28,7 @@ $stmt = $this->conn->prepare("SELECT userName FROM app_user WHERE userName=:emai
 $stmt->bindparam(":email",$email); 
    $stmt->execute();
 if ($stmt->rowCount() > 0) {
-     echo "Username or email already exist - ";
+     echo "<span class='text-danger mb-0 ml-2'>Username or email already exist - </span>";
     return false;
 }else{
     

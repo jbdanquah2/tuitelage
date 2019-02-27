@@ -40,13 +40,6 @@ if(!isset($_SESSION['user']))
 include_once "layout_header.php";
 
 ?>
-<div id="com-menu" class="col-lg-6 col-sm-10">
-    <a href="" class="btn-light">Manage Lessons</a>
-    <a href="" class="btn-light">Company Profile</a>
-    <a href="" class="btn-light">Add Users</a>
-    <a href="" class=" btn-light">Profile</a>
-    <a href="" class="btn-light">Log out</a>
-</div>
 
 
 <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
@@ -71,29 +64,29 @@ $lessonId = $rows['lessonId'];
 $lessonName = $rows['lessonName'];
 $lessonSummary = $rows['lessonSummary'];
 $descriptiveImage = $rows['descriptiveImage'];
-      
-echo
-                        '<div class="card  t-material" id="lesson_t">
-                        <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
-                            <div class="card-body t-body">
 
-                                <div class="car-img-overlay">
-                                    <h5 class="card-title text-center">'.
-                                        $lessonName . ' 
-                                    </h5>
-                                </div>
-                                <p class="card-text text-justify">'.
-                    $lesson->truncate($lessonSummary, 130) .'
-                                    </p>                 
-                 <form action="lessonContent.php" method="GET">
-                    <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
-                    View Lesson!</a>
-                    </form>
-                    
-                 </div>
-                 
-            </div>'
-            ;
+echo
+'<div class="card  t-material" id="lesson_t">
+    <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+    <div class="card-body t-body">
+
+        <div class="car-img-overlay">
+            <h5 class="card-title text-center">'.
+                $lessonName . '
+            </h5>
+        </div>
+        <p class="card-text text-justify">'.
+            $lesson->truncate($lessonSummary, 130) .'
+        </p>
+        <form action="lessonContent.php" method="GET">
+            <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
+                View Lesson!</a>
+        </form>
+
+    </div>
+
+</div>'
+;
 }
      }else{
       $searchForm = $_POST['searchForm'];

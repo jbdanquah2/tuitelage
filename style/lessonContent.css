@@ -76,6 +76,11 @@ video {
 
 }
 
+.video-review {
+    height: 100px;
+    width: 150px;
+}
+
 .openbtn {
     display: inline;
     width: 60px !important;
