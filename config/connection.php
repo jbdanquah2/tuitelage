@@ -3,7 +3,7 @@ class Database{
   
     // specify your own database credentials
     private $host = "localhost"; 
-    private $db_name = "tuitlage";
+    private $db_name = "db-tuitelage";
     private $username = "root";
     private $password = "";
     public $conn;
@@ -16,11 +16,11 @@ class Database{
         try{
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             
-            echo "";
+            //echo "hey i'm connected";
         }catch(PDOException $exception){
             echo "";
             die();
-//            echo "Connection error: " . $exception->getMessage();
+          // echo "Connection error: " . $exception->getMessage();
         }
   
         return $this->conn;

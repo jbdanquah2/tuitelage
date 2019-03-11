@@ -13,7 +13,7 @@ class Lesson{
  
     public function __construct($db){
         $this->conn = $db;
-//        echo " i'm also connected";
+     //  echo " i'm also connected";
     }
  
     // used by select drop-down list
@@ -290,21 +290,14 @@ echo $ex->getMessage();
     
     public function searchForQueryString($queryString,$companyId){ 
         if(!$queryString){
-            echo "
-<div class='container-fluid col-12'>
-    <div class='container lesson-wrap'>
-        <div class='row'>
-                <center>
-                    <div class='col-md-11'>
-                    <div class='card  t-material' id='lesson_t'>
-                    Please enter a word or phrase to search
-                    </div>
-                    </div>
-                </center>
-            </div>
-        </div>
-    </div>" ;
-        }else{
+            echo '
+            <div class="container row">
+            <div class="alert alert-warning" id="our_alert" align="center">
+            <strong>Too Bad!</strong> You forgot to type something to search for <p>Type in a key word</p> 
+          </div>
+          </div>' ;
+        }
+        else{
           $query =  "SELECT
                     l.lessonId, l.lessonName, l.lessonSummary, l.descriptiveImage
                 FROM 
@@ -320,12 +313,28 @@ echo $ex->getMessage();
                 ORDER BY
                     RAND()";
     $stmt = $this->conn->prepare($query);
+    $searchKeyword=$queryString;
     $queryString = '%' . $queryString . '%';
         $stmt->bindParam(":queryString", $queryString);
         $stmt->bindParam(":companyId", $companyId);
     $stmt->execute();
+$row_num=$stmt->rowCount();
+    if($row_num==0){
+            echo'
+            <div class="container row colspan-6" id="empty-Search" >
+            <div class="alert alert-warning" id="our_alert" align="center">
+            <strong>Too Bad!</strong> Nothing was found for the keyword <b> '.$searchKeyword.'</b><p>Try Again!</p> 
+          </div>
+          </div>
+            ';
+            $nothing_Was_found='style="display:none;"';
+            
+             }
+
+//NO RESULTS TO QUERY
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-{
+      //  $row_num=count($row);      
+                {
             $lessonId = $row['lessonId'];
             $lessonName = $row['lessonName'];
             $lessonSummary = $row['lessonSummary'];
@@ -347,8 +356,10 @@ echo '
 </div>
 
 ';
- }    
+ }
+     
 }
+
 }}
     
     // truncate string at word

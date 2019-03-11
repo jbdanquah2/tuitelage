@@ -3,7 +3,9 @@
     global $c_logo;
     global $alt_text;
     global $comp_short_name;
- global $hrline;
+    global $hrline;
+    global $page_title;
+ 
 
 ?>
 <!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -20,6 +22,25 @@
     <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="style/landing.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
+    <style>
+
+        @media screen and (min-width:1024px){
+     #empty-Search{
+        width:900px; 
+        height:inherit;
+    }
+
+    } 
+    /* @media screen and (min-width:768px){
+        #empty-Search{
+        width:500px; 
+        height:inherit;
+    }
+
+    } */
+
+
+    </style>
 </head>
 
 <body>
