@@ -136,6 +136,11 @@ video {
         padding: 0 5px;
         text-align: justify;
     }
+    
+    #empty_Search{
+        width:1000px; 
+        height:inherit;
+    }
 
     video {
         margin-top: 0;

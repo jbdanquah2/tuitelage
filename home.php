@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['companyId'] != 26) {
+if($_SESSION['companyId'] != 4) {
     $comp_short_name =$_SESSION['companyShortName'];
     $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
@@ -19,7 +19,7 @@ if($_SESSION['companyId'] != 26) {
 
 $hrline ='<hr class="hrline">';
 $motive = 'Search your favorite lessons.  <form method="post" class="form-inline home-search">
-            <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
+            <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson" required>
             <button id="motive-search" class="btn btn-success-outline bg-dark sbtn" type="submit" name="search">Search </button>
         </form>';
 
