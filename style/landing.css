@@ -358,7 +358,7 @@ overflow-y: hidden;
 
 } */
 #empty-Search{
-    width:1000px; 
+    width:inherit; 
     height:inherit;
 }
 
