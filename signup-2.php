@@ -27,14 +27,14 @@ header("Location: home.php");
 
 
 if(isset($_POST['signup_btn'])) {
-
     $avatar = $_FILES['avatar']['name'];
     $tmp = explode(".",$avatar);
     $ext = end($tmp);
     $validExt = array("png","jpeg","jpg");
     
     if(in_array($ext,$validExt)){
-       $photo = $_FILES['avatar']['tmp_name']; move_uploaded_file($photo,"image/$avatar");
+       $photo = $_FILES['avatar']['tmp_name'];
+        move_uploaded_file($photo,"image/$avatar");
         
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
@@ -50,11 +50,10 @@ if(isset($_POST['signup_btn'])) {
                            $lastName,
                            $email,
                            $pssword)){
-        echo("Registration Successful:  <a href='index.php'>Login Here</a>");
-}
-else{
-echo("Registration Failed. Please try again");
-}
+                    echo("Registration Successful:  <a href='index.php'>Login Here</a>");
+            }else{
+                echo("Registration Failed. Please try again");
+            }
 
     }else {
         echo "Sorry this is not a picture";

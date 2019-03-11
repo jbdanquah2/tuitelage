@@ -98,7 +98,7 @@ set @lastId = last_insert_id();
 INSERT INTO app_user(personId, userName, pssword, userType) VALUES (@lastId,:email,:pssword,'guest');
 
 
-INSERT INTO company_person(companyId,personId) VALUES (26, @lastId);
+INSERT INTO company_person(companyId,personId) VALUES (4, @lastId);
 
 ");
     
