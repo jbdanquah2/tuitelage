@@ -24,20 +24,26 @@
     <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
     <style>
 
-        @media screen and (min-width:1024px){
-     #empty-Search{
-        width:900px; 
-        height:inherit;
-    }
+       
 
     } 
-    /* @media screen and (min-width:768px){
+    @media screen and (min-width:768px){
         #empty-Search{
         width:500px; 
         height:inherit;
     }
 
-    } */
+    } 
+    @media screen and (min-width:1024px){
+     #empty-Search{
+        width:900px; 
+        height:inherit;
+    }
+    @media screen and (min-width:1006px){
+     #empty-Search{
+        width:900px; 
+        height:inherit;
+    }
 
 
     </style>
