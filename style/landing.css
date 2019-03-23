@@ -379,6 +379,86 @@ overflow-y: hidden;
     position: relative; */
 }
 
+.image_container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color:black;
+    border-bottom-style: solid;
+    border-bottom-color: #f44336;
+}
+
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.caro_back_ground{
+background-color: white;
+}
+.caro_back_ground img{
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(8, 0, 0, 0.8);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(8, 8, 8, 0.8);
+    box-shadow: -1px 9px 40px -12px rgba(7, 7, 7, 0.8);
+}
+
+.row_card_hor{
+    
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    
+  
+}
+.card_les {
+    float: left;
+    max-width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+    flex-basis: 33.333%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height:90%;
+  
+  }
+  
+  .card_les > img {
+    margin-bottom: .75rem;
+  }
+  #btn-lesson{
+    display:block;
+}
+
+
 @media screen and (max-width: 922px) {
 
     #lesson_t {
@@ -415,6 +495,7 @@ overflow-y: hidden;
 ._image {
     margin: 0 !important;
     padding: 0;
+    
 }
 
 .t-quiz {

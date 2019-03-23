@@ -5,6 +5,8 @@
     global $comp_short_name;
     global $hrline;
     global $page_title;
+    global $u_r_l;
+    $u_r_l=$_SERVER['REQUEST_URI'];
  
 
 ?>
@@ -22,18 +24,63 @@
     <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="style/landing.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
+    
+
     <style>
+        
 
-       
+.card-text {
+  font-size: 85%;
+}
 
-    } 
-    @media screen and (min-width:768px){
+
+    }
+    @media screen and (max-width:768px){
         #empty-Search{
         width:500px; 
         height:inherit;
     }
+    #btn-lesson{
+    display:block;
+}
+
+    }
+
+   
+    @media screen and (max-width:768px){
+.card_les{
+    height:inherit;
+    margin-left:1000px;
+}
+._image{
+    height:50%;
+}
+.card-text{
+    display:none;
+}
+.card-title{
+    margin-top: 0px;
+    font-size: 0.8rem;
+    margin-bottom: inherit;
+    margin-right:1.4rem;
+    margin-left:0px;
+}
+     
+        #btn-lesson_{
+    display:none;
+}
+    }
+
+    @media screen and (max-width:988px){
+        ._display-col{
+            display:none;
+        }
+        #btn-lesson{
+    display:block;
+}
 
     } 
+
     @media screen and (min-width:1024px){
      #empty-Search{
         width:900px; 
@@ -44,6 +91,11 @@
         width:900px; 
         height:inherit;
     }
+
+       
+
+
+    
 
 
     </style>
@@ -67,10 +119,18 @@
                 <?php echo $comp_short_name;?>
             </h5>
         </div>
-        <div id="div-comp" class="col-2">
-            <div id="_c-2" class="row">
+        <div id="div-comp" class="col-2 image_container">
+        /* <?php
+        if ($_SERVER['PHP_SELF'] != $u_r_l){
+echo'
+        <div class="centered">
+                <button class="btn btn-outline-dark">arrow_down</button>
+                </div>'; }
+                ?> */
+            <div id="_c-2" class="row ">
                 <!-- company logo -->
                 <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
+                               
             </div>
         </div>
     </nav>

@@ -330,32 +330,91 @@ $row_num=$stmt->rowCount();
             $nothing_Was_found='style="display:none;"';
             
              }
+             $current_url="/tuitelage/index.php";
 
-//NO RESULTS TO QUERY
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-      //  $row_num=count($row);      
-                {
-            $lessonId = $row['lessonId'];
+/*if results is 1 */             if ($row_num==1){
+   
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $lessonId = $row['lessonId'];
             $lessonName = $row['lessonName'];
             $lessonSummary = $row['lessonSummary'];
             $descriptiveImage = $row['descriptiveImage'];
 echo '
-<div class="card  t-material" id="lesson_t">   
-    <img  class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
-    <div class="card-body t-body">
+<div class="card t-material" id="lesson_t">
+                        <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image" style="
+                        
+                        
+                        ">
+                            <div class="card-body t-body">
     <div class="car-img-overlay">
         <h5 class="card-title text-center"> '
-            . $lessonName .
+            .$this->truncate($lessonName, 22) .
             ' </h5>
     </div>
         <p class="card-text">' .
            $this->truncate($lessonSummary, 130) .
             '</p>
-            <a href="lessonContent.php?lessonId='.$lessonId.'" class="btn btn-danger">View Lesson</a>
+            <div class="row">
+                    <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
+                    View Lesson!</a></div>
     </div>
 </div>
 
 ';
+
+             }
+
+//NO RESULTS TO QUERY
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+      //  $row_num=count($row);     
+     
+                {
+            $lessonId = $row['lessonId'];
+            $lessonName = $row['lessonName'];
+            $lessonSummary = $row['lessonSummary'];
+            $descriptiveImage = $row['descriptiveImage'];
+
+            if($_SERVER['REQUEST_URI'] == $current_url){
+                echo '
+                <div class="card_les  t-material mb-r" id="lesson_t">
+                                        <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+                                            <div class="card-body t-body">
+                    <div class="car-img-overlay">
+                        <h5 class="card-title text-center"> '
+                            .$this->truncate($lessonName, 19) .
+                            ' </h5>
+                    </div>
+                        <p class="card-text">' .
+                           $this->truncate($lessonSummary, 130) .
+                            '</p>
+                            <div class="row">
+                                    <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
+                                    View <span #="btn-lessons_"> Lesson!</span></a></div>
+                    </div>
+                </div>
+                
+                ';
+            } 
+            else{
+echo '
+<div class="card  t-material mt-3" id="lesson_t">
+                        <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
+                            <div class="card-body t-body">
+    <div class="car-img-overlay">
+        <h5 class="card-title text-center"> '
+            .$this->truncate($lessonName, 19) .
+            ' </h5>
+    </div>
+        <p class="card-text">' .
+           $this->truncate($lessonSummary, 130) .
+            '</p>
+            <div class="row">
+                    <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
+                    View <span #="btn-lessons_"> Lesson!</span></a></div>
+    </div>
+</div>
+
+';}
  }
      
 }

@@ -114,11 +114,11 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
             </div>
         </div>
     </div>
-    <div class="container-fluid col-12  lesson-wrap">
+    <div class="container-fluid col-12  lesson-wrap ">
         <div class="container">
             <div class="row">
                 
-                    <div class="col-md-11">
+                    <div class="col-md-12 row_card_hor">
                         <?php
 if (!isset($_POST['search'])) {                       
 $stmt=$lesson->readCompanyLesson(4);
@@ -131,7 +131,7 @@ $descriptiveImage = $rows['descriptiveImage'];
       
 echo
                         
-                        '<div class="card  t-material" id="lesson_t">
+                        '<div class="card_les  t-material mt-3" id="lesson_t">
                         <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
                             <div class="card-body t-body">
 
@@ -145,8 +145,9 @@ echo
                                     </p>
                     
                  <form action="lessonContent.php" method="GET">
+                 <div class="row">
                     <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
-                    View Lesson!</a>
+                    View <span #="btn-lessons_"> Lesson!</span></a></div>
                     </form>
                     
                  </div>
@@ -163,13 +164,13 @@ echo
                     </div>
                 
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-12 text-center">
                     <a class="readmore" href="#">
                         <button class="btn btn-dark"> See more lessons</button>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <hr>
@@ -185,12 +186,17 @@ echo
         </div>
     </div>
     <hr>
-    <div class="container">
-        <div id="testimony_indicator" class="carousel slide" data-ride="carousel">
+   
+    
+<div class="caro_back_ground">
+    <div class="container ">
+        <div id="testimony_indicator" class="carousel slide carousel-fade" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#testimony_indicator" data-slide-to="0" class="active"></li>
                 <li data-target="#testimony_indicator" data-slide-to="1"></li>
                 <li data-target="#testimony_indicator" data-slide-to="2"></li>
+                <li data-target="#testimony_indicator" data-slide-to="3"></li>
+                <li data-target="#testimony_indicator" data-slide-to="4"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active"> <img class="d-block w-100" src="image/apple_background.jpg" alt="First slide">
@@ -211,12 +217,26 @@ echo
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus iusto omnis, expedita ut eos, aut incidunt dicta, quisquam provident distinctio fuga at ea est minima iste, blanditiis eum commodi ducimus.</p>
                     </div>
                 </div>
+                <div class="carousel-item"> <img class="d-block w-100" src="image/back5.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>The best place to be</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus iusto omnis, expedita ut eos, aut incidunt dicta, quisquam provident distinctio fuga at ea est minima iste, blanditiis eum commodi ducimus.</p>
+                    </div>
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" src="image/back3.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>The best place to be</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus iusto omnis, expedita ut eos, aut incidunt dicta, quisquam provident distinctio fuga at ea est minima iste, blanditiis eum commodi ducimus.</p>
+                    </div>
+                </div>
             </div>
             <a class="carousel-control-prev" href="#testimony_indicator" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
             <a class="carousel-control-next" href="#testimony_indicator" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
         </div>
     </div>
-</div>
+    </div>
+    </div>
+
 
 <br>
 <br>
