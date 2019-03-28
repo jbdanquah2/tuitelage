@@ -224,7 +224,7 @@ echo $ex->getMessage();
  }
     
     
-    function createLesson($lessonName, $lessonSummary, $descriptiveImage, $videoOverview, $createdBy, $updatedBy, $companyId){
+function createLesson($lessonName, $lessonSummary, $descriptiveImage, $videoOverview, $createdBy, $updatedBy, $companyId){
  
         //write query
         $query = "INSERT INTO lesson (lessonName, lessonSummary, descriptiveImage, videoOverview, createdBy, updatedBy)

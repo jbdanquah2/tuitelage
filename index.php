@@ -35,7 +35,7 @@ header("Location: home.php");
                     <div class="card-body">
                         <h3 class="card-title text-center">Login</h3>
                         <form method="post" class="form-signin">
-                            <?php
+<?php
 if (isset($_POST['signin_btn'])) {
 
 $userName = $_POST['userName'];
@@ -78,6 +78,7 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                             <div class="form-label-group">
                                 <input type="email" id="inputEmail" name="userName" class="form-control" placeholder="Email address" value="<?php echo $userName  ?>" required>
                             </div>
+                             bs4
                             <div class="form-label-group">
                                 <input type="password" name="pssword" id="inputPassword" class="form-control" placeholder="Password" value="<?php echo $pssword  ?>" required> </div>
                             <div class="custom-control custom-checkbox mb-3">

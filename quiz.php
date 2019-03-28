@@ -27,35 +27,33 @@ include_once "layout_header.php";
 // include database and object files
 include_once 'config/connection.php';
 include_once 'objects/lesson.php';
-// get database connection
+// get database connection and classes
 $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
 
  ?>
-<p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
-        <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
-<div class="container-fluid">
-
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Lesson Content
-        </button>
+    <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+        <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small>
+        <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a> <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
+    <div class="container-fluid">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Lesson Content </button>
+        </div>
     </div>
-</div><br>
-
-<div class="container">
-    <div class="col-8 offset-2">
-        <div class="row">
-            <div class="card" id="cards_holder">
-                <div class="card-body">
-                    <div>
-                        <h5 class="card-title">Questions</h5>
-                    </div>
-                    <?php 
+    <br>
+    <div class="container">
+        <div class="col-md-8 offset-md-2 col-sm-12">
+            <div class="row">
+                <div class="card" id="cards_holder">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">Questions</h5> </div>
+                        <?php 
 if (isset($_GET['getQuiz'])){
     $_SESSION['id'] = $_GET['getQuiz'];
-   $quiz=$lesson->readLessonQuiz($_SESSION['id']);                while($quizRow = $quiz->fetch(PDO::FETCH_ASSOC)) {       
+   $quiz=$lesson->readLessonQuiz($_SESSION['id']);                
+    while($quizRow = $quiz->fetch(PDO::FETCH_ASSOC)) {       
       $quizId = $quizRow['quizId'];
       $question = $quizRow['question'];
       $optionA = $quizRow['optionA'];
@@ -74,16 +72,14 @@ echo '
 
                                     <!-- Responds -->
                                     <div class="container row">
-                                        
-                                            <input type="radio" name="ans" value="A"> '.$optionA.'
-                                            <input type="radio" name="ans" value="B"> '.$optionB.'
-                                            <input type="radio" name="ans" value="C"> '.$optionC.'
-                                
-                                        </div>
+                                        <input class="m-2" value="'.$optionA.'" type="radio" name="ans" > '.$optionA.' 
+                                        <input class="m-2" value="'.$optionB.'" type="radio" name="ans" > '.$optionB.'
+                                        <input class="m-2" value="'.$optionC.'" type="radio" name="ans" > '.$optionC.'
+                                    </div>
                                         <br>    
                                         <label>
-                                            <h5>Answer:</h5>
-                                    </label>
+                                            <h5>Ans:</h5>
+                                        </label>
                         </div>
                     </div>
                 </form>
@@ -92,14 +88,13 @@ echo '
     }
 }
 ?>
-                    <button type="button" class="btn btn-primary">Submit <span class="glyphicon"></span> </button>
+                            <button type="button" class="btn btn-primary">Submit <span class="glyphicon"></span> </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<?php
+    <?php
 // footer
 include_once "layout_footer.php";
 ?>
