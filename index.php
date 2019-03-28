@@ -1,9 +1,10 @@
 <?php
+ob_start();
 session_start();
 $hrline ='<hr class="hrline">';
 $page_title = "Tuitelage.com";
 $motive = 'Want the best place to start your self development quest? Start here!  <form method="post"  action="index.php" class="form-inline home-search">
-						<input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
+						<input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson" required>
 						<button class="btn btn-success-outline bg-dark sbtn" type="submit" name="search">Search</button>
 				</form>';
 
@@ -55,7 +56,7 @@ $_SESSION['user'] = $row['firstName'];
 $_SESSION['userCompany'] = $row['companyName'];
 $_SESSION['companyShortName'] = $row['companyShortName'];
 $_SESSION['companyId'] = $row['companyId'];
-            if($_SESSION['companyId'] ==  26){
+            if($_SESSION['companyId'] ==  4){
            $_SESSION['companyLogo'] = $row['avatar'];    
             }else{
             $_SESSION['companyLogo'] = $row['companyLogo'];
@@ -105,8 +106,8 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
                 <div class="card">
                     <div class="card-body t-body">
                         <h4 class="card-title">Sign in above or explore lessons below</h4>
-                        <form method="post" class="form-inline home-search">
-                            <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson">
+                        <form method="post" class="form-inline home-search" name="search_2">
+                            <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson" required>
                             <button name="search" class="btn btn-success-outline bg-dark" type="submit">Search </button>
                         </form>
                     </div>
@@ -114,14 +115,14 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
             </div>
         </div>
     </div>
-    <div class="container-fluid col-12">
-        <div class="container lesson-wrap">
+    <div class="container-fluid col-12  lesson-wrap ">
+        <div class="container">
             <div class="row">
-                <center>
-                    <div class="col-md-11">
+                
+                    <div class="col-md-12 row_card_hor">
                         <?php
 if (!isset($_POST['search'])) {                       
-$stmt=$lesson->readCompanyLesson(26);
+$stmt=$lesson->readCompanyLesson(4);
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 $lessonId = $rows['lessonId'];
@@ -131,22 +132,23 @@ $descriptiveImage = $rows['descriptiveImage'];
       
 echo
                         
-                        '<div class="card  t-material" id="lesson_t">
+                        '<div class="card_les  t-material mt-3" id="lesson_t">
                         <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
                             <div class="card-body t-body">
 
                                 <div class="car-img-overlay">
                                     <h5 class="card-title text-center">'.
-                                        $lessonName . ' 
+                                    $lessonName.' 
                                     </h5>
                                 </div>
                                 <p class="card-text text-justify">'.
-                    $lesson->truncate($lessonSummary, 130) .'
+                    $lesson->truncate($lessonSummary, 108) .'
                                     </p>
                     
                  <form action="lessonContent.php" method="GET">
+                 <div class="row">
                     <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
-                    View Lesson!</a>
+                    View <span #="btn-lessons_"> Lesson!</span></a></div>
                     </form>
                     
                  </div>
@@ -156,20 +158,20 @@ echo
 }
 }else{
     $searchForm = $_POST['searchForm'];
-   $stmt=$lesson->searchForQueryString($searchForm,26);
+   $stmt=$lesson->searchForQueryString($searchForm,4);
 }
 ?>
 
                     </div>
-                </center>
+                
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-12 text-center">
                     <a class="readmore" href="#">
                         <button class="btn btn-dark"> See more lessons</button>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <hr>
@@ -185,12 +187,17 @@ echo
         </div>
     </div>
     <hr>
-    <div class="container">
-        <div id="testimony_indicator" class="carousel slide" data-ride="carousel">
+   
+    
+<div class="caro_back_ground">
+    <div class="container ">
+        <div id="testimony_indicator" class="carousel slide carousel-fade" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#testimony_indicator" data-slide-to="0" class="active"></li>
                 <li data-target="#testimony_indicator" data-slide-to="1"></li>
                 <li data-target="#testimony_indicator" data-slide-to="2"></li>
+                <li data-target="#testimony_indicator" data-slide-to="3"></li>
+                <li data-target="#testimony_indicator" data-slide-to="4"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active"> <img class="d-block w-100" src="image/apple_background.jpg" alt="First slide">
@@ -211,12 +218,26 @@ echo
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus iusto omnis, expedita ut eos, aut incidunt dicta, quisquam provident distinctio fuga at ea est minima iste, blanditiis eum commodi ducimus.</p>
                     </div>
                 </div>
+                <div class="carousel-item"> <img class="d-block w-100" src="image/back5.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>The best place to be</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus iusto omnis, expedita ut eos, aut incidunt dicta, quisquam provident distinctio fuga at ea est minima iste, blanditiis eum commodi ducimus.</p>
+                    </div>
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" src="image/back3.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>The best place to be</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus iusto omnis, expedita ut eos, aut incidunt dicta, quisquam provident distinctio fuga at ea est minima iste, blanditiis eum commodi ducimus.</p>
+                    </div>
+                </div>
             </div>
             <a class="carousel-control-prev" href="#testimony_indicator" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
             <a class="carousel-control-next" href="#testimony_indicator" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
         </div>
     </div>
-</div>
+    </div>
+    </div>
+
 
 <br>
 <br>
