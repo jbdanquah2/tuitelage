@@ -91,6 +91,20 @@ echo '
                             
     }
 }
+else if(!isset($_GET['getQuiz'])){
+    echo'
+    <div class="container row colspan-6" id="empty-Search" >
+    <div class="alert alert-warning" id="our_alert" align="center">
+    <strong>Lucky You!</strong> There You, There are no quizes here yet <p><a href="home.php" class="btn btn-warning">Back To Home</a></p> 
+  </div>
+  </div>
+    ';
+}
+else{
+    echo"Hmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
+}
+    
+
 ?>
                     <button type="button" class="btn btn-primary">Submit <span class="glyphicon"></span> </button>
                 </div>
