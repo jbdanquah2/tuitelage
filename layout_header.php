@@ -3,8 +3,12 @@
     global $c_logo;
     global $alt_text;
     global $comp_short_name;
- global $hrline;
-
+    global $hrline;
+    global $page_title;
+    global $u_r_l;
+    global $menu;
+    $u_r_l=$_SERVER['REQUEST_URI'];
+    
 ?>
 <!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -20,6 +24,12 @@
     <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="style/landing.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="style/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style/video_style.css">
+    
+    
+
+    
 </head>
 
 <body>
@@ -40,10 +50,30 @@
                 <?php echo $comp_short_name;?>
             </h5>
         </div>
-        <div id="div-comp" class="col-2">
-            <div id="_c-2" class="row">
+        <div id="div-comp" class="col-2 image_container">
+            <div id="_c-2" class="row image_container ">
+             
                 <!-- company logo -->
-                <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
+                <div><img src="<?php echo $c_logo; ?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
+                   </div>  
+                   <?php
+                   if(isset($_SESSION['user'])){
+                       echo'
+                       <div class="centered" id="drag_menu" >
+            <button class="btn btn-outline-light" id="drag_btn" onclick="drag_menu()">
+            ☰
+            </button>
             </div>
+                       ';
+                   }
+                   ?>       
+            </div>
+            
         </div>
     </nav>
+    <?php include "menu.php" ?>
+    
+
+
+    
+ 

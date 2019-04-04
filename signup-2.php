@@ -20,21 +20,21 @@ $db = $database->getConnection();
 $lesson = new lesson($db);
 $appUser = new appUser($db);
 
-if(isset($_SESSION['user']))
-{
-header("Location: home.php");
-}
+// if(isset($_SESSION['user']))
+// {
+// header("Location: home.php");
+// }
 
 
 if(isset($_POST['signup_btn'])) {
-
     $avatar = $_FILES['avatar']['name'];
     $tmp = explode(".",$avatar);
     $ext = end($tmp);
     $validExt = array("png","jpeg","jpg");
     
     if(in_array($ext,$validExt)){
-       $photo = $_FILES['avatar']['tmp_name']; move_uploaded_file($photo,"image/$avatar");
+       $photo = $_FILES['avatar']['tmp_name'];
+        move_uploaded_file($photo,"image/$avatar");
         
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
@@ -50,11 +50,10 @@ if(isset($_POST['signup_btn'])) {
                            $lastName,
                            $email,
                            $pssword)){
-        echo("Registration Successful:  <a href='index.php'>Login Here</a>");
-}
-else{
-echo("Registration Failed. Please try again");
-}
+                    echo("Registration Successful:  <a href='index.php'>Login Here</a>");
+            }else{
+                echo("Registration Failed. Please try again");
+            }
 
     }else {
         echo "Sorry this is not a picture";
@@ -66,7 +65,9 @@ echo("Registration Failed. Please try again");
 <div id="_signup" class="container">
     <div class="row">
         <div class="col-lg-12 well">
-            <h1 class="well">Registration Form</h1>
+            <h1 class="well">
+                Add New Employee
+            </h1>
             <form method="post" action="signup-2.php" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 col-sm-12">
