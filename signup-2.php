@@ -66,7 +66,12 @@ if(isset($_POST['signup_btn'])) {
     <div class="row">
         <div class="col-lg-12 well">
             <h1 class="well">
-                Add New Employee
+                <?php
+                if(isset($_SESSION['companyId'])&&$_SESSION['companyId'] !=  4){
+                    echo'Add New Employee';
+                }
+                echo'Registration Form';
+            ?>
             </h1>
             <form method="post" action="signup-2.php" enctype="multipart/form-data">
                 <div class="row">
