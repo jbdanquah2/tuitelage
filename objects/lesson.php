@@ -287,6 +287,39 @@ function createLesson($lessonName, $lessonSummary, $descriptiveImage, $videoOver
  
     }
     
+function createQuiz($question, $optionA, $optionB, $optionC, $lessonId, $createdBy, $updatedBy){
+ 
+        //write query
+        $query = " INSERT INTO quiz (question, optionA, optionB, optionC, createdBy, updatedBy) 
+        VALUES(:question, :optionA, :optionB, :optionC, :createdBy, :updatedBy);
+              
+              SET @lastId = last_insert_id();
+              
+              INSERT INTO quiz_lesson (quizId, lessonId, createdBy, updatedBy)
+              VALUES( @lastId, :lessonId, :createdBy, :updatedBy); 
+                ;
+              ";
+ 
+        $stmt = $this->conn->prepare($query);
+ 
+        $stmt->bindParam(":question", $question);
+        $stmt->bindParam(":optionA", $optionA);
+        $stmt->bindParam(":optionB", $optionB);
+        $stmt->bindParam(":optionC", $optionC);
+        $stmt->bindParam(":lessonId", $lessonId);
+        $stmt->bindParam(":createdBy", $createdBy);
+        $stmt->bindParam(":updatedBy", $updatedBy);
+
+
+        
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+ 
+    }
+    
     
     public function searchForQueryString($queryString,$companyId){ 
         if(!$queryString){

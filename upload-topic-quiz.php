@@ -51,47 +51,38 @@ $lessonId = $_POST['lessons'];
 }
 
 ?>
-
-<center>
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    </p>
-</center>
-
-<div id="mySidebar" class="sidebar">
-    <br>
-    <a style="font-size:16px; color:#999;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-    <br>
-    <br>
-    <a class="topic" href="upload-lesson.php">Create Lesson</a>
-    <a class="topic" href="upload-topic.php">Create Topic</a>
-    <a class="topic" href="upload-lesson-quiz.php">Create Lesson Quiz</a>
-    <a class="topic" href="upload-topic-quiz.php">Create Topic Quiz</a>
-    <a class="topic" href="#">Review Lesson</a>
-    <a class="topic" href="#">Review Quiz</a>
-</div>
-<div id="main">
     <center>
-        <div class="col-md-6 card">
-            <br>
-            <div>
-                <button class="openbtn" onclick="openNav()">☰Menu </button>
-                <br id="brSU">
+        <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small>
+            <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
+        </p>
+    </center>
+    <div id="mySidebar" class="sidebar">
+        <br> <a style="font-size:16px; color:#999;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+        <br>
+        <br> <a class="topic" href="upload-lesson.php">Create Lesson</a> <a class="topic" href="upload-topic.php">Create Topic</a> <a class="topic" href="upload-lesson-quiz.php">Create Lesson Quiz</a> <a class="topic" href="upload-topic-quiz.php">Create Topic Quiz</a> <a class="topic" href="#">Review Lesson</a> <a class="topic" href="#">Review Quiz</a> </div>
+    <div id="main">
+        <center>
+            <div class="col-md-6 card">
                 <br>
-                <h3 id="lessonN" class="card-title">
+                <div>
+                    <div id="chng-menu">
+                        <button class="openbtn" onclick="openNav()">☰Menu </button>
+                    </div>
+                    <br id="brSU">
+                    <br>
+                    <h3 id="lessonN" class="card-title">
                     Topic Quiz
                 </h3>
-                <br>
-            </div>
-            <form class="form-group" name="AddTopic" method="POST" onsubmit="return Add_topic()" enctype="multipart/form-data">
-                <!-- Select Lesson-->
-                <div class="card text-black  mb-3" id="cards_holder_item" style="width:100%">
-                    <div class="card-header"><b>Pick a Lesson</b></div>
-                    <div class="card-body">
-                        <select class="form-control" name="lessons" required>
-                            <option value="0" selected>Pick a lesson</option>
-                            <?php
+                    <br> </div>
+                <form class="form-group" name="AddTopic" method="POST" onsubmit="return Add_topic()" enctype="multipart/form-data">
+                    <!-- Select Lesson-->
+                    <div class="card text-black  mb-3" id="cards_holder_item" style="width:100%">
+                        <div class="card-header"><b>Pick a Lesson</b></div>
+                        <div class="card-body">
+                            <select class="form-control" name="lessons" required>
+                                <option value="0" selected>Pick a lesson</option>
+                                <?php
                         
 $lessonNames=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($lessonRow = $lessonNames->fetch(PDO::FETCH_ASSOC)) {
@@ -103,19 +94,17 @@ echo '<option onchange="callback()" value="'.$lessonId.'">'.$lessonName.'</optio
              
 }
 ?>
-                        </select>
+                            </select>
+                        </div>
                     </div>
-
-                </div>
-                <div class="card text-black  mb-3" id="cards_holder_item" style="width:100%">
-                    <div class="card-header"><b>Pick a Topic</b></div>
-                    <div class="card-body">
-                        <select class="form-control" name="lessons" required>
-                            <option value="0" selected>Pick a Topic</option>
-
-                            <script>
-                                function callback(){
-         var topic =    <?php
+                    <div class="card text-black  mb-3" id="cards_holder_item" style="width:100%">
+                        <div class="card-header"><b>Pick a Topic</b></div>
+                        <div class="card-body">
+                            <select class="form-control" name="lessons" required>
+                                <option value="0" selected>Pick a Topic</option>
+                                <script>
+                                    function callback() {
+                                        var topic = <?php
                         
 $topicNames=$lesson->readTopic($lessonId);
  while($topicRow = $topicNames->fetch(PDO::FETCH_ASSOC)) {
@@ -126,51 +115,42 @@ $topicName = $topicRow['topicName'];
 echo '<option value="'.$topicId.'">'.$topicName.'</option>';
            
 }
-?>                     
-     document.write(topic);                      }
-                            </script>
-
-                        </select>
+?>
+                                        document.write(topic);
+                                    }
+                                </script>
+                            </select>
+                        </div>
                     </div>
-
-                </div>
-                <!-- Select Topic-->
-                <div class="card text-black  mb-3" id="cards_holder_item">
-                    <div class="card-header"><strong>Enter A Question for the Topic</strong></div>
-                    <div class="card-body">
-                        <textarea class="form-control" rows="5" placeholder="lesson Summary" name="tQuestion" required>
-                        </textarea>
-                        <br>
-                        <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span>
-                        </button>
+                    <!-- Select Topic-->
+                    <div class="card text-black  mb-3" id="cards_holder_item">
+                        <div class="card-header"><strong>Enter A Question for the Topic</strong></div>
+                        <div class="card-body">
+                            <textarea class="form-control" rows="5" placeholder="lesson Summary" name="tQuestion" required> </textarea>
+                            <br>
+                            <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span> </button>
+                        </div>
                     </div>
-                </div>
-                <div class="card text-black  mb-3" id="cards_holder_item">
-                    <div class="card-header"><b>Option A</b></div>
-                    <div class="card-body">
-                        <input class="form-control" type="text" name="toptionA" required>
-
+                    <div class="card text-black  mb-3" id="cards_holder_item">
+                        <div class="card-header"><b>Option A</b></div>
+                        <div class="card-body">
+                            <input class="form-control" type="text" name="toptionA" required> </div>
                     </div>
-                </div>
-                <div class="card text-black  mb-3" id="cards_holder_item">
-                    <div class="card-header"><b>Option B</b></div>
-                    <div class="card-body">
-                        <input class="form-control" type="text" name="toptionB" required>
-
+                    <div class="card text-black  mb-3" id="cards_holder_item">
+                        <div class="card-header"><b>Option B</b></div>
+                        <div class="card-body">
+                            <input class="form-control" type="text" name="toptionB" required> </div>
                     </div>
-                </div>
-                <div class="card text-black  mb-3" id="cards_holder_item">
-                    <div class="card-header"><b>Option C</b></div>
-                    <div class="card-body">
-                        <input class="form-control" type="text" name="toptionC" required>
+                    <div class="card text-black  mb-3" id="cards_holder_item">
+                        <div class="card-header"><b>Option C</b></div>
+                        <div class="card-body">
+                            <input class="form-control" type="text" name="toptionC" required> </div>
                     </div>
-                </div>
-                <input type="submit" class="btn btn-dark" name="newTopicBtn">
-            </form>
-        </div>
-    </center>
-</div>
-<?php
+                    <input type="submit" class="btn btn-dark" name="newTopicBtn"> </form>
+            </div>
+        </center>
+    </div>
+    <?php
 // footer
 include_once "layout_footer.php";
 ?>

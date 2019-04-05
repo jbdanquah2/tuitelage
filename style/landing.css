@@ -1,9 +1,11 @@
-:root {
+    :root {
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem;
 }
 
-
+::-webkit-scrollbar {
+    display: none;
+}
 
 body {
     position: relative;
@@ -18,7 +20,6 @@ body {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding-bottom: 0;
     margin-bottom: 0;
-
 }
 
 .sbtn:hover {
@@ -32,8 +33,6 @@ body {
     padding: 0 !important;
     position: relative;
     top: -25px;
-
-    ;
 }
 
 #home-login {
@@ -44,7 +43,6 @@ body {
     background-repeat: space;
     font-family: Arial, Helvetica, sans-serif;
     height: 600px !important;
-
 }
 
 nav {
@@ -56,25 +54,6 @@ nav {
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box;
-}
-
-#com-menu {
-    border: #333 solid;
-    position: relative;
-    z-index: 100;
-    right: 0;
-    float: right;
-    width: 20%;
-    background: #333;
-    display: none;
-
-}
-
-#com-menu a {
-    padding: 10px;
-    display: block;
-    background: #333;
-    color: #fefefe;
 }
 
 .motive,
@@ -89,7 +68,6 @@ nav {
 .home-search button {
     color: #fff;
     margin-left: 0 !important;
-
 }
 
 #logo_1 {
@@ -100,7 +78,6 @@ nav {
     opacity: 1;
     display: inline-table;
 }
-
 
 #home-icon {
     display: flex;
@@ -134,10 +111,9 @@ nav {
 }
 
 #_home {
+    margin-top: 0;
     overflow: auto;
 }
-
-
 
 ._link {
     display: block;
@@ -150,71 +126,47 @@ nav {
     color: #aaa;
 }
 
-
-
-
 @media screen and (max-width: 922px) {
     #_display-col {
         display: none;
     }
-
-    #com-menu {
-        width: 100%;
-        top: 0;
-        right: 0;
-    }
-
-    #com-menu a {
-        display: block !important;
-
-    }
-
     #home-login .card-signin,
     .card-body {
         width: 100%;
     }
-
     .home-search button {
         width: 100%;
     }
-
     #comp_short_name {
         text-align: right;
-
     }
-
     #_c-2,
     #div-comp {
         padding: 0;
         margin: 0;
     }
-
     #comp_img {
+      display: none;
         width: 50px !important;
         height: 50px;
         margin: 0;
         padding: 0;
     }
-
     #c_s_n {
         display: none;
     }
-
     #col {
         padding: 0 4px 0 0;
         margin: 0;
     }
-
     #logo_1 {
         width: 120px !important;
         margin: 0 0 0 5px !important;
     }
-
     #_welcome {
         text-align: center;
     }
 }
-
 
 nav #welcome_wlc {
     position: relative !important;
@@ -244,7 +196,6 @@ hr {
     margin: 0;
     height: 5px;
     border-color: #fff;
-
 }
 
 #colu {
@@ -255,7 +206,6 @@ hr {
 #_display-col {
     width: 100%;
     margin-top: 150px;
-
 }
 
 #_display {
@@ -276,7 +226,6 @@ hr {
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.5);
     font-family: sans-serif;
-
 }
 
 .card-signin .card-title {
@@ -292,7 +241,10 @@ hr {
 
 .card-signin .card-body {
     padding: 2rem;
+}
 
+.card-link {
+    bottom: 10px;
 }
 
 .form-signin {
@@ -323,7 +275,6 @@ hr {
     padding: var(--input-padding-y) var(--input-padding-x);
 }
 
-
 .form-label-group input:not(:placeholder-shown) ~ label {
     padding-top: calc(var(--input-padding-y) / 3);
     padding-bottom: calc(var(--input-padding-y) / 3);
@@ -341,15 +292,31 @@ hr {
     background-color: #3b5998;
 }
 
-
 .t-material {
     margin-bottom: 25px;
     -webkit-box-shadow: -2px 11px 33px -1px rgba(0, 0, 0, 0.42);
     -moz-box-shadow: -2px 11px 33px -1px rgba(0, 0, 0, 0.42);
     box-shadow: -2px 11px 33px -1px rgba(0, 0, 0, 0.42);
-
 }
 
+
+/* .lesson-wrap{
+overflow-x: scroll;
+height: 500px;
+width: 100%;
+overflow-y: hidden;
+
+
+} */
+
+#empty-Search {
+    width: inherit;
+    height: inherit;
+}
+
+.lesson_card {
+    height: inherit;
+}
 
 #lesson_t {
     display: inline-block !important;
@@ -357,26 +324,76 @@ hr {
     margin: 20px;
 }
 
-@media screen and (max-width: 922px) {
-
-    #lesson_t {
-        width: 100%;
-        text-align: justify;
-        /*        margin: 0 auto;
-        */
-        margin: 0 0 30px 0;
-
-    }
-
-
+#our_alert {
+    width: 100%;
+    /* padding-right: 30%;
+    position: relative; */
 }
 
+.caro_back_ground {
+    background-color: white;
+}
+
+.caro_back_ground img {
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(8, 0, 0, 0.8);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(8, 8, 8, 0.8);
+    box-shadow: -1px 9px 40px -12px rgba(7, 7, 7, 0.8);
+}
+
+.row_card_hor {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.card_les {
+    float: left;
+    max-width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+    flex-basis: 33.333%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 90%;
+}
+
+.card_les > img {
+    margin-bottom: .75rem;
+}
+
+#btn-lesson {
+    display: block;
+}
+
+@media screen and (max-width: 922px) {
+    #lesson_t {
+        /* width: auto; */
+        text-align: justify;
+        width: 100%;
+        margin: 0 15px 15px 0;
+    }
+    .card-link {
+        width: inherit;
+        bottom: 10px;
+    }
+    .card_les {
+        max-width: 88%;
+        min-width: 88%;
+        width: 100%;
+    }
+    .card_les img {
+        /* height:inherit; */
+        width: 100%;
+    }
+}
 
 .choose {
-
     color: #fefefe;
 }
-
 
 .t-body {
     padding: 25px;
@@ -385,8 +402,6 @@ hr {
 .t-body .card-text {
     padding: 20px 0px 15px;
 }
-
-
 
 ._image {
     margin: 0 !important;
@@ -414,3 +429,27 @@ hr {
     /*    margin-bottom: 50px;
     */
 }
+
+@media (max-width:360px) {
+    #empty-search {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    ._image {
+        height: 50%;
+    }
+    .card-text {
+        /* display:none; */
+    }
+    .card-title {
+        margin-top: 0px;
+        font-size: 0.8rem;
+        margin-bottom: inherit;
+        margin-right: 1.4rem;
+        margin-left: 0px;
+    }
+    #btn-lesson_ {
+        display: none;
+    }

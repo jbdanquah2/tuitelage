@@ -6,3 +6,6 @@ php_value display_errors 1
 RewriteEngine on RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php [NC,L]
+
+ini_set('post_max_size', '40M');
+ini_set('upload_max_filesize', '40M');

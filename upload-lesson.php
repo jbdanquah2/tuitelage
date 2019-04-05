@@ -50,78 +50,61 @@ $detailRows=$lesson->createLesson($lessonName, $lessonSummary, $descriptiveImage
 }
 
  ?>
-<center>
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    </p>
-</center>
-
-<div id="mySidebar" class="sidebar">
-    <br>
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-    <br>
-    <br>
-    <a class="topic" href="upload-lesson.php">Create Lesson</a>
-    <a class="topic" href="upload-topic.php">Create Topic</a>
-    <a class="topic" href="upload-lesson-quiz.php">Create Lesson Quiz</a>
-    <a class="topic" href="upload-topic-quiz.php">Create Topic Quiz</a>
-    <a class="topic" href="lesson-review.php">Review Lesson</a>
-    <a class="topic" href="#">Review Quiz</a>
-</div>
-<div id="main">
     <center>
-        <div class="col-md-6 card">
-            <br>
-            <div>
-                <div id="chng-menu"> <button class="openbtn" onclick="openNav()">☰Menu </button></div>
-                <br id="brSU">
-                <br>
-                <h3 id="lessonN" class="card-title">
+        <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small>
+            <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
+        </p>
+    </center>
+    <?php 
+include_once "sidebar.php";
+?>
+        <div id="main">
+            <center>
+                <div class="col-md-6 card">
+                    <br>
+                    <div>
+                        <div id="chng-menu">
+                            <button class="openbtn" onclick="openNav()">☰Menu </button>
+                        </div>
+                        <br id="brSU">
+                        <br>
+                        <h3 id="lessonN" class="card-title">
                     Upload Lesson
                 </h3>
-                <br>
-            </div>
-            <form class="form-group" method="POST" name="newLesson" onsubmit="return Add_lesson()" enctype="multipart/form-data">
-                <!-- Lesson title-->
-                <div class="card text-black  mb-3" id="cards_holder_item">
-                    <div class="card-header"><b>Enter Lesson Title</b></div>
-                    <div class="card-body">
-                        <input class="form-control" type="text" placeholder="..." name="lessonName" required>
-                    </div>
-                </div>
-                <!-- Lesson Summary-->
-                <div class="card text-black  mb-3" id="cards_holder_item">
-                    <div class="card-header"><b>Enter Lesson Summary</b></div>
-                    <div class="card-body">
-                        <textarea class="form-control" rows="5" placeholder="lesson Summary" name="lessonSummary" required>
-                      </textarea>
+                        <br> </div>
+                    <form class="form-group" method="POST" name="newLesson" onsubmit="return Add_lesson()" enctype="multipart/form-data">
+                        <!-- Lesson title-->
+                        <div class="card text-black  mb-3" id="cards_holder_item">
+                            <div class="card-header"><b>Enter Lesson Title</b></div>
+                            <div class="card-body">
+                                <input class="form-control" type="text" placeholder="..." name="lessonName" required> </div>
+                        </div>
+                        <!-- Lesson Summary-->
+                        <div class="card text-black  mb-3" id="cards_holder_item">
+                            <div class="card-header"><b>Enter Lesson Summary</b></div>
+                            <div class="card-body">
+                                <textarea class="form-control" rows="5" placeholder="lesson Summary" name="lessonSummary" required> </textarea>
+                                <br>
+                                <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span></button>
+                            </div>
+                        </div>
+                        <!-- Descriptive Image-->
+                        <div class="card text-black mb-3">
+                            <div class="card-header"><strong><b>Descriptive Image:</b></strong> </div>
+                            <input class="form-control btn btn-outline-dark" type="file" name="descriptiveImage" required> </div>
+                        <!-- Lesson video-->
+                        <div class="card text-black mb-3">
+                            <div class="card-header"><strong><b>Introductory Video:</b></strong> </div>
+                            <input class="form-control btn btn-outline-dark" type="file" name="videoOverview" required> </div>
                         <br>
-                        <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span></button>
-                    </div>
-                </div>
-                <!-- Descriptive Image-->
-                <div class="card text-black mb-3">
-                    <div class="card-header"><strong><b>Descriptive Image:</b></strong>
-                    </div><input class="form-control btn btn-outline-dark" type="file" name="descriptiveImage" required>
-                </div>
-                <!-- Lesson video-->
-                <div class="card text-black mb-3">
-                    <div class="card-header"><strong><b>Introductory Video:</b></strong>
-                    </div><input class="form-control btn btn-outline-dark" type="file" name="videoOverview" required>
-                </div>
-                <br>
-                <div class="card text-black mb-3">
-                    <input type="submit" class="btn btn-dark" name="newLessonBtn">
-
-                </div>
-            </form>
-            <br>
+                        <div class="card text-black mb-3">
+                            <input type="submit" class="btn btn-dark" name="newLessonBtn"> </div>
+                    </form>
+                    <br> </div>
+                <br> </center>
         </div>
-        <br>
-    </center>
-</div>
-<?php
+        <?php
 // footer
 include_once "layout_footer.php";
 ?>

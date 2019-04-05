@@ -37,52 +37,42 @@ header("Location: index.php");
 }
 
 ?>
-
-<center>
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    </p>
-</center>
-
-<div id="mySidebar" class="sidebar">
-    <br>
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-    <br>
-    <br>
-    <a class="topic" href="upload-lesson.php">Create Lesson</a>
-    <a class="topic" href="upload-topic.php">Create Topic</a>
-    <a class="topic" href="upload-lesson-quiz.php">Create Lesson Quiz</a>
-    <a class="topic" href="upload-topic-quiz.php">Create Topic Quiz</a>
-    <a class="topic" href="#">Review Lesson</a>
-    <a class="topic" href="#">Review Quiz</a>
-</div>
-<div id="main">
     <center>
-        <div class="col-md-10 card">
-            <br>
-            <div>
-                <button class="openbtn" onclick="openNav()">☰Menu </button>
-                <br id="brSU">
-                <br>
-                <h3 id="lessonN" class="m-2">
+        <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small>
+            <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
+        </p>
+    </center>
+    <?php 
+include_once "sidebar.php";
+?>
+        <div id="main">
+            <center>
+                <div class="col-md-10 card">
+                    <br>
+                    <div>
+                        <div id="chng-menu">
+                            <button class="openbtn" onclick="openNav()">☰Menu </button>
+                        </div>
+                        <br id="brSU">
+                        <br>
+                        <h3 id="lessonN" class="m-2">
                     Lessons Review
                 </h3>
-                <br>
-            </div>
-            <form method="POST">
-                <!-- Select Lesson-->
-                <div class="table-responsive-sm">
-                    <table class="table table-striped table-bordered table-sm shadow-lg">
-                        <caption>Lessons Review</caption>
-                        <tr>
-                            <th>Lesson</th>
-                            <th>Video</th>
-                            <th>Description</th>
-                            <th>Display Image</th>
-                            <th>Action</th>
-                        </tr>
-                        <?php
+                        <br> </div>
+                    <form method="POST">
+                        <!-- Select Lesson-->
+                        <div class="table-responsive-sm">
+                            <table class="table table-striped table-bordered table-sm shadow-lg">
+                                <caption>Lessons Review</caption>
+                                <tr>
+                                    <th>Lesson</th>
+                                    <th>Video</th>
+                                    <th>Description</th>
+                                    <th>Display Image</th>
+                                    <th>Action</th>
+                                </tr>
+                                <?php
                         
 $lessonNames=$lesson->readCompanyLesson2($_SESSION['companyId']);
 while($lessonRow = $lessonNames->fetch(PDO::FETCH_ASSOC)) {
@@ -118,14 +108,13 @@ if(isset($_GET['delete'])){
     echo ' <script>alert("Lesson Deleted")</script>';
 }                        
 ?>
-
-                    </table>
+                            </table>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </center>
         </div>
-    </center>
-</div>
-<?php
+        <?php
 // footer
 include_once "layout_footer.php";
 ?>
