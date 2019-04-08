@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
         <link rel="stylesheet" type="text/css" href="style/fontawesome.min.css">
         <link rel="stylesheet" type="text/css" href="style/tuitelage_css.css">
-        <link rel="stylesheet" type="text/css" href="style/video_style.css"> </head>
+        <!-- <link rel="stylesheet" type="text/css" href="Style/materialize.min.css"> -->
 
     <body>
         <?php echo $hrline; ?>
@@ -36,28 +36,29 @@
         </h5> </div>
             <?php echo $hrline; ?>
                 <nav id="navb" class="navbar sticky-top navbar-expand-sm  bg-dark navbar-dark">
-                    <div id="col" class="col-2">
+                    <div id="col" class="col-lg-6 col-3">
                         <header class="nav_header">
                             <a href="index.php"><img id="logo_1" class="img-responsive" src="image/logo.jpg" alt="Tuitelage logo"></a>
                         </header>
                     </div>
-                    <a href="home.php"><img id="home-icon" src="icon/baseline_home_black_18dp.png" alt=""></a>
-                    <div id="c_s_n" class="col-9">
-                        <h5 id="comp_short_name" >
-                <?php echo $comp_short_name;?>
-            </h5> </div>
-                    <div id="div-comp" class="col-2 image_container">
+                    <a  href="home.php"><img id="home-icon" src="icon/baseline_home_black_18dp.png" alt=""></a>
+                      <div id="c_s_n" class="col-lg-3 offset-lg-2 col-6">
+                        <h5 onmouseover="drag_menu()" id="comp_short_name">
+                            <?php echo $comp_short_name;?>
+                        </h5>
+                      </div>
+                    <div id="div-comp" class="col-lg-3 offset-lg-1 col-3 image_container">
                         <div id="_c-2" class="row image_container ">
-                            <!-- company logo -->
-                            <div  onmouseover="drag_menu()"><img src="<?php echo $c_logo; ?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>"> </div>
+                            <!-- company logo / avatar -->
+                            <div onmouseover="drag_menu()"><img src="<?php echo $c_logo; ?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>"> </div>
                             <?php
                    if(isset($_SESSION['user'])){
                        echo'
-                       <div class="centered" id="drag_menu" >
-            <button class="btn btn-outline-light btn-lg" id="drag_btn" onclick="drag_menu()">
-            ☰
+                              <div class="centered" id="drag_menu" >
+                                  <button class="btn btn-outline-light btn-lg" id="drag_btn" onclick="drag_menu()">
+                                  ☰
 
-            </div>
+                              </div>
                        ';
                    }
                    ?> </div>

@@ -13,6 +13,7 @@ header("Location: home.php");
 if(isset($_GET['logout']))
 {
 session_destroy();
+unset($_SESSION['userType']);
 unset($_SESSION['user']);
 unset($_SESSION['userCompany']);
 unset($_SESSION['companyShortName']);

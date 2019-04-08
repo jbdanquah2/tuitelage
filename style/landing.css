@@ -81,6 +81,7 @@ nav {
 
 #home-icon {
     display: flex;
+    left: -10px !important;
 }
 
 #comp_short_name {
@@ -370,6 +371,9 @@ overflow-y: hidden;
 }
 
 @media screen and (max-width: 922px) {
+  .profile {
+    width: 100%;
+  }
     #lesson_t {
         /* width: auto; */
         text-align: justify;
@@ -453,3 +457,10 @@ overflow-y: hidden;
     #btn-lesson_ {
         display: none;
     }
+}
+
+
+/*  USER PROFILE   */
+.profile {
+  width: 200px;
+}

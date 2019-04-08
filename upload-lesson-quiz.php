@@ -7,10 +7,10 @@ if($_SESSION['companyId'] != 26) {
     $comp_short_name =$_SESSION['companyShortName'];
     $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
-    $page_title = "Tuitelage.com Members Area";  
+    $page_title = "Tuitelage.com Members Area";
     $at = ' @ ';
     $comp_name = $_SESSION['userCompany'];
-        
+
     }else {
     $_SESSION['userCompany']=$_SESSION['user'];
     $page_title = "Welcome {$_SESSION['userCompany']}!";
@@ -37,26 +37,29 @@ if(!isset($_SESSION['user']))
 {
 header("Location: index.php");
 }
- 
+
 if(isset($_POST['newQuizBtn'])){
-$lessons = $_POST['lessons'];
-  $question = $_POST['question'];
+    $radio = $_POST['quizAns'];
+    $answerValue = $_POST[$radio];
+    $lessons = $_POST['lessons'];
+    $question = $_POST['question'];
     $optionA =  $_POST['optionA'];
     $optionB =  $_POST['optionB'];
     $optionC =  $_POST['optionC'];
-    
-   $detailRows =$lesson->createQuiz($question, $optionA, $optionB, $optionC, $lessons, $_SESSION['userName'], $_SESSION['userName']);
-// $detailRows=$lesson->createTopic($lessonId, $topicName, $description, $videoUrl, $_SESSION['userName'], $_SESSION['userName']);    
+
+   $detailRows =$lesson->createQuiz($question, $optionA, $optionB, $optionC, $lessons,$answerValue, $_SESSION['userName'], $_SESSION['userName']);
+   echo "<script>Materialize.toast('Quiz Uploaded Successfully', 3000, 'rounded')</script>";
+     // echo ' <script>alert("Lesson Deleted")</script>';
 }
 
 ?>
     <center>
-        <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+        <p class="alert alert-light26" role="alert" id="_welcome"> <small>Welcome
             <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small>
             <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
         </p>
     </center>
-    <?php 
+    <?php
 include_once "sidebar.php";
 ?>
         <div id="main">
@@ -81,15 +84,15 @@ include_once "sidebar.php";
                                 <select class="form-control" name="lessons" required>
                                     <option value="0" selected>Pick a lesson</option>
                                     <?php
-                        
+
 $lessonNames=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($lessonRow = $lessonNames->fetch(PDO::FETCH_ASSOC)) {
 
 $lessonId   = $lessonRow['lessonId'];
 $lessonName = $lessonRow['lessonName'];
-      
+
 echo '<option  value="'.$lessonId.'">'.$lessonName.'</option>';
-        ;     
+        ;
 }
 ?>
                                 </select>
@@ -105,22 +108,25 @@ echo '<option  value="'.$lessonId.'">'.$lessonName.'</option>';
                             </div>
                         </div>
                         <div class="card text-black  mb-3" id="cards_holder_item">
-                            <div class="card-header"><b>Option A</b></div>
+                            <div class="card-header"><strong>Option A</strong></div>
                             <div class="card-body">
                                 <input class="form-control" type="text" name="optionA" required> Is this the answer? Select
-                                <input name="quizAns" type="radio" required> </div>
+                                <input class="btn btn-dark mb-2" value="optionA" name="quizAns" type="radio" required>
+                            </div>
                         </div>
                         <div class="card text-black  mb-3" id="cards_holder_item">
-                            <div class="card-header"><b>Option B</b></div>
-                            <div class="card-body">
+                            <div class="card-header"><strong>Option B</strong></div>
+                            <div class="card-body mb-2">
                                 <input class="form-control" type="text" name="optionB" required> Is this the answer? Select
-                                <input name="quizAns" type="radio" required> </div>
+                                <input class="btn btn-dark" value="optionB" name="quizAns" type="radio" required>
+                            </div>
                         </div>
                         <div class="card text-black  mb-3" id="cards_holder_item">
-                            <div class="card-header"><b>Option C</b></div>
+                            <div class="card-header"><strong>Option C</strong></div>
                             <div class="card-body">
                                 <input class="form-control" type="text" name="optionC" required> Is this the answer? Select
-                                <input class="form-group" name="quizAns" type="radio" required> </div>
+                                <input class="btn btn-dark mb-20" value="optionC" class="form-group" name="quizAns" type="radio" required>
+                            </div>
                         </div>
                         <input type="submit" class="btn btn-dark" name="newQuizBtn"> </form>
                 </div>

@@ -50,9 +50,12 @@ if ($row['pssword'] == $pssword) {
     try {
 		$userStatus = $row['userStatus'] ;
 		if ($userStatus == $status) {
+$_SESSION['avatar'] = $row['avatar'];
 $_SESSION['userType'] = $row['userType'];
+$_SESSION['userNameM'] = $row['userName'];
 $_SESSION['userName'] = explode("@","$userName")[0];
 $_SESSION['user'] = $row['firstName'];
+$_SESSION['lastName'] = $row['lastName'];
 $_SESSION['userCompany'] = $row['companyName'];
 $_SESSION['companyShortName'] = $row['companyShortName'];
 $_SESSION['companyId'] = $row['companyId'];

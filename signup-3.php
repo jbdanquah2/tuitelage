@@ -62,20 +62,22 @@ if(isset($_POST['signup_btn'])) {
             if($pssword != $c_pssword){
                 echo "<span class='text-danger mb-0 ml-2'>Registration Failed - Password Do not match</span>";
 
-            }else if($appUser->createEmployee($avatar,
-                                       $firstName,
-                                       $lastName,
-                                       $email,
-                                       $pssword,
-                                       $_SESSION['companyId'],
-                                     $_SESSION['userName'])){
-        echo("Registration Successful:  <a href='home.php'>Go to home</a>");
-}
-else{
-echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span>");
-}
+            }else if($pssword == $c_pssword){
+              $appUser->createEmployee($avatar,$firstName,$lastName,$email,$pssword,$_SESSION['companyId'],$_SESSION['userName']);
 
-    }else {
+                                       $avatar ="";
+                                       $firstName = "";
+                                       $lastName = "";
+                                       $email = "";
+                                       $pssword = "";
+                                       $c_pssword = "";
+
+        echo("Registration Successful:  <a href='home.php'>Go to home</a>");
+              }else{
+              echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span>");
+              }
+
+  }else {
         echo "<span class='text-danger mb-0 ml-2'>Sorry this is not a picture</span>";
     }
 }else {
@@ -92,7 +94,7 @@ echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span
 <div id="_signup" class="container">
     <div class="row">
         <div class="col-lg-12 well">
-            <h1 class="well">Employee Setup</h1>
+            <h2 class="well">Employee Setup</h2>
             <form method="post" action="signup-3.php" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 col-sm-12">

@@ -52,7 +52,6 @@ $lesson = new lesson($db);
                             <h5 class="card-title">Questions</h5>
                           <?php echo '<h4 class="text-center">'. $_SESSION['lessonName'] .'</h4>' ?>
                         </div>
-                        <form action="quiz-answer.php" method="post">
                         <?php
 if (isset($_GET['getQuiz'])){
     $_SESSION['id'] = $_GET['getQuiz'];
@@ -69,7 +68,7 @@ if (isset($_GET['getQuiz'])){
 echo '
 
 <div class="card text-black  mb-2" id="cards_holder_item">
-
+                <form>
                                 <div class="card-header"><b>'.$count.'</b></div>
                                 <div class="card-body">
                                     <p>'.
@@ -79,13 +78,13 @@ echo '
                                     <!-- Responds -->
                                     <div class="container row">
                                         <div class="btn btn-block text-left">
-                                            <input type="radio" name="'.$quizId.'" > '.$optionA.'
+                                            <input type="radio" name="'.$quizId.'" value="A"> '.$optionA.'
                                         </div>
                                         <div class="btn btn-block text-left">
-                                            <input type="radio" name="'.$quizId.'" > '.$optionB.'
+                                            <input type="radio" name="'.$quizId.'" value="B"> '.$optionB.'
                                         </div>
                                         <div class="btn btn-block text-left">
-                                          <input type="radio" name="'.$quizId.'" > '.$optionC.'
+                                          <input type="radio" name="'.$quizId.'" value="C"> '.$optionC.'
                                         </div>
                                         </div>
                                         <br>
@@ -94,7 +93,7 @@ echo '
                                     </label>
                         </div>
                     </div>
-
+                </form>
 ';
 
     }
@@ -114,10 +113,8 @@ else{
 
 
 ?>
-<button name="submitQuiz" type="button" class="btn btn-secondary">Submit <span class="glyphicon"></span> </button>
-  </div>
-</form>
-
+                            <button type="button" class="btn btn-secondary">Submit <span class="glyphicon"></span> </button>
+                    </div>
                 </div>
             </div>
         <!-- </div> -->

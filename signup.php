@@ -13,7 +13,7 @@ include_once 'objects/appUser.php';
 
 include_once "layout_header.php";
 
- 
+
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
@@ -33,10 +33,10 @@ $companyShortName = $_POST['companyShortName'];
     $tmp = explode(".",$logoFileName);
     $ext = end($tmp);
     $validExt = array("png","jpeg","jpg");
-    
+
     if(in_array($ext,$validExt)){
        $logo = $_FILES['companyLogo']['tmp_name']; move_uploaded_file($logo,"image/$logoFileName");
-        
+
         $companyPhone = $_POST['companyPhone'];
         $companyEmail = $_POST['companyEmail'];
         $companyWebsite = $_POST['companyWebsite'];
@@ -51,11 +51,22 @@ $companyShortName = $_POST['companyShortName'];
 
             }else if($appUser->createUser($companyName, $companyShortName,$companyPhone,$companyEmail,
  $companyWebsite,$logoFileName,$firstName,$lastName,$email,$pssword)){
+   $companyName ="";
+   $companyShortName = "";
+   $logoFileName = "";
+   $companyPhone = "";
+   $companyEmail = "";
+   $companyWebsite = "";
+   $firstName = "";
+   $lastName = "";
+   $email = "";
+   $pssword = "";
+   $c_pssword = "";
         echo("Registration Successful:  <a href='index.php'>Login Here</a>");
 }
 else{
 echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span>");
-    
+
 }
 
     }else {
@@ -65,7 +76,7 @@ echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span
 }else {
     $companyName ="";
     $companyShortName = "";
-    $logoFileName = "";    
+    $logoFileName = "";
     $companyPhone = "";
     $companyEmail = "";
     $companyWebsite = "";
@@ -74,12 +85,12 @@ echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span
     $email = "";
     $pssword = "";
     $c_pssword = "";
-}  
+}
 ?>
 <link rel="stylesheet" href="style/signup.css" type="text/css">
 
 <div id="_signup" class="container">
-    <h1 class="well">Registration Form</h1>
+    <h2 class="well">Registration Form</h2>
     <div class="row">
         <div class="col-md-8 offset-md-2 well">
             <form method="post" action="signup.php" enctype="multipart/form-data">
