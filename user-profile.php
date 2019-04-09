@@ -65,7 +65,7 @@ include_once "layout_header.php";
 
                                 <div class="car-img-overlay">
                                     <h5 class="card-title text-center">
-                                    <?php echo   $_SESSION['user'].' '. $_SESSION['lastName'];  ?>
+                                    <?php echo  $_SESSION['user'].' '. $_SESSION['lastName'];  ?>
                                     </h5>
                                 </div>
                                 <p class="card-text text-center">
