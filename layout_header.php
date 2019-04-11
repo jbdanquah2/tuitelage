@@ -6,9 +6,9 @@
     global $hrline;
     global $page_title;
     global $u_r_l;
+    global $menu;
     $u_r_l=$_SERVER['REQUEST_URI'];
- 
-
+    
 ?>
 <!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -24,81 +24,12 @@
     <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="style/landing.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="style/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style/video_style.css">
+    
     
 
-    <style>
-        
-
-.card-text {
-  font-size: 85%;
-}
-
-
-    }
-    @media screen and (max-width:768px){
-        #empty-Search{
-        width:500px; 
-        height:inherit;
-    }
-    #btn-lesson{
-    display:block;
-}
-
-    }
-
-   
-    @media screen and (max-width:768px){
-.card_les{
-    height:inherit;
-    margin-left:1000px;
-}
-._image{
-    height:50%;
-}
-.card-text{
-    display:none;
-}
-.card-title{
-    margin-top: 0px;
-    font-size: 0.8rem;
-    margin-bottom: inherit;
-    margin-right:1.4rem;
-    margin-left:0px;
-}
-     
-        #btn-lesson_{
-    display:none;
-}
-    }
-
-    @media screen and (max-width:988px){
-        ._display-col{
-            display:none;
-        }
-        #btn-lesson{
-    display:block;
-}
-
-    } 
-
-    @media screen and (min-width:1024px){
-     #empty-Search{
-        width:900px; 
-        height:inherit;
-    }
-    @media screen and (min-width:1006px){
-     #empty-Search{
-        width:900px; 
-        height:inherit;
-    }
-
-       
-
-
     
-
-
-    </style>
 </head>
 
 <body>
@@ -120,17 +51,29 @@
             </h5>
         </div>
         <div id="div-comp" class="col-2 image_container">
-        /* <?php
-        if ($_SERVER['PHP_SELF'] != $u_r_l){
-echo'
-        <div class="centered">
-                <button class="btn btn-outline-dark">arrow_down</button>
-                </div>'; }
-                ?> */
-            <div id="_c-2" class="row ">
+            <div id="_c-2" class="row image_container ">
+             
                 <!-- company logo -->
-                <img src="<?php echo $c_logo;?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
-                               
+                <div><img src="<?php echo $c_logo; ?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>">
+                   </div>  
+                   <?php
+                   if(isset($_SESSION['user'])){
+                       echo'
+                       <div class="centered" id="drag_menu" >
+            <button class="btn btn-outline-primary" id="drag_btn" onclick="drag_menu()">
+            ☰
+            </button>
             </div>
+                       ';
+                   }
+                   ?>       
+            </div>
+            
         </div>
     </nav>
+    <?php include "menu.php" ?>
+    
+
+
+    
+ 

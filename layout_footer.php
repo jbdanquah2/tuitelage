@@ -22,5 +22,6 @@
 <script src="js/landing.js" type="text/javascript"></script>
 <script src="js/script.js" type="text/javascript"></script>
 <script src="js/popper.min.js" type="text/javascript"></script>
+<script src="js/video_script.js" type="text/javasccript"></script>
 
 </html>

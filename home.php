@@ -40,18 +40,24 @@ if(!isset($_SESSION['user']))
 include_once "layout_header.php";
 
 ?>
+
+<!-- <div class="row">
+   
 <div id="com-menu" class="col-lg-6 col-sm-10">
-    <a href="" class="btn-light">Manage Lessons</a>
-    <a href="" class="btn-light">Company Profile</a>
-    <a href="" class="btn-light">Add Users</a>
-    <a href="" class=" btn-light">Profile</a>
-    <a href="" class="btn-light">Log out</a>
+    <a href="" class="btn btn-inline-dark">Manage Lessons</a>
+    <a href="" class="btn btn-inline-dark">Company Profile</a>
+    <a href="" class="btn btn-inline-dark">Add Users</a>
+    <a href="" class="btn btn-inline-dark">Profile</a>
+    <a href="" class="btn btn-inline-dark">Log out</a>
 </div>
+</div> -->
 
 
 <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
         <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
+        <!-- <button id="drag_menu" class="btn btn-outline-dark" style="float:right;">
+        ☰
+    </button></p> -->
 
 <div id="_home" class="container-fluid col-12">
     <div class="container">

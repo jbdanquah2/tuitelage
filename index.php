@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 $hrline ='<hr class="hrline">';
 $page_title = "Tuitelage.com";
@@ -137,11 +138,11 @@ echo
 
                                 <div class="car-img-overlay">
                                     <h5 class="card-title text-center">'.
-                                        $lessonName . ' 
+                                    $lessonName.' 
                                     </h5>
                                 </div>
                                 <p class="card-text text-justify">'.
-                    $lesson->truncate($lessonSummary, 130) .'
+                    $lesson->truncate($lessonSummary, 108) .'
                                     </p>
                     
                  <form action="lessonContent.php" method="GET">
