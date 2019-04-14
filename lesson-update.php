@@ -53,7 +53,8 @@ header("Location: index.php");
     <a class="topic" href="#">Review Lesson</a>
     <a class="topic" href="#">Review Quiz</a>
 </div>
-<div id="main" style="position:center;" align="center"> 
+
+<div id="main"> 
     <center>
         <div class="col-md-10 card">
             <br>
