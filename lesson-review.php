@@ -38,13 +38,6 @@ header("Location: index.php");
 
 ?>
 
-<center>
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    </p>
-</center>
-
 <div id="mySidebar" class="sidebar">
     <br>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
@@ -108,7 +101,7 @@ $descriptiveImage = $lessonRow['descriptiveImage'];
                             <td width=150 style="word-break: break-all"><a target="_blank"  href="image/'.$descriptiveImage.'">'.$descriptiveImage.'</a></td>
                             <td>
                             <div class="btn-group" role="group">
-                            <a href="lesson-review.php?update='.$lessonId.'" class="btn btn-sm btn-warning m-1">Update</a>
+                            <a href="lesson-update.php?update='.$lessonRow['lessonId'].'" class="btn btn-sm btn-warning m-1">Update</a>
                             <a href="#" class="btn btn-sm btn-danger m-1">Delete</a>
                             </div>
                             </td>';

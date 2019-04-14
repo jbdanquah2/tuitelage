@@ -53,12 +53,6 @@ include_once "layout_header.php";
 </div> -->
 
 
-<p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
-        <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-        <!-- <button id="drag_menu" class="btn btn-outline-dark" style="float:right;">
-        ☰
-    </button></p> -->
-
 <div id="_home" class="container-fluid col-12">
     <div class="container">
         <div class="row">
@@ -69,14 +63,41 @@ include_once "layout_header.php";
                         <div class="row card-columns">
 -->
                     <?php
+                   
  if (!isset($_POST['search'])){                       
 $stmt=$lesson->readCompanyLesson($_SESSION['companyId']);
+$row_num=$stmt->rowCount();
+if($row_num==0){
+    echo
+                        '<div class="card  t-material" id="lesson_t">
+                        <img class="card-img _image img-responsive" src="icon/plus-big.png" width=700 height=200 alt="Card image">
+                            <div class="card-body t-body">
+
+                                <div class="car-img-overlay">
+                                    <h5 class="card-title text-center">
+                                    No lessons Yet
+                                    </h5>
+                                </div>                
+                 <form action="lessonContent.php" method="GET">
+                    <a class="btn btn-danger card-link" href="upload-lesson.php">
+                    Add a Lesson!</a>
+                    </form>
+                    
+                 </div>
+                 
+            </div>'
+            ;
+}
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 $lessonId = $rows['lessonId'];
 $lessonName = $rows['lessonName'];
 $lessonSummary = $rows['lessonSummary'];
 $descriptiveImage = $rows['descriptiveImage'];
+if($descriptiveImage==""){
+    $descriptiveImage="t.jpg";
+    return $descriptiveImage;
+}
       
 echo
                         '<div class="card  t-material" id="lesson_t">

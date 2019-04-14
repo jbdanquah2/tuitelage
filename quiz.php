@@ -33,9 +33,9 @@ $db = $database->getConnection();
 $lesson = new lesson($db);
 
  ?>
-<p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
+<!-- <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
         <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
+    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p> -->
 <div class="container-fluid">
 
     <div class="dropdown">

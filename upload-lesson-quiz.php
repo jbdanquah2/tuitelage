@@ -52,13 +52,6 @@ $lessonId = $_POST['lessons'];
 
 ?>
 
-<center>
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    </p>
-</center>
-
 <div id="mySidebar" class="sidebar">
     <br>
     <a style="font-size:16px; color:#999;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
@@ -142,6 +135,7 @@ echo '<option value="'.$lessonId.'">'.$lessonName.'</option>';
         </div>
     </center>
 </div>
+
 <?php
 // footer
 include_once "layout_footer.php";

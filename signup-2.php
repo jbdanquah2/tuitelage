@@ -20,10 +20,10 @@ $db = $database->getConnection();
 $lesson = new lesson($db);
 $appUser = new appUser($db);
 
-if(isset($_SESSION['user']))
-{
-header("Location: home.php");
-}
+// if(isset($_SESSION['user']))
+// {
+// header("Location: home.php");
+// }
 
 
 if(isset($_POST['signup_btn'])) {
@@ -65,7 +65,14 @@ if(isset($_POST['signup_btn'])) {
 <div id="_signup" class="container">
     <div class="row">
         <div class="col-lg-12 well">
-            <h1 class="well">Registration Form</h1>
+            <h1 class="well">
+                <?php
+                if(isset($_SESSION['companyId'])&&$_SESSION['companyId'] !=  4){
+                    echo'Add New Employee';
+                }
+                echo'Registration Form';
+            ?>
+            </h1>
             <form method="post" action="signup-2.php" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 col-sm-12">

@@ -60,7 +60,7 @@
                    if(isset($_SESSION['user'])){
                        echo'
                        <div class="centered" id="drag_menu" >
-            <button class="btn btn-outline-primary" id="drag_btn" onclick="drag_menu()">
+            <button class="btn btn-outline-light" id="drag_btn" onclick="drag_menu()">
             ☰
             </button>
             </div>

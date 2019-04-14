@@ -50,12 +50,7 @@ $detailRows=$lesson->createLesson($lessonName, $lessonSummary, $descriptiveImage
 }
 
  ?>
-<center>
-    <p class="alert alert-light" role="alert" id="_welcome">
-        <small>Welcome
-            <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    </p>
-</center>
+
 
 <div id="mySidebar" class="sidebar">
     <br>

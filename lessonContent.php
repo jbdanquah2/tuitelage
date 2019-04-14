@@ -40,11 +40,9 @@ if (isset($_GET['lessonId'])){
     $lessonName = $dataRows['lessonName'];
     $lessonSummary = $dataRows['lessonSummary'];
     $videoOverview = $dataRows['videoOverview'];
+    $les_desc_img=$dataRows['descriptiveImage'];
 }
 ?>
-<p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
-        <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small><a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
-    <a href="upload-lesson.php" style="float:right;">Upload Lesson</a></p>
 
 <div id="mySidebar" class="sidebar">
     <br>
@@ -85,7 +83,7 @@ echo '
                 <?php echo $lessonSummary; ?>
             </p>
             <br>
-            <video src="video/<?php echo $videoOverview; ?>" class="img-responsive" loop controls autoplay></video>
+            <video src="video/<?php echo $videoOverview; ?>" class="img-responsive" loop controls poster="image/<?php echo $les_desc_img; ?>"></video>
             <br>
             <br>
             <br>
