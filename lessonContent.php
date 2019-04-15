@@ -87,7 +87,7 @@ echo '
             
             <div class="container-vid">
 <div class="c-video">
-	<video id="les_video" class="video" src="video/<?php echo $videoOverview; ?>" poster="image/<?php echo $les_desc_img; ?>"></video>
+	<video id="les_video" autoplay class="video" src="video/<?php echo $videoOverview; ?>" poster="image/<?php echo $les_desc_img; ?>"></video>
 	<div class="controls">
 		 <div class="orange">
 		 	<div class="orange-juice">
@@ -96,7 +96,7 @@ echo '
 		 </div>
 		 <div class="buttons row" align="center">
 <div>
-		 	<button id="playpausebtn" class="play btn btn-dark">
+		 	<button id="playpausebtn" class="play btn btn-dark" onclick="playPause()">
 		 		<i class='fas fa-play' style='font-size:25px' id="play"></i>
 		 		<i class='fas fa-pause' style='font-size:25px' id="pause"></i>
 		 	</button>

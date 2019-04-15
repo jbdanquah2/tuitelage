@@ -28,7 +28,7 @@ function intializePlayer(){
     speedBack = document.getElementById("rewind");
      speedforward = document.getElementById("fastForward");
     // Add event listeners
-    playbtn.addEventListener("click",playPause); // 
+    // playbtn.addEventListener("click",playPause); // 
     // seekslider.addEventListener("change",vidSeek); // ("". function called)
     vid.addEventListener("timeupdate",seektimeupdate);
     vid.addEventListener("click",playPause);
@@ -43,7 +43,7 @@ playbtn.innerHTML='';
 }
 window.onload = intializePlayer; // window.onload means that anything in between the curly brackets will run when the entire has loaded, including images, etc.
 function playPause(){
-    if(vid.pause()){
+    if(vid.paused()){
     	vid.play();
         document.getElementById("play").style.display="none";
         document.getElementById("pause").style.display="block";

@@ -7,6 +7,7 @@ if($_SESSION['companyId'] != 4) {
     $page_title = "Tuitelage.com Members Area";  
     $at = ' @ ';
     $comp_name = $_SESSION['userCompany'];
+    $user_type=$_SESSION['userType'];
         
     }else {
     $_SESSION['userCompany']=$_SESSION['user'];
@@ -15,6 +16,7 @@ if($_SESSION['companyId'] != 4) {
      $c_logo = "image/{$_SESSION['companyLogo']}";
     $at = '';
     $comp_name = '';
+    $user_type=$_SESSION['userType'];
 }
 
 $hrline ='<hr class="hrline">';
@@ -39,12 +41,13 @@ if(!isset($_SESSION['user']))
 
 include_once "layout_header.php";
 
-?>
-<div class="container">
+if ($user_type!="guest"){
+    echo'
+    <div class="container">
 <div class="row">
 <div class="col-4"></div>
 <div class="col-4">
-<a href="manage-lesson.php" class="btn btn-dark">
+<a href="admin-activity.php" class="btn btn-dark">
 <!--Manage Lessons -->
 <div><i class="material-icons">book</i></div>
 Manage lessons
@@ -63,6 +66,11 @@ Manage Employees
 </div>
 
 </div>
+    ';
+}
+
+?>
+
 
 <!-- <div class="row">
    
@@ -93,16 +101,15 @@ $row_num=$stmt->rowCount();
 if($row_num==0){
     echo
                         '<div class="card  t-material" id="lesson_t" style="
+                        width=18rem;
                         max-width: 33.333%;
                         max-height:90%;
                         ">
-                        <img class="card-img _image img-responsive" src="icon/plus-big.png" width=700 height=200 alt="Card image">
+                        <img class="card-img _image img-responsive" src="image/logo.jpg" width=700 height=100 alt="Card image">
                             <div class="card-body t-body">
 
                                 <div class="car-img-overlay">
-                                    <h5 class="card-title text-center">
-                                    No lessons Yet
-                                    </h5>
+                                
                                 </div>                
                  <form action="lessonContent.php" method="GET">
                     <a class="btn btn-danger card-link" href="upload-lesson.php">

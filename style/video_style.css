@@ -5,16 +5,13 @@ align-items: center;
 height:100vh;
 }
 
-.video{
-	width: 100%;
 
-
-}
 .c-video{
 	width: 100%;
 	max-width: 800px;
 	position:relative;
 	overflow: hidden;
+
 }
 .c-video:hover .controls{
 	transform: translateY(0);

@@ -163,10 +163,20 @@ $count=1;
                   </a>
                   
         </td>
-        <td>
+        <td class="row">
+        <button class="btn btn-outline-danger" name="drop_topic" action="'
+        .
+        
+        .'
+
+        ">
+        Update<svg-icon><src href="sprite.svg#si-glyph-delete" /></svg-icon>
+    </button>
         <button class="btn btn-outline-danger" name="drop_topic">
             Delete <svg-icon><src href="sprite.svg#si-glyph-delete" /></svg-icon>
         </button>
+        
+
         
         </td>
       </tr>';

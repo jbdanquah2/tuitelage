@@ -56,6 +56,7 @@ $_SESSION['user'] = $row['firstName'];
 $_SESSION['userCompany'] = $row['companyName'];
 $_SESSION['companyShortName'] = $row['companyShortName'];
 $_SESSION['companyId'] = $row['companyId'];
+$_SESSION['userType']=$row['userType'];
             if($_SESSION['companyId'] ==  4){
            $_SESSION['companyLogo'] = $row['avatar'];    
             }else{
