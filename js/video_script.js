@@ -43,7 +43,7 @@ playbtn.innerHTML='';
 }
 window.onload = intializePlayer; // window.onload means that anything in between the curly brackets will run when the entire has loaded, including images, etc.
 function playPause(){
-    if(vid.paused){
+    if(vid.pause()){
     	vid.play();
         document.getElementById("play").style.display="none";
         document.getElementById("pause").style.display="block";

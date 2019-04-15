@@ -340,7 +340,9 @@ $row_num=$stmt->rowCount();
             $lessonSummary = $row['lessonSummary'];
             $descriptiveImage = $row['descriptiveImage'];
 echo '
-<div class="card t-material" id="lesson_t">
+<div class="card t-material" id="lesson_t" style="
+max-width: 33.333%;
+">
                         <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image" style="
                         
                         
@@ -491,5 +493,20 @@ echo $ex->getMessage();
 }
 
 }
+
+function updateLesson($lessonId,$lessonName,$descriptiveImage,$videoOverview,$updatedBy){
+    $query="UPDATE lesson
+    SET `lessonName`='".$lessonName."', `lessonSummary`=".$lessonSummary."', 
+    `descriptiveImage`='".$descriptiveImage."',
+    `videoOverview`='".$videoOverview."', `updatedBy`='".$updatedBy."', 
+    `UpdatedDatetime`=date() WHERE `lessonId`=".$lessonId;
+}
+
+// function updateTopic($topicName,$topicDesc,$videoUrl,$updatedby){
+//     $query=" UPDATE topic
+//     SET `topicName`='".$topicName."',
+//      `description`='".$topicDesc."', `videoUrl`='".$videoUrl."',
+//       `updatedBy`='".$updatedby"',`updatedDatetime`=`date()`";
+// }
     
 ?>

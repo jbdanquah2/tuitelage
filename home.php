@@ -69,7 +69,10 @@ $stmt=$lesson->readCompanyLesson($_SESSION['companyId']);
 $row_num=$stmt->rowCount();
 if($row_num==0){
     echo
-                        '<div class="card  t-material" id="lesson_t">
+                        '<div class="card  t-material" id="lesson_t" style="
+                        max-width: 33.333%;
+                        max-height:90%;
+                        ">
                         <img class="card-img _image img-responsive" src="icon/plus-big.png" width=700 height=200 alt="Card image">
                             <div class="card-body t-body">
 
