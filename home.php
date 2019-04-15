@@ -40,6 +40,29 @@ if(!isset($_SESSION['user']))
 include_once "layout_header.php";
 
 ?>
+<div class="container">
+<div class="row">
+<div class="col-4"></div>
+<div class="col-4">
+<a href="manage-lesson.php" class="btn btn-dark">
+<!--Manage Lessons -->
+<div><i class="material-icons">book</i></div>
+Manage lessons
+
+</a>
+<a href="manage-users.php"class="btn btn-dark">
+<!--Manage Users -->
+<div><i class="material-icons">people</i></div>
+Manage Employees
+
+</a>
+<br><br><br>
+</div>
+<div class="col-4"></div>
+
+</div>
+
+</div>
 
 <!-- <div class="row">
    
