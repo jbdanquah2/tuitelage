@@ -33,12 +33,7 @@ include_once 'objects/lesson.php';
     <center>
         <div class="container">
             <br>
-        <div class="row new_g">
-        <h2>Manage Users</h2>
-        <hr>
-         </div>
         
-         <br>
          <div class="card-deck">
 
          <div class="card t-material" id="lesson_t">

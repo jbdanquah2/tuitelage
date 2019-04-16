@@ -494,6 +494,16 @@ echo $ex->getMessage();
 
 }
 
+function firstLesson($companyId){
+  $stmt=readCompanyLesson($companyId);
+    $row_num=$stmt->rowCount();
+    if ($row_num==0){
+        header("Location: upload-lesson.php");
+    }
+return 0
+
+}
+
 function updateLesson($lessonId,$lessonName,$descriptiveImage,$videoOverview,$updatedBy){
     $query="UPDATE lesson
     SET `lessonName`='".$lessonName."', `lessonSummary`=".$lessonSummary."', 

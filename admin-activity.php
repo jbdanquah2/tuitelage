@@ -48,15 +48,15 @@ if ($user_type!="admin"){
 ?>
 <div id="_home" class="container-fluid col-12">
     <div class="container">
-        <div class="row">
+        <div class="row" id="admin_acts">
             <center>
                 <div class="col-md-10">
                 <div class="card-columns" id="admin_cards">
                     <a href="upload-lesson.php">
   <div class="card bg-dark ">
     <div class="card-body">
-        <div>
-        <i class="material-icons md-48">chrome_reader_mode</i>
+    <div style="color:white;">
+        <i class="material-icons md-48">book</i>
         </div>
       <h5 class="btn btn-dark">Add a fresh lesson</h5>
     </div>
@@ -65,8 +65,8 @@ if ($user_type!="admin"){
   <a href="upload-topic.php">
   <div class="card bg-success ">
     <div class="card-body">
-    <div>
-        <i class="material-icons md-48">chrome_reader_mode</i>
+    <div style="color:white;">
+        <i class="material-icons md-48">library_add</i>
         </div>
       <h5 class="btn btn-success">Add a Topic</h5>
     </div>
@@ -75,8 +75,8 @@ if ($user_type!="admin"){
   <a href="upload-lesson-quiz.php">
   <div class="card bg-secondary ">
     <div class="card-body">
-    <div>
-        <i class="material-icons md-48">chrome_reader_mode</i>
+    <div style="color:white;">
+        <i class="material-icons md-48">format_list_numbered</i>
         </div>
       <h5 class="btn btn-">Add Lesson quiz</h5>
     </div>
@@ -85,16 +85,19 @@ if ($user_type!="admin"){
   <a href="lesson-topic-quiz.php">
        <div class="card bg-warning">
     <div class="card-body">
-    <div>
-        <i class="material-icons md-48">chrome_reader_mode</i>
+    <div style="color:white;">
+        <i class="material-icons md-48">notes</i>
         </div>
-    <h5 class="btn btn-waring">Add Topic quiz</h5>
+    <h5 class="btn btn-warning">Add Topic quiz</h5>
 </div>
   </div></a>
 
   <a href="lesson-review.php">
        <div class="card bg-primary ">
     <div class="card-body">
+    <div style="color:white;">
+        <i class="material-icons md-48">library_books</i>
+        </div>
     <h5 class="btn btn-primary">Review Lessons</h5>
 </div>
   </div></a>
@@ -102,8 +105,8 @@ if ($user_type!="admin"){
   <a href="lesson-review.php">
        <div class="card bg-info ">
     <div class="card-body">
-    <div>
-        <i class="material-icons md-48">chrome_reader_mode</i>
+    <div style="color:white;">
+        <i class="material-icons md-48">help</i>
         </div>
     <h5 class="btn btn-info">Review quiz</h5>
 </div>
@@ -116,3 +119,9 @@ if ($user_type!="admin"){
 </div>
 </div>
 </div>
+<br>
+<br>
+<?php
+// footer
+include_once "layout_footer.php";
+?>

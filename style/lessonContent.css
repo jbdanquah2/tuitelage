@@ -242,6 +242,7 @@ video {
   }
 #admin_cards{
     color:white;
+
 }
 
 
@@ -259,6 +260,16 @@ video {
         padding-top: 5px;
 
     }
+
+    #admin_cards {
+        padding-left: 70px;
+    } 
+    
+    #admin_card .card-body {
+       padding: 10px 100px 30px 40px;
+        
+    }
+    
     #up_vid{
         max-width:250px;
     }
