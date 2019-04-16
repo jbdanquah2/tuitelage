@@ -51,7 +51,65 @@ if ($user_type!="admin"){
         <div class="row">
             <center>
                 <div class="col-md-10">
-                
+                <div class="card-columns" id="admin_cards">
+                    <a href="upload-lesson.php">
+  <div class="card bg-dark ">
+    <div class="card-body">
+        <div>
+        <i class="material-icons md-48">chrome_reader_mode</i>
+        </div>
+      <h5 class="btn btn-dark">Add a fresh lesson</h5>
+    </div>
+  </div></a>
+
+  <a href="upload-topic.php">
+  <div class="card bg-success ">
+    <div class="card-body">
+    <div>
+        <i class="material-icons md-48">chrome_reader_mode</i>
+        </div>
+      <h5 class="btn btn-success">Add a Topic</h5>
+    </div>
+  </div></a>
+
+  <a href="upload-lesson-quiz.php">
+  <div class="card bg-secondary ">
+    <div class="card-body">
+    <div>
+        <i class="material-icons md-48">chrome_reader_mode</i>
+        </div>
+      <h5 class="btn btn-">Add Lesson quiz</h5>
+    </div>
+  </div></a>
+
+  <a href="lesson-topic-quiz.php">
+       <div class="card bg-warning">
+    <div class="card-body">
+    <div>
+        <i class="material-icons md-48">chrome_reader_mode</i>
+        </div>
+    <h5 class="btn btn-waring">Add Topic quiz</h5>
+</div>
+  </div></a>
+
+  <a href="lesson-review.php">
+       <div class="card bg-primary ">
+    <div class="card-body">
+    <h5 class="btn btn-primary">Review Lessons</h5>
+</div>
+  </div></a>
+
+  <a href="lesson-review.php">
+       <div class="card bg-info ">
+    <div class="card-body">
+    <div>
+        <i class="material-icons md-48">chrome_reader_mode</i>
+        </div>
+    <h5 class="btn btn-info">Review quiz</h5>
+</div>
+  </div></a>
+
+  
 
 </div>
 </center>

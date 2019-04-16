@@ -240,7 +240,9 @@ video {
 .card-text {
     font-size: 85%;
   }
-
+#admin_cards{
+    color:white;
+}
 
 
 /* On smaller screens, where height is less than 750px, change the style of the sidenav (less padding and a smaller font size) */
