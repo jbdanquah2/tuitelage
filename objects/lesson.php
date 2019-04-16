@@ -500,7 +500,7 @@ function firstLesson($companyId){
     if ($row_num==0){
         header("Location: upload-lesson.php");
     }
-return 0
+return 0;
 
 }
 

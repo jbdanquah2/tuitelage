@@ -104,6 +104,7 @@ if($row_num==0){
                         width=18rem;
                         max-width: 33.333%;
                         max-height:90%;
+                        
                         ">
                         <img class="card-img _image img-responsive" src="image/logo.jpg" width=700 height=100 alt="Card image">
                             <div class="card-body t-body">
