@@ -1,5 +1,4 @@
 <?php
-$index__page = "/tuitelage/index.php";
 
 
 if(!isset($_SESSION['user'])){
@@ -13,19 +12,14 @@ echo'<div class="row">
             &times;
             </a></div>
 <a href="upload-lesson.php" class="btn btn-inline-dark">
-<i class="material-icons md-48">book</i>
 Manage Lessons</a>
 <a href="" class="btn btn-inline-dark">
-<i class="material-icons md-48">build</i>
 Company Profile</a>
 <a href="manage-users.php?" class="btn btn-inline-dark">
-<i class="material-icons md-48">book</i>
 Manage Users</a>
 <a href="" class="btn btn-inline-dark">
-<i class="material-icons md-48">account_box</i>
 Profile</a>
 <a href="logout.php?logout" class="btn btn-inline-dark">
-<i class="material-icons md-48">play_for_work</i>
 Log out</a>
 </div>
 </div>';

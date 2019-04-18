@@ -19,11 +19,6 @@ if($_SESSION['companyId'] != 4) {
     $user_type=$_SESSION['userType'];
 }
 
-$hrline ='<hr class="hrline">';
-$motive = 'Search your favorite lessons.  <form method="post" class="form-inline home-search">
-            <input name="searchForm" class="form-control" type="text" placeholder="Search favorite lesson" required>
-            <button id="motive-search" class="btn btn-success-outline bg-dark sbtn" type="submit" name="search">Search </button>
-        </form>';
 
 // include database and object files
 include_once 'config/connection.php';
