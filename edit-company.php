@@ -52,21 +52,43 @@ header("Location: index.php");
                             </div>
                          
                             <div class="col-sm-12 form-group">
-                                <label>First Name</label>
+                                <label>Company Name</label>
                                 <textarea rows="1" type="text" name="firstName" placeholder="eg: John" class="form-control"> 
                                 </textarea>
                                 </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
-                                <label>Last Name</label>
+                                <label>Short Name</label>
                                 <textarea rows="1" type="text" name="lastName" placeholder="eg: Doe" class="form-control">
                                 </textarea>
                                  </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Address</label>
+                                <textarea rows="1" type="text" name="address_1" placeholder="eg:mamam@tuitelage.com" class="form-control">
+                                </textarea>
+                                 </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Phone</label>
+                                <textarea rows="1" type="number" name="phone_1" placeholder="eg: +233-24-525-8564" class="form-control">
+                                </textarea>
+                                 </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Website</label>
+                                <textarea rows="1" type="text" name="website_1" placeholder="eg: www.tuitelage.com" class="form-control">
+                                </textarea>
+                                 </div>
+                        </div>
+                        
                         <div class="form-group">
                             <label>Email Address</label>
-                            <textarea rows="1" type="email" name="email" placeholder="eg:mamam@tuitelage.com" class="form-control">
+                            <textarea rows="1" type="email" name="email" placeholder="eg: example@email.com" class="form-control">
                             </textarea>
                              </div>
 

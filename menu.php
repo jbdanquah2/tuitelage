@@ -13,11 +13,11 @@ echo'<div class="row">
             </a></div>
 <a href="upload-lesson.php" class="btn btn-inline-dark">
 Manage Lessons</a>
-<a href="edit.php" class="btn btn-inline-dark">
+<a href="edit-company.php" class="btn btn-inline-dark">
 Company Profile</a>
 <a href="manage-users.php?" class="btn btn-inline-dark">
 Manage Users</a>
-<a href="" class="btn btn-inline-dark">
+<a href="edit.php" class="btn btn-inline-dark">
 Profile</a>
 <a href="logout.php?logout" class="btn btn-inline-dark">
 Log out</a>
