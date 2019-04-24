@@ -60,6 +60,9 @@
     /*    z-index: 100;
     */
 }
+#edit{
+    width:100%;
+}
 .editable_box {
     border-top-style: solid ;
     border-top-color: rgb(0, 0, 0);
@@ -122,6 +125,21 @@ video {
     box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
 
 }
+#new_pass{
+    display:none;
+}
+.up_image{
+    border-radius: 60px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    -ms-border-radius: 60px;
+    -o-border-radius: 60px;
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+    box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.8);
+
+}
+
 #is_a_plus{
     width:50px;
     height:40px;
@@ -133,6 +151,7 @@ video {
     -o-border-radius: 100px;
     float:center;
 }
+
 .new_g{
     width:30%;
     /* background-color: #111; */
@@ -244,6 +263,7 @@ video {
     color:white;
 
 }
+
 
 
 /* On smaller screens, where height is less than 750px, change the style of the sidenav (less padding and a smaller font size) */

@@ -173,6 +173,7 @@ nav {
         height: 50px;
         margin: 0;
         padding: 0;
+        display:none;
     }
 
     #c_s_n {

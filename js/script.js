@@ -17,3 +17,13 @@ function closeNav() {
     }
     //    return this.wdth = false;
 }
+
+var update_pass=document.getElementById("new_pass");
+var cur_pass=document.getElementsByName("up_pssword");
+if (document.getElementsByName("up_pssword").innerHTML!=""){
+    update_pass.style.display="block";
+}
+else{
+    update_pass.style.display="none";
+}
+
