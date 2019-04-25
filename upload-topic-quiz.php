@@ -7,10 +7,10 @@ if($_SESSION['companyId'] != 26) {
     $comp_short_name =$_SESSION['companyShortName'];
     $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
-    $page_title = "Tuitelage.com Members Area";  
+    $page_title = "Tuitelage.com Members Area";
     $at = ' @ ';
     $comp_name = $_SESSION['userCompany'];
-        
+
     }else {
     $_SESSION['userCompany']=$_SESSION['user'];
     $page_title = "Welcome {$_SESSION['userCompany']}!";
@@ -37,17 +37,18 @@ if(!isset($_SESSION['user']))
 {
 header("Location: index.php");
 }
- 
+
 if(isset($_POST['newTopicBtn'])){
 $lessonId = $_POST['lessons'];
   $topicName = $_POST['topicName'];
     $description =  $_POST['description'];
-    
+
     $videoUrl = $_FILES['videoUrl']['name'];
-    $video = $_FILES['videoUrl']['tmp_name']; move_uploaded_file($video,"video/$videoUrl");
-       
- $detailRows=$lesson->createTopic($lessonId, $topicName, $description, $videoUrl, $_SESSION['userName'], $_SESSION['userName']);  
-    
+    $video = $_FILES['videoUrl']['tmp_name'];
+    move_uploaded_file($video,"video/$videoUrl");
+
+ $detailRows=$lesson->createTopic($lessonId, $topicName, $description, $videoUrl, $_SESSION['userName'], $_SESSION['userName']);
+
 }
 
 ?>
@@ -83,15 +84,15 @@ $lessonId = $_POST['lessons'];
                             <select class="form-control" name="lessons" required>
                                 <option value="0" selected>Pick a lesson</option>
                                 <?php
-                        
+
 $lessonNames=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($lessonRow = $lessonNames->fetch(PDO::FETCH_ASSOC)) {
 
 $lessonId    = $lessonRow['lessonId'];
 $lessonName = $lessonRow['lessonName'];
-      
+
 echo '<option onchange="callback()" value="'.$lessonId.'">'.$lessonName.'</option>';
-             
+
 }
 ?>
                             </select>
@@ -105,15 +106,15 @@ echo '<option onchange="callback()" value="'.$lessonId.'">'.$lessonName.'</optio
                                 <script>
                                     function callback() {
                                         var topic = <?php
-                        
+
 $topicNames=$lesson->readTopic($lessonId);
  while($topicRow = $topicNames->fetch(PDO::FETCH_ASSOC)) {
 
 $topicId    = $topicRow['topicId'];
 $topicName = $topicRow['topicName'];
-      
+
 echo '<option value="'.$topicId.'">'.$topicName.'</option>';
-           
+
 }
 ?>
                                         document.write(topic);
@@ -146,7 +147,8 @@ echo '<option value="'.$topicId.'">'.$topicName.'</option>';
                         <div class="card-body">
                             <input class="form-control" type="text" name="toptionC" required> </div>
                     </div>
-                    <input type="submit" class="btn btn-dark" name="newTopicBtn"> </form>
+                    <input type="submit" class="btn btn-dark" name="newTopicBtn">
+                  </form>
             </div>
         </center>
     </div>

@@ -38,8 +38,7 @@ $lesson = new lesson($db);
         <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a></p>
     <br>
   <?php
-    if (isset($_GET['getQuiz'])){
-        $_SESSION['id'] = $_GET['getQuiz'];
+    if (isset($_GET['submitQuiz'])){
     echo   ' <a class="btn btn-secondary card-link ml-2" href="lessonContent.php?lessonId='.$_SESSION['id'].'">Back To Lesson</a>';
       }
   ?>
@@ -49,14 +48,17 @@ $lesson = new lesson($db);
                 <div class="card" id="cards_holder">
                     <div class="card-body">
                         <div>
-                            <h5 class="card-title">Questions</h5>
+<!-- <h5 class="card-title text-primary">RESULTS: <?php //  echo $result .'/'.$count?></h5> -->
                           <?php echo '<h4 class="text-center">'. $_SESSION['lessonName'] .'</h4>' ?>
                         </div>
+                        <form action="quiz-answer.php" method="post">
                         <?php
-if (isset($_GET['getQuiz'])){
-    $_SESSION['id'] = $_GET['getQuiz'];
+
+if (isset($_GET['submitQuiz'])){
     $count = 0;
-   $quiz=$lesson->readLessonQuiz($_SESSION['id']);
+    $result = 0;
+   $quiz=$lesson->readQuizAns($_SESSION['id']);
+  // $rowCount = $quiz ->rowCount();
     while($quizRow = $quiz->fetch(PDO::FETCH_ASSOC)) {
       $quizId = $quizRow['quizId'];
       $count = $count + 1;
@@ -65,56 +67,56 @@ if (isset($_GET['getQuiz'])){
        $optionB= $quizRow['optionB'];
        $optionC = $quizRow['optionC'];
        $status = $quizRow['status'];
+       $answerValue = $quizRow['answerValue'];
+
+       if($_GET["$quizId"] == $answerValue ) {
+           $result = $result + 1;
+           $choice = '<span class="text-success text-center">'.$_GET["$quizId"].'</span>';
+           $ans = '<span class="text-success text-center ml-4">Correct Choice</span>';
+       }else{
+         $choice = '<span class="text-danger text-center">'.$_GET["$quizId"].'</span>';
+         $ans = '<span class="text-danger text-center ml-4">Wrong Choice</span>';
+       }
+
+
 echo '
-
+  <h5 class="card-title text-primary">RESULTS:'. $result .'/'.$count.'</h5>
 <div class="card text-black  mb-2" id="cards_holder_item">
-                <form>
-                                <div class="card-header"><b>'.$count.'</b></div>
-                                <div class="card-body">
-                                    <p>'.
-                                       $question .'
-                                    </p>
-
-                                    <!-- Responds -->
-                                    <div class="container row">
-                                        <div class="btn btn-block text-left">
-                                            <input type="radio" name="'.$quizId.'" value="A"> '.$optionA.'
-                                        </div>
-                                        <div class="btn btn-block text-left">
-                                            <input type="radio" name="'.$quizId.'" value="B"> '.$optionB.'
-                                        </div>
-                                        <div class="btn btn-block text-left">
-                                          <input type="radio" name="'.$quizId.'" value="C"> '.$optionC.'
-                                        </div>
-                                        </div>
-                                        <br>
-                                        <label>
-                                            <h5>Ans:</h5>
-                                    </label>
+      <div class="card-header"><b>'.$count. ' </b>'.$ans.'</div>
+            <div class="card-body">
+                <p>'.$question .'</p>
+                    <!-- Responds -->
+                    <div class="container row">
+                        <div class="btn btn-block text-left">
+                            <input disabled type="radio" id="'.$optionA.'" name="'.$quizId.'" value="'.$optionA.'" required> '.$optionA.'
                         </div>
+                        <div class="btn btn-block text-left">
+                            <input disabled type="radio" id="'.$optionB.'" name="'.$quizId.'" value="'.$optionB.'" required> '.$optionB.'
+                        </div>
+                        <div class="btn btn-block text-left">
+                          <input disabled type="radio" id="'.$optionC.'" name="'.$quizId.'" value="'.$optionC.'" required> '.$optionC.'
+                        </div>
+                        </div>
+                        <br>
+                        <label>
+                        <h5>Your Choice: '.$choice.' </h5>    <h5>Ans: '.$answerValue.' </h5>
+                        </label>
                     </div>
-                </form>
-';
+                </div>
 
-    }
-}
-else if(!isset($_GET['getQuiz'])){
-    echo'
-    <div class="container row colspan-6" id="empty-Search" >
-    <div class="alert alert-warning" id="our_alert" align="center">
-    <strong>Lucky You!</strong> There You, There are no quizes here yet <p><a href="home.php" class="btn btn-warning">Back To Home</a></p>
-  </div>
-  </div>
-    ';
+';
+  }
+
 }
 else{
     echo"Hmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
 }
 
-
 ?>
-                            <button type="button" class="btn btn-secondary">Submit <span class="glyphicon"></span> </button>
-                    </div>
+  </div>
+</form>
+
+
                 </div>
             </div>
         <!-- </div> -->

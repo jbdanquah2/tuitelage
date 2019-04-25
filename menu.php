@@ -7,7 +7,7 @@ $type2 = 'employee';
 if ($_SESSION['userType'] == $type1){
 $manageLesson = '<a href="upload-lesson.php" class="btn btn-inline-dark">Manage Lessons</a>';
 $companyProfile ='<a href="" class="btn btn-inline-dark">Company Profile</a>';
-$addEmployee = '<a href="signup-3.php" class="btn btn-inline-dark">Add Employee</a>';
+$addEmployee = '<a href="signup-3.php?compId='.$_SESSION['companyId'].'" class="btn btn-inline-dark">Add Employee</a>';
 }else if($_SESSION['userType'] == $type2) {
   $manageLesson ='';
   $companyProfile ='<a href="" class="btn btn-inline-dark">Company Profile</a>';
@@ -30,7 +30,7 @@ echo'<div class="row">
             &times;
             </a></div>'
             .$manageLesson.
-            $companyProfile.
+            // $companyProfile.
             $addEmployee.'
 <a href="user-profile.php" class="btn btn-inline-dark">Profile</a>
 <a href="logout.php?logout" class="btn btn-inline-dark">Log out</a>

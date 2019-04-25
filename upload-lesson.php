@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $hrline ="";
 $motive = "";
@@ -6,10 +6,10 @@ if($_SESSION['companyId'] != 26) {
     $comp_short_name =$_SESSION['companyShortName'];
     $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
-    $page_title = "Tuitelage.com Members Area";  
+    $page_title = "Tuitelage.com Members Area";
     $at = ' @ ';
     $comp_name = $_SESSION['userCompany'];
-        
+
     }else {
     $_SESSION['userCompany']=$_SESSION['user'];
     $page_title = "Welcome {$_SESSION['userCompany']}!";
@@ -39,13 +39,15 @@ header("Location: index.php");
 if(isset($_POST['newLessonBtn'])){
     $lessonName = $_POST['lessonName'];
     $lessonSummary =  $_POST['lessonSummary'];
-    
+
     $descriptiveImage = $_FILES['descriptiveImage']['name'];
-    $image = $_FILES['descriptiveImage']['tmp_name']; move_uploaded_file($image,"image/$descriptiveImage");
-    
+    $image = $_FILES['descriptiveImage']['tmp_name'];
+    move_uploaded_file($image,"image/$descriptiveImage");
+
     $videoOverview = $_FILES['videoOverview']['name'];
-    $video = $_FILES['videoOverview']['tmp_name']; move_uploaded_file($video,"video/$videoOverview");
-    
+    $video = $_FILES['videoOverview']['tmp_name'];
+    move_uploaded_file($video,"video/$videoOverview");
+
 $detailRows=$lesson->createLesson($lessonName, $lessonSummary, $descriptiveImage,$videoOverview, $_SESSION['userName'], $_SESSION['userName'], $_SESSION['companyId']);
 }
 
@@ -56,7 +58,7 @@ $detailRows=$lesson->createLesson($lessonName, $lessonSummary, $descriptiveImage
             <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
         </p>
     </center>
-    <?php 
+    <?php
 include_once "sidebar.php";
 ?>
         <div id="main">

@@ -123,6 +123,7 @@ return false;
 public function createEmployee($avatar,
                            $firstName,
                            $lastName,
+                           $userType,
                            $email,
                            $pssword,
                            $companyId,
@@ -144,7 +145,8 @@ $statement = $this->conn->prepare(
 
 set @lastId = last_insert_id();
 
-INSERT INTO app_user(personId, userName, pssword, userType, updatedBy, createdBy) VALUES (@lastId,:email,:pssword,'employee', :updatedBy,:createdBy);
+INSERT INTO app_user(personId, userName, pssword, userType, updatedBy, createdBy)
+VALUES (@lastId,:email,:pssword,:userType,:updatedBy,:createdBy);
 
 
 INSERT INTO company_person(companyId,personId) VALUES (:companyId, @lastId);
@@ -155,15 +157,11 @@ $statement->bindparam(":firstName",$firstName);
 $statement->bindparam(":lastName",$lastName);
 $statement->bindparam(":email",$email);
 $statement->bindparam(":pssword",$pssword);
+$statement->bindparam(":userType",$userType);
 $statement->bindparam(":avatar",$avatar);
 $statement->bindparam(":companyId",$companyId);
 $statement->bindparam(":updatedBy",$createdBy);
 $statement->bindparam(":createdBy",$createdBy);
-
-
-
-
-
 
 $statement->execute();
 
@@ -175,6 +173,16 @@ echo "Sorry unable to register. Please again";
 return false;
 }
 }
+
+public function numEmployee($companyId){
+
+  $stmt = $this->conn->prepare("SELECT count(*) FROM company_person WHERE companyId = :companyId");
+    $stmt->bindParam(":companyId",$companyId);
+    $stmt->execute();
+    $dataRows = $stmt -> fetchColumn();
+  return $dataRows;
+}
+
 
 public function getUser($userName){
 
@@ -189,6 +197,14 @@ return $dataRows;
 } catch (PDOException $ex){
 echo $ex->getMessage();
 }
+}
+
+public function updateUser($userName, $newPssword){
+  $stmt = $this->conn->prepare("UPDATE app_user SET pssword=:newPssword WHERE userName=:userName");
+  $stmt->bindParam(":userName",$userName);
+  $stmt->bindParam(":newPssword",$newPssword);
+  $stmt->execute();
+return true;
 }
 }
 ?>

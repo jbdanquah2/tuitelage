@@ -4,10 +4,10 @@ if($_SESSION['companyId'] != 26) {
     $comp_short_name =$_SESSION['companyShortName'];
     $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
-    $page_title = "Tuitelage.com Members Area";  
+    $page_title = "Tuitelage.com Members Area";
     $at = ' @ ';
     $comp_name = $_SESSION['userCompany'];
-        
+
     }else {
     $_SESSION['userCompany']=$_SESSION['user'];
     $page_title = "Welcome {$_SESSION['userCompany']}!";
@@ -40,16 +40,7 @@ if(!isset($_SESSION['user']))
 include_once "layout_header.php";
 
 ?>
-    <!-- <div class="row">
-   
-<div id="com-menu" class="col-lg-6 col-sm-10">
-    <a href="" class="btn btn-inline-dark">Manage Lessons</a>
-    <a href="" class="btn btn-inline-dark">Company Profile</a>
-    <a href="" class="btn btn-inline-dark">Add Users</a>
-    <a href="" class="btn btn-inline-dark">Profile</a>
-    <a href="" class="btn btn-inline-dark">Log out</a>
-</div>
-</div> -->
+
     <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
         <?php echo $_SESSION['user']. $at . $comp_name;?>&nbsp;</small>
         <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
@@ -61,12 +52,9 @@ include_once "layout_header.php";
                 <div class="row">
                     <center>
                         <div class="col-md-10">
-                            <!--
-                    <div class="container">
-                        <div class="row card-columns">
--->
+                          
                             <?php
- if (!isset($_POST['search'])){                       
+ if (!isset($_POST['search'])){
 $stmt=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -74,7 +62,7 @@ $lessonId = $rows['lessonId'];
 $lessonName = $rows['lessonName'];
 $lessonSummary = $rows['lessonSummary'];
 $descriptiveImage = $rows['descriptiveImage'];
-      
+
 echo
                         '<div class="card  t-material" id="lesson_t">
                         <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
@@ -82,19 +70,19 @@ echo
 
                                 <div class="car-img-overlay">
                                     <h5 class="card-title text-center">'.
-                                        $lessonName . ' 
+                                        $lessonName . '
                                     </h5>
                                 </div>
                                 <p class="card-text text-justify">'.
                     $lesson->truncate($lessonSummary, 130) .'
-                                    </p>                 
+                                    </p>
                  <form action="lessonContent.php" method="GET">
                     <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">
                     View Lesson!</a>
                     </form>
-                    
+
                  </div>
-                 
+
             </div>'
             ;
 }

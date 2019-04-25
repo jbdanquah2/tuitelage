@@ -256,7 +256,7 @@ function createLesson($lessonName, $lessonSummary, $descriptiveImage, $videoOver
 
     }
 
-    function createTopic($lessonId, $topicName, $description, $videoUrl, $createdBy, $updatedBy){
+function createTopic($lessonId, $topicName, $description, $videoUrl, $createdBy, $updatedBy){
 
         //write query
         $query = "INSERT INTO topic (
@@ -366,6 +366,7 @@ function createQuiz($question, $optionA, $optionB, $optionC, $lessonId,$answerVa
         $stmt->bindParam(":queryString", $queryString);
         $stmt->bindParam(":companyId", $companyId);
     $stmt->execute();
+
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 {
             $lessonId = $row['lessonId'];
@@ -441,13 +442,11 @@ echo $ex->getMessage();
 
      try {
          $query = "SELECT q.quizId, q.question, q.optionA, q.optionB,
-         q.optionC, q.status
- FROM
-     quiz q
- JOIN
-     quiz_lesson ql on q.quizId = ql.quizId
+         q.optionC, q.status, a.answerValue
+ FROM quiz q JOIN quiz_lesson ql on q.quizId = ql.quizId join quiz_answer qa on qa.quizId = ql.quizId
+ join answer a on a.answerId = qa.answerId
  WHERE
- ql.lessonId=:lessonId   ORDER BY RAND()";
+ ql.lessonId=:lessonId";
 
      $statement = $this->conn->prepare($query);
      $statement->execute(array(":lessonId"=>$lessonId));

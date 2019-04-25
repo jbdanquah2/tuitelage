@@ -15,3 +15,8 @@ function closeNav() {
     }
     //    return this.wdth = false;
 }
+
+
+function selectedAns(selectedValue){
+  document.getElementById(selectedValue).checked = true;
+}

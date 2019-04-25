@@ -52,12 +52,14 @@ $lesson = new lesson($db);
                             <h5 class="card-title">Questions</h5>
                           <?php echo '<h4 class="text-center">'. $_SESSION['lessonName'] .'</h4>' ?>
                         </div>
-                        <form action="quiz-answer.php" method="post">
+                        <form action="quiz-answer.php" method="get">
                         <?php
+  $quiz=$lesson->readLessonQuiz($_SESSION['id']);
+  $quiz ->rowCount();
 if (isset($_GET['getQuiz'])){
-    $_SESSION['id'] = $_GET['getQuiz'];
     $count = 0;
    $quiz=$lesson->readLessonQuiz($_SESSION['id']);
+  $rowCount = $quiz ->rowCount();
     while($quizRow = $quiz->fetch(PDO::FETCH_ASSOC)) {
       $quizId = $quizRow['quizId'];
       $count = $count + 1;
@@ -66,47 +68,41 @@ if (isset($_GET['getQuiz'])){
        $optionB= $quizRow['optionB'];
        $optionC = $quizRow['optionC'];
        $status = $quizRow['status'];
+
 echo '
 
 <div class="card text-black  mb-2" id="cards_holder_item">
-
                                 <div class="card-header"><b>'.$count.'</b></div>
                                 <div class="card-body">
                                     <p>'.
                                        $question .'
                                     </p>
-
                                     <!-- Responds -->
                                     <div class="container row">
-                                        <div class="btn btn-block text-left">
-                                            <input type="radio" name="'.$quizId.'" > '.$optionA.'
-                                        </div>
-                                        <div class="btn btn-block text-left">
-                                            <input type="radio" name="'.$quizId.'" > '.$optionB.'
-                                        </div>
-                                        <div class="btn btn-block text-left">
-                                          <input type="radio" name="'.$quizId.'" > '.$optionC.'
-                                        </div>
+                                    <div class="btn btn-block text-left">
+                                        <input selectedAns() type="radio" id="'.$optionA.'" name="'.$quizId.'" value="'.$optionA.'" required> '.$optionA.'
+                                    </div>
+                                    <div class="btn btn-block text-left">
+                                        <input selectedAns() type="radio" id="'.$optionB.'" name="'.$quizId.'" value="'.$optionB.'" required> '.$optionB.'
+                                    </div>
+                                    <div class="btn btn-block text-left">
+                                      <input selectedAns() type="radio" id="'.$optionC.'" name="'.$quizId.'" value="'.$optionC.'" required> '.$optionC.'
+                                    </div>
                                         </div>
                                         <br>
-                                        <label>
-                                            <h5>Ans:</h5>
-                                    </label>
                         </div>
                     </div>
 
 ';
-
     }
-}
-else if(!isset($_GET['getQuiz'])){
+
+}else if($rowCount == 0){
     echo'
     <div class="container row colspan-6" id="empty-Search" >
     <div class="alert alert-warning" id="our_alert" align="center">
     <strong>Lucky You!</strong> There You, There are no quizes here yet <p><a href="home.php" class="btn btn-warning">Back To Home</a></p>
   </div>
-  </div>
-    ';
+  </div>';
 }
 else{
     echo"Hmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
@@ -114,7 +110,7 @@ else{
 
 
 ?>
-<button name="submitQuiz" type="button" class="btn btn-secondary">Submit <span class="glyphicon"></span> </button>
+<button name="submitQuiz" type="submit" value="true" class="btn btn-secondary">Submit <span class="glyphicon"></span> </button>
   </div>
 </form>
 

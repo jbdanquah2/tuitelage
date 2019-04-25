@@ -34,7 +34,8 @@ if(isset($_POST['signup_btn'])) {
     $validExt = array("png","jpeg","jpg");
 
     if(in_array($ext,$validExt)){
-       $photo = $_FILES['avatar']['tmp_name']; move_uploaded_file($photo,"image/$avatar");
+       $photo = $_FILES['avatar']['tmp_name'];
+       move_uploaded_file($photo,"image/$avatar");
 
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
@@ -78,7 +79,6 @@ echo("<span class='text-danger mb-0'>Registration Failed. Please try again</span
 }
 ?>
 <link rel="stylesheet" href="style/signup.css" type="text/css">
-
 <div id="_signup" class="container">
     <div class="row">
         <div class="col-lg-12 well">

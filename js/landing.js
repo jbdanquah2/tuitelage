@@ -23,3 +23,14 @@ function un_drag_menu() {
     com_menu.style.transform = "translateX(100%) translateX(-5px)";
     drag_btn.style.display = "block";
 }
+
+
+var hide = document.getElementById('hide');
+hide.style.display = "none";
+var hide_p = document.getElementById('hide_p');
+
+function hide_profile() {
+    hide_p.style.display = "none";
+    hide.style.display = "block";
+    hide.style.transform = "translateX(0)";
+}

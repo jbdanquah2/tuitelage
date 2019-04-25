@@ -372,7 +372,8 @@ overflow-y: hidden;
 
 @media screen and (max-width: 922px) {
   .profile {
-    width: 100%;
+    max-height: 90% !important;
+    width: 90%!important;
   }
     #lesson_t {
         /* width: auto; */
@@ -462,5 +463,5 @@ overflow-y: hidden;
 
 /*  USER PROFILE   */
 .profile {
-  width: 200px;
+  width: 300px;
 }
