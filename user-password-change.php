@@ -84,7 +84,7 @@ include_once "layout_header.php";
                                 }else if($new_pssword == $c_new_pssword){
                                     $appUser->updateUser($_SESSION['userNameM'], $new_pssword);
                                     echo    $_SESSION['passwordStatus'] ="<button class='btn btn-danger card-link'>Success: Password Changed</button> <br><hr>";
-                                    echo      $_SESSION['changeStatus'] = '<p class="alert alert-primary">You will need to use your new password net time<br><a href="user-profile.php">Try again?</a></p>';
+                                    echo      $_SESSION['changeStatus'] = '<p class="alert alert-primary">You will need to use your new password next time<br><a href="user-profile.php">Try again?</a></p>';
                                     }
                                   }
                               }

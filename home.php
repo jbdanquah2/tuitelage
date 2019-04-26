@@ -52,9 +52,21 @@ include_once "layout_header.php";
                 <div class="row">
                     <center>
                         <div class="col-md-10">
-                          
+
                             <?php
  if (!isset($_POST['search'])){
+   $numLesson =$lesson->numLessons($_SESSION['companyId']);
+   if($numLesson == 0){
+
+     echo "<div class='alert alert-light ml-4'><br>
+     <center class='text-dark'><h4>OOooops! there are no lesson here yet</h4><br>
+     <h5 class='text-info'>Go ahead upload some lesson</h5> <br>
+     <a href='home.php' class='btn btn-dark text-white'>Click here</a>
+     </center>
+     </div>"
+     ;
+     die();
+   }else {
 $stmt=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -85,6 +97,7 @@ echo
 
             </div>'
             ;
+}
 }
      }else{
       $searchForm = $_POST['searchForm'];

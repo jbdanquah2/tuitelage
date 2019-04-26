@@ -112,7 +112,6 @@ if(isset($_POST['signup_btn'])) {
 }
 ?>
 <link rel="stylesheet" href="style/signup.css" type="text/css">
-
 <div id="_signup" class="container">
     <div class="row">
         <div class="col-lg-12 well">

@@ -394,6 +394,16 @@ echo '
 }
 }}
 
+public function numLessons($companyId){
+  $stmt = $this->conn->prepare("SELECT count(*) from lesson l join company_lesson cl on
+  l.lessonId = cl.lessonId where cl.companyId = :companyId");
+  
+    $stmt->bindParam(":companyId",$companyId);
+    $stmt->execute();
+    $dataRows = $stmt -> fetchColumn();
+  return $dataRows;
+}
+
     // truncate string at word
 function truncate($string, $limit, $break =" ", $pad = "...") {
 
