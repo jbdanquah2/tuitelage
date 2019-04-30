@@ -57,15 +57,12 @@ include_once "layout_header.php";
  if (!isset($_POST['search'])){
    $numLesson =$lesson->numLessons($_SESSION['companyId']);
    if($numLesson == 0){
-
-     echo "<div class='alert alert-light ml-4'><br>
+     echo "<div class='alert alert-info'><br>
      <center class='text-dark'><h4>OOooops! there are no lesson here yet</h4><br>
-     <h5 class='text-info'>Go ahead upload some lesson</h5> <br>
-     <a href='home.php' class='btn btn-dark text-white'>Click here</a>
+     <h5 onclick='drag_menu()' class='text-info'>Go ahead upload some lesson</h5> <br>
+     <a href='upload-lesson.php' class='btn btn-dark text-white'>Click here</a>
      </center>
-     </div>"
-     ;
-     die();
+     </div>";
    }else {
 $stmt=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -76,17 +73,17 @@ $lessonSummary = $rows['lessonSummary'];
 $descriptiveImage = $rows['descriptiveImage'];
 
 echo
-                        '<div class="card  t-material" id="lesson_t">
+                    '<div class="card  t-material" id="lesson_t">
                         <img class="card-img _image img-responsive" src="image/'. $descriptiveImage .'" width=700 height=200 alt="Card image">
                             <div class="card-body t-body">
 
                                 <div class="car-img-overlay">
                                     <h5 class="card-title text-center">'.
-                                        $lessonName . '
+                                        $lessonName.'
                                     </h5>
                                 </div>
                                 <p class="card-text text-justify">'.
-                    $lesson->truncate($lessonSummary, 130) .'
+                    $lesson->truncate($lessonSummary, 130).'
                                     </p>
                  <form action="lessonContent.php" method="GET">
                     <a class="btn btn-danger card-link" href="lessonContent.php?lessonId='.$lessonId.'">

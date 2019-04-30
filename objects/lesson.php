@@ -87,7 +87,7 @@ return $stmt;
 }catch (PDOException $ex){
 echo $ex->getMessage();
         echo "Sorry Something went wrong. Contact Admin";
- }
+   }
  }
 
 function readCompanyLesson2($companyId){
@@ -397,7 +397,7 @@ echo '
 public function numLessons($companyId){
   $stmt = $this->conn->prepare("SELECT count(*) from lesson l join company_lesson cl on
   l.lessonId = cl.lessonId where cl.companyId = :companyId");
-  
+
     $stmt->bindParam(":companyId",$companyId);
     $stmt->execute();
     $dataRows = $stmt -> fetchColumn();
@@ -468,8 +468,70 @@ echo $ex->getMessage();
  echo $ex->getMessage();
          echo "hey didn't work";
   }
-  }
+}
 
+function putUserResult($appUserId,$quizId){
+      $query ="SELECT * FROM tuitlage.user_result where appUserId =:appUserId and quizId =:quizId";
+      $stmt = $this->conn->prepare($query);
+      $stmt->bindParam(":appUserId", $appUserId);
+      $stmt->bindParam(":quizId", $quizId);
+      $stmt->execute();
+      $dataRows = $stmt -> fetchColumn();
+            if($dataRows>0){
+              return true;
+            }else{
+                return false;
+        }
+}
+
+
+function postUserResult($appUserId,$lessonId,$quizId,$choiceOption,$createdBy,$updatedBy){
+
+  if($this->putUserResult($appUserId,$quizId)){
+          $qry="UPDATE user_result set choiceOption=:choiceOption where appUserId =:appUserId and quizId =:quizId;";
+          $statement = $this->conn->prepare($qry);
+          $statement->bindParam(":choiceOption", $choiceOption);
+          $statement->bindParam(":appUserId", $appUserId);
+          $statement->bindParam(":quizId", $quizId);
+              if($statement->execute()){
+                return true;
+              }else{
+                  return false;
+              }
+  }else{
+    $query="INSERT into user_result(appUserId, lessonId, quizId, choiceOption, createdBy,updatedBy)
+    values(:appUserId,:lessonId,:quizId,:choiceOption,:createdBy,:updatedBy);";
+
+    $stmt = $this->conn->prepare($query);
+
+    $stmt->bindParam(":appUserId", $appUserId);
+    $stmt->bindParam(":lessonId", $lessonId);
+    $stmt->bindParam(":quizId", $quizId);
+    $stmt->bindParam(":choiceOption", $choiceOption);
+    $stmt->bindParam(":createdBy", $createdBy);
+    $stmt->bindParam(":updatedBy", $updatedBy);
+
+    if($stmt->execute()){
+      return true;
+    }else{
+        return false;
+    }
+  }
+}
+
+function getUserResult($appUserId,$lessonId){
+    $query='SELECT * from user_result where appUserId =:appUserId and lessonId=:lessonId;';
+      $stmt = $this->conn->prepare($query);
+      $stmt->bindParam(":appUserId", $appUserId);
+      $stmt->bindParam(":lessonId", $lessonId);
+      $stmt->execute();
+      $dataRows = $stmt -> fetchColumn();
+      if($dataRows>0){
+        return true;
+      }else{
+          return false;
+      }
+}
 
 
 

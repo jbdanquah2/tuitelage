@@ -50,7 +50,7 @@
                     <div id="div-comp" class="col-lg-3 offset-lg-1 col-3 image_container">
                         <div id="_c-2" class="row image_container ">
                             <!-- company logo / avatar -->
-                            <div onmouseover="drag_menu()"><img src="<?php echo $c_logo; ?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>"> </div>
+                            <div onmouseover="drag_menu()" onclick="drag_menu()"><img src="<?php echo $c_logo; ?>" id="comp_img" class="img-responsive" alt="<?php echo $alt_text;?>"> </div>
                             <?php
                    if(isset($_SESSION['user'])){
                        echo'

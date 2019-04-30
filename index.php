@@ -50,6 +50,7 @@ if ($row['pssword'] == $pssword) {
     try {
 		$userStatus = $row['userStatus'] ;
 		if ($userStatus == $status) {
+$_SESSION['appUserId'] = $row['appUserId'];
 $_SESSION['avatar'] = $row['avatar'];
 $_SESSION['userType'] = $row['userType'];
 $_SESSION['userNameM'] = $row['userName'];

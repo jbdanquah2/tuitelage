@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $hrline ='<hr class="hrline">';
 $motive = "The best you can be comes from what you read. Let's have some fun studying!";
 if($_SESSION['companyId'] != 26) {
@@ -17,6 +18,7 @@ if($_SESSION['companyId'] != 26) {
      $c_logo = "image/{$_SESSION['companyLogo']}";
     $at = '';
     $comp_name = '';
+
 }
 
 if(!isset($_SESSION['user']))
@@ -31,6 +33,38 @@ include_once 'objects/lesson.php';
 $database = new Database();
 $db = $database->getConnection();
 $lesson = new lesson($db);
+
+if (isset($_GET['submitQuiz'])){
+    $count = 0;
+    $result = 0;
+    $msg ='Find results!';
+    $quiz=$lesson->readQuizAns($_SESSION['id']);
+  // $rowCount = $quiz ->rowCount();
+    while($quizRow = $quiz->fetch(PDO::FETCH_ASSOC)) {
+        $count = $count + 1;
+        $quizId = $quizRow['quizId'];
+        $question = $quizRow['question'];
+        $optionA = $quizRow['optionA'];
+        $optionB= $quizRow['optionB'];
+        $optionC = $quizRow['optionC'];
+        $status = $quizRow['status'];
+        $answerValue = $quizRow['answerValue'];
+
+        if($_GET["$quizId"] == $answerValue ) {
+            $result = $result + 1;
+          }
+
+       $arry["$quizId"] = $_GET["$quizId"];
+
+       $postResult=$lesson->postUserResult($_SESSION['appUserId'],$_SESSION['id'],$quizId,$arry["$quizId"],
+         $_SESSION['userName'],$_SESSION['userName']);
+         if($postResult) {
+            $GLOBALS['msg']='<span class="alert alert-light">Submitted successfully! Score: '. $result .'/'.$count.'</span>';
+         }else{
+            $GLOBALS['msg']='Oops! failed to submit. Check intenet connection!';
+         }
+}
+}
 
  ?>
     <p class="alert alert-light" role="alert" id="_welcome"> <small>Welcome
@@ -49,17 +83,19 @@ $lesson = new lesson($db);
                     <div class="card-body">
                         <div>
 <!-- <h5 class="card-title text-primary">RESULTS: <?php //  echo $result .'/'.$count?></h5> -->
-                          <?php echo '<h4 class="text-center">'. $_SESSION['lessonName'] .'</h4>' ?>
+                          <?php echo '<h4 class="text-center mb-4">'. $_SESSION['lessonName'] .'</h4>' ?>
+                        <?php echo  '<center><strong><p class="text-info">'. $msg.'</p></strong></center>'; ?>
+                              <form action="quiz-answer.php" method="post">
                         </div>
-                        <form action="quiz-answer.php" method="post">
-                        <?php
 
+                        <?php
 if (isset($_GET['submitQuiz'])){
     $count = 0;
     $result = 0;
-   $quiz=$lesson->readQuizAns($_SESSION['id']);
+    $quiz=$lesson->readQuizAns($_SESSION['id']);
   // $rowCount = $quiz ->rowCount();
     while($quizRow = $quiz->fetch(PDO::FETCH_ASSOC)) {
+
       $quizId = $quizRow['quizId'];
       $count = $count + 1;
       $question = $quizRow['question'];
@@ -77,14 +113,12 @@ if (isset($_GET['submitQuiz'])){
          $choice = '<span class="text-danger text-center">'.$_GET["$quizId"].'</span>';
          $ans = '<span class="text-danger text-center ml-4">Wrong Choice</span>';
        }
-
-
 echo '
-  <h5 class="card-title text-primary">RESULTS:'. $result .'/'.$count.'</h5>
+  <h5 class="card-title text-primary mt-4"><small>Results:'. $result .'/'.$count.'</small></h5>
 <div class="card text-black  mb-2" id="cards_holder_item">
       <div class="card-header"><b>'.$count. ' </b>'.$ans.'</div>
             <div class="card-body">
-                <p>'.$question .'</p>
+                <p>'.$question.'</p>
                     <!-- Responds -->
                     <div class="container row">
                         <div class="btn btn-block text-left">
@@ -99,7 +133,8 @@ echo '
                         </div>
                         <br>
                         <label>
-                        <h5>Your Choice: '.$choice.' </h5>    <h5>Ans: '.$answerValue.' </h5>
+                        <h5>Your Choice: '.$choice.' </h5>
+                        <h5>Ans: '.$answerValue.' </h5>
                         </label>
                     </div>
                 </div>

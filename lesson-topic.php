@@ -64,8 +64,12 @@ if (isset($_GET['topicId'])){
                         <h3 id="lessonN" class="card-title">
                     <?php echo strtoupper($_SESSION['topicName']); ?>
                 </h3>
-                        <?php    echo ' <a href="quiz.php?getQuiz='.$_SESSION['lessonId'].'"><small>Take a Quiz</small></a>'; ?> </div>
-                    <br>
+                <?php
+                $quizTaken=$lesson->getUserResult($_SESSION['appUserId'],$_SESSION['lessonId']);
+                if($quizTaken == true){
+                  echo ' <a href="quiz.php?getQuiz='.$_SESSION['lessonId'].'"><small>Retake Quiz</small></a>';
+                }else {
+                  echo ' <a href="quiz.php?getQuiz='.$_SESSION['lessonId'].'"><small>Take a Quiz</small></a>'; }?> </div>                    <br>
                     <p id="lessonS" class="text-justify">
                         <?php echo $description; ?>
                     </p>
