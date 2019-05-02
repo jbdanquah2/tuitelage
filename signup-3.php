@@ -40,8 +40,8 @@ header("Location: index.php");
 }
 
 if(isset($_GET['compId'])) {
-  $numEmploy =$appUser->numEmployee($_GET['compId']);
-  if($numEmploy >= 5){
+  $numEmploy =$appUser->numEmployee($_GET['compId'],$_SESSION['appUserId']);
+  if($numEmploy <= 6){
     echo "<div class='alert alert-light'><br><center class='text-dark'><h4>Please you can not add anymore employee</h4><br>
     <h5 class='text-info'>Maximum number of employees reached</h5> <br>
     <a href='home.php' class='btn btn-dark text-white'>Back to Home</a></center>
@@ -54,8 +54,8 @@ if(isset($_GET['compId'])) {
 }
 
 if(isset($_POST['signup_btn'])) {
-  $numEmploy =$appUser->numEmployee($_SESSION['companyId']);
-  if($numEmploy >= 5){
+  $numEmploy =$appUser->numEmployee($_SESSION['companyId'], $_SESSION['appUserId']);
+  if($numEmploy <= 6){
     echo "<div class='alert alert-light'><br><center class='text-dark'><h4>Please you can not add anymore employee</h4><br>
     <h5 class='text-info'>Maximum number of employees reached</h5> <br>
     <a href='home.php' class='btn btn-dark text-white'>Back to Home</a></center>
@@ -131,7 +131,7 @@ if(isset($_POST['signup_btn'])) {
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
-                                <label>Your Photo</label>
+                                <label>Photo</label>
                                 <input type="file" name="avatar" placeholder="Your Photo" class="form-control" required>
                             </div>
                         </div>

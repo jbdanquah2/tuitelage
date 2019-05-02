@@ -174,10 +174,30 @@ return false;
 }
 }
 
-public function numEmployee($companyId){
-
-  $stmt = $this->conn->prepare("SELECT count(*) FROM company_person WHERE companyId = :companyId");
+public function getEmployees($companyId,$appUserId){
+  try {
+    $qry = 'SELECT au.appUserId, p.firstName, p.lastName, p.email, p.avatar From Person p join company_person cp
+    on p.personId = cp.personId join  app_user au on au.personId = p.personId join
+    company c on c.companyId = cp.companyId where c.companyId =:companyId and au.appUserId !=:appUserId
+    order by p.createdDatetime desc;';
+    $stmt = $this->conn->prepare($qry);
     $stmt->bindParam(":companyId",$companyId);
+    $stmt->bindParam(":appUserId",$appUserId);
+    $stmt->execute();
+return $stmt;
+}catch (PDOException $ex){
+echo $ex->getMessage();
+    echo "Sorry Something went wrong. Contact Admin";
+  }
+}
+
+
+public function numEmployee($companyId,$appUserId){
+
+  $stmt = $this->conn->prepare("SELECT count(*) FROM company_person cp join app_user au on
+   cp.personId=au.personId WHERE cp.companyId =: companyId  and au.appUserId !=: appUserId");
+    $stmt->bindParam(":companyId",$companyId);
+    $stmt->bindParam(":appUserId",$appUserId);
     $stmt->execute();
     $dataRows = $stmt -> fetchColumn();
   return $dataRows;
@@ -188,7 +208,9 @@ public function getUser($userName){
 
 try{
 
-$statement = $this->conn->prepare("SELECT au.appUserId,au.userName,au.pssword, au.userType, au.userStatus, p.firstName,p.lastName, p.avatar, c.companyName,c.companyShortName, c.companyId, c.companyLogo FROM app_user au JOIN person p on au.personId = p.personId JOIN company_person cp on cp.personId = p.personId JOIN company c on cp.companyId = c.companyId WHERE au.userName=:userName");
+$statement = $this->conn->prepare("SELECT au.appUserId,au.userName,au.pssword, au.userType, au.userStatus,
+p.firstName,p.lastName,p.avatar, c.companyName,c.companyShortName, c.companyId, c.companyLogo
+FROM app_user au JOIN person p on au.personId = p.personId JOIN company_person cp on cp.personId = p.personId JOIN company c on cp.companyId = c.companyId WHERE au.userName=:userName");
 $statement->execute(array(":userName"=>$userName));
 $dataRows = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -203,6 +225,14 @@ public function updateUser($userName, $newPssword){
   $stmt = $this->conn->prepare("UPDATE app_user SET pssword=:newPssword WHERE userName=:userName");
   $stmt->bindParam(":userName",$userName);
   $stmt->bindParam(":newPssword",$newPssword);
+  $stmt->execute();
+return true;
+}
+
+public function updateUserStatus($userName, $userStatus){
+  $stmt = $this->conn->prepare("UPDATE app_user SET userStatus=:userStatus WHERE userName=:userName");
+  $stmt->bindParam(":userName",$userName);
+  $stmt->bindParam(":userStatus",$userStatus);
   $stmt->execute();
 return true;
 }

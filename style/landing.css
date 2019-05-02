@@ -346,7 +346,7 @@ overflow-y: hidden;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    overflow-x:;
     overflow-y: hidden;
 }
 
@@ -463,5 +463,13 @@ overflow-y: hidden;
 
 /*  USER PROFILE   */
 .profile {
-  width: 300px;
+   width: 300px !important; 
+
+}
+
+.profile2 {
+  /* width: 250px !important; */
+  display: inline-block !important;
+  width: 30%;
+  margin: 10px;
 }

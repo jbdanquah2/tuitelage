@@ -6,7 +6,7 @@ $type1 = 'admin';
 $type2 = 'employee';
 if ($_SESSION['userType'] == $type1){
 $manageLesson = '<a href="upload-lesson.php" class="btn btn-inline-dark">Manage Lessons</a>';
-$ViewEmployee ='<a href="view-employees.php" class="btn btn-inline-dark">View Employees</a>';
+$ViewEmployee ='<a href="view-employees.php?compId='.$_SESSION['companyId'].'" class="btn btn-inline-dark">View Employees</a>';
 $addEmployee = '<a href="signup-3.php?compId='.$_SESSION['companyId'].'" class="btn btn-inline-dark">Add Employee</a>';
 }else if($_SESSION['userType'] == $type2) {
   $manageLesson ='';
