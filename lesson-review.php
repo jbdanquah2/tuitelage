@@ -7,10 +7,10 @@ if($_SESSION['companyId'] != 26) {
     $comp_short_name =$_SESSION['companyShortName'];
     $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
-    $page_title = "Tuitelage.com Members Area";  
+    $page_title = "Tuitelage.com Members Area";
     $at = ' @ ';
     $comp_name = $_SESSION['userCompany'];
-        
+
     }else {
     $_SESSION['userCompany']=$_SESSION['user'];
     $page_title = "Welcome {$_SESSION['userCompany']}!";
@@ -43,7 +43,7 @@ header("Location: index.php");
             <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
         </p>
     </center>
-    <?php 
+    <?php
 include_once "sidebar.php";
 ?>
         <div id="main">
@@ -63,8 +63,9 @@ include_once "sidebar.php";
                     <form method="POST">
                         <!-- Select Lesson-->
                         <div class="table-responsive-sm">
-                            <table class="table table-striped table-bordered table-sm shadow-lg">
+                            <table id="table_id" class="table table-striped display table-bordered table-sm shadow-lg">
                                 <caption>Lessons Review</caption>
+                              <thead>
                                 <tr>
                                     <th>Lesson</th>
                                     <th>Video</th>
@@ -72,8 +73,9 @@ include_once "sidebar.php";
                                     <th>Display Image</th>
                                     <th>Action</th>
                                 </tr>
+                              </thead>
                                 <?php
-                        
+
 $lessonNames=$lesson->readCompanyLesson2($_SESSION['companyId']);
 while($lessonRow = $lessonNames->fetch(PDO::FETCH_ASSOC)) {
 //$lessonRow=sort($lessonRow);
@@ -82,8 +84,10 @@ $lessonName = $lessonRow['lessonName'];
 $lessonSummary = $lessonRow['lessonSummary'];
 $videoOverview = $lessonRow['videoOverview'];
 $descriptiveImage = $lessonRow['descriptiveImage'];
-   echo                 
-                            '<tr>
+   echo
+                            '
+                        //  <tbody>
+                            <tr>
                                 <td  class="m-2" width=220>'.$lessonName.'<br>
                              <div class="btn-group" role="group">
                                 <a class="btn btn-sm btn-info mr-1 mt-2" href="lessonContent.php?lessonId='.$lessonId.'">
@@ -101,12 +105,15 @@ $descriptiveImage = $lessonRow['descriptiveImage'];
                             <a href="lesson-review.php?update='.$lessonId.'" class="btn btn-sm btn-warning m-1">Update</a>
                             <a href="lesson-review.php?delet='.$lessonId.'" class="btn btn-sm btn-danger m-1">Delete</a>
                             </div>
-                            </td>';
+                            </td>
+                            </tr>
+                        //  </tbody>
+                          ';
                             }
 if(isset($_GET['delete'])){
    $deleteLesson=$lesson->deleteCompanyLesson($_GET['delete']);
     echo ' <script>alert("Lesson Deleted")</script>';
-}                        
+}
 ?>
                             </table>
                         </div>

@@ -1,3 +1,7 @@
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
 function openNav() {
     document.getElementById("mySidebar").style.width = "200px";
     var pageWidth = 752;

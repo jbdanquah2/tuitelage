@@ -7,10 +7,10 @@ if($_SESSION['companyId'] != 26) {
     $comp_short_name =$_SESSION['companyShortName'];
     $c_logo = "image/{$_SESSION['companyLogo']}";
     $alt_text ="company logo";
-    $page_title = "Tuitelage.com Members Area";  
+    $page_title = "Tuitelage.com Members Area";
     $at = ' @ ';
     $comp_name = $_SESSION['userCompany'];
-        
+
     }else {
     $_SESSION['userCompany']=$_SESSION['user'];
     $page_title = "Welcome {$_SESSION['userCompany']}!";
@@ -37,17 +37,18 @@ if(!isset($_SESSION['user']))
 {
 header("Location: index.php");
 }
- 
+
 if(isset($_POST['newTopicBtn'])){
 $lessonId = $_POST['lessons'];
   $topicName = $_POST['topicName'];
     $description =  $_POST['description'];
-    
+
     $videoUrl = $_FILES['videoUrl']['name'];
-    $video = $_FILES['videoUrl']['tmp_name']; move_uploaded_file($video,"video/$videoUrl");
-       
- $detailRows=$lesson->createTopic($lessonId, $topicName, $description, $videoUrl, $_SESSION['userName'], $_SESSION['userName']);  
-    
+    $video = $_FILES['videoUrl']['tmp_name'];
+    move_uploaded_file($video,"video/$videoUrl");
+
+ $detailRows=$lesson->createTopic($lessonId, $topicName, $description, $videoUrl, $_SESSION['userName'], $_SESSION['userName']);
+
 }
 
 ?>
@@ -57,7 +58,7 @@ $lessonId = $_POST['lessons'];
             <a href="logout.php?logout"><img src="icon/baseline-exit_to_app-24px.svg" alt="">Log Out!</a>
         </p>
     </center>
-    <?php 
+    <?php
 include_once "sidebar.php";
 ?>
         <div id="main">
@@ -71,7 +72,7 @@ include_once "sidebar.php";
                         <br id="brSU">
                         <br>
                         <h3 id="lessonN" class="card-title">
-                    Upload Topic
+                    Topic Upload
                 </h3>
                         <br> </div>
                     <form class="form-group" name="AddTopic" method="POST" onsubmit="return Add_topic()" enctype="multipart/form-data">
@@ -80,17 +81,17 @@ include_once "sidebar.php";
                             <div class="card-header"><b>Pick a Lesson</b></div>
                             <div class="card-body">
                                 <select class="form-control" name="lessons" required>
-                                    <option value="0" selected>Pick a lesson</option>
+                                    <option value="0" selected>pick a lesson</option>
                                     <?php
-                        
+
 $lessonNames=$lesson->readCompanyLesson($_SESSION['companyId']);
 while($lessonRow = $lessonNames->fetch(PDO::FETCH_ASSOC)) {
 
 $lessonId    = $lessonRow['lessonId'];
 $lessonName = $lessonRow['lessonName'];
-      
+
 echo '<option value="'.$lessonId.'">'.$lessonName.'</option>';
-        ;     
+        ;
 }
 ?>
                                 </select>
@@ -100,14 +101,14 @@ echo '<option value="'.$lessonId.'">'.$lessonName.'</option>';
                         <div class="card text-black  mb-3" id="cards_holder_item" style="width:100%">
                             <div class="card-header"><b>Add a Topic</b></div>
                             <div class="card-body">
-                                <input class="form-control" type="text" name="topicName" required> </div>
+                                <input class="form-control" placeholder="enter title for topic" type="text" name="topicName" required> </div>
                         </div>
                         <div class="card text-black  mb-3" id="cards_holder_item">
-                            <div class="card-header"><strong>Enter Topic Summary</strong></div>
+                            <div class="card-header"><strong>Topic Summary</strong></div>
                             <div class="card-body">
                                 <textarea class="form-control" rows="5" placeholder="lesson Summary" name="description" required> </textarea>
                                 <br>
-                                <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span> </button>
+                                <!-- <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span> </button> -->
                             </div>
                         </div>
                         <!-- Topic video-->

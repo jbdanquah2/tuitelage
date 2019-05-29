@@ -78,7 +78,7 @@ echo
                                 <center>'.
                     $_SESSION["emails"].'</center>
               <div class="btn btn-group">
-                 <a href="check-employee-quiz.php?'.$_SESSION['userEmail'].'='.$_SESSION['emails'].'"  type="button"  class="btn btn-danger btn-sm mr-2"><small>Quiz(es) Taken</small></a>
+                 <a href="check-employee-quiz.php?userEmail='.$_SESSION['emails'].'"  type="button"  class="btn btn-danger btn-sm mr-2"><small>Quiz(es) Taken</small></a>
                  <a href="change-employee-status.php?userEmail='.$_SESSION['emails'].'" type="button" onclick="hide_profile()" class="btn btn-sm btn-danger btn-inline"><small>Change Status</small></a><br>
               </div>
                  </div>

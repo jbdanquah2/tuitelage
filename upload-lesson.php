@@ -72,28 +72,28 @@ include_once "sidebar.php";
                         <br id="brSU">
                         <br>
                         <h3 id="lessonN" class="card-title">
-                    Upload Lesson
+                    Lesson Upload
                 </h3>
                         <br> </div>
                     <form class="form-group" method="POST" name="newLesson" onsubmit="return Add_lesson()" enctype="multipart/form-data">
                         <!-- Lesson title-->
                         <div class="card text-black  mb-3" id="cards_holder_item">
-                            <div class="card-header"><b>Enter Lesson Title</b></div>
+                            <div class="card-header"><b>Lesson Title</b></div>
                             <div class="card-body">
-                                <input class="form-control" type="text" placeholder="..." name="lessonName" required> </div>
+                                <input class="form-control" type="text" placeholder="enter title for lesson" name="lessonName" required> </div>
                         </div>
                         <!-- Lesson Summary-->
                         <div class="card text-black  mb-3" id="cards_holder_item">
-                            <div class="card-header"><b>Enter Lesson Summary</b></div>
+                            <div class="card-header"><b>Lesson Summary</b></div>
                             <div class="card-body">
                                 <textarea class="form-control" rows="5" placeholder="lesson Summary" name="lessonSummary" required> </textarea>
                                 <br>
-                                <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span></button>
+                                <!-- <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span></button> -->
                             </div>
                         </div>
                         <!-- Descriptive Image-->
                         <div class="card text-black mb-3">
-                            <div class="card-header"><strong><b>Descriptive Image:</b></strong> </div>
+                            <div class="card-header"><strong><b>Display Image:</b></strong> </div>
                             <input class="form-control btn btn-outline-dark" type="file" name="descriptiveImage" required> </div>
                         <!-- Lesson video-->
                         <div class="card text-black mb-3">

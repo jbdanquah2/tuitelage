@@ -39,30 +39,31 @@ if(!isset($_SESSION['user']))
 header("Location: index.php");
 }
 
-if(isset($_GET['compId'])) {
-  $numEmploy =$appUser->numEmployee($_GET['compId'],$_SESSION['appUserId']);
-  if($numEmploy <= 6){
-    echo "<div class='alert alert-light'><br><center class='text-dark'><h4>Please you can not add anymore employee</h4><br>
-    <h5 class='text-info'>Maximum number of employees reached</h5> <br>
-    <a href='home.php' class='btn btn-dark text-white'>Back to Home</a></center>
-    </div>"
-    ;
-    die();
-  }else {
-    echo " ";
-  }
-}
+// if(isset($_GET['compId'])) {
+//   $numEmploy =$appUser->numEmployee($_GET['compId'],$_SESSION['appUserId']);
+//   if($numEmploy <= 6){
+//     echo "<div class='alert alert-light'><br><center class='text-dark'><h4>Please you can not add anymore employee</h4><br>
+//     <h5 class='text-info'>Maximum number of employees reached</h5> <br>
+//     <a href='home.php' class='btn btn-dark text-white'>Back to Home</a></center>
+//     </div>"
+//     ;
+//     die();
+//   }else {
+//     echo " ";
+//   }
+// }
 
 if(isset($_POST['signup_btn'])) {
   $numEmploy =$appUser->numEmployee($_SESSION['companyId'], $_SESSION['appUserId']);
-  if($numEmploy <= 6){
-    echo "<div class='alert alert-light'><br><center class='text-dark'><h4>Please you can not add anymore employee</h4><br>
-    <h5 class='text-info'>Maximum number of employees reached</h5> <br>
-    <a href='home.php' class='btn btn-dark text-white'>Back to Home</a></center>
-    </div>"
-    ;
-    die();
-  }else {
+  // if($numEmploy <= 6){
+  //   echo "<div class='alert alert-light'><br><center class='text-dark'><h4>Please you can not add anymore employee</h4><br>
+  //   <h5 class='text-info'>Maximum number of employees reached</h5> <br>
+  //   <a href='home.php' class='btn btn-dark text-white'>Back to Home</a></center>
+  //   </div>"
+  //   ;
+  //   die();
+  //}  else {
+
     $avatar = $_FILES['avatar']['name'];
     $tmp = explode(".",$avatar);
     $ext = end($tmp);
@@ -101,7 +102,8 @@ if(isset($_POST['signup_btn'])) {
         echo "<span class='text-danger mb-0 ml-2'>Sorry this is not a picture</span>";
     }
     }
-}else {
+//}
+else {
         $avatar ="";
         $firstName = "";
         $lastName = "";
@@ -116,6 +118,7 @@ if(isset($_POST['signup_btn'])) {
     <div class="row">
         <div class="col-lg-12 well">
             <h2 class="well">Employee Setup</h2>
+            <hr class="underL">
       <?php echo '<form method="post" action="signup-3.php?compId='.$_SESSION["companyId"].'" enctype="multipart/form-data">' ?>
                 <div class="row">
                     <div class="col-md-6 offset-md-3 col-sm-12">

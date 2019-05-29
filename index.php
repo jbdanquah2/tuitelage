@@ -25,7 +25,7 @@ $appUser = new appUser($db);
 if (isset($_SESSION['user']) != "") {
 header("Location: home.php");
 }
-
+ $userName ="";
  ?>
     <div class="container-fluid col-12 _wrapper">
         <!--    <div class="container">-->
@@ -60,7 +60,7 @@ $_SESSION['lastName'] = $row['lastName'];
 $_SESSION['userCompany'] = $row['companyName'];
 $_SESSION['companyShortName'] = $row['companyShortName'];
 $_SESSION['companyId'] = $row['companyId'];
-            if($_SESSION['companyId'] ==  26){
+        	  if($_SESSION['companyId'] ==  26){
            $_SESSION['companyLogo'] = $row['avatar'];
             }else{
             $_SESSION['companyLogo'] = $row['companyLogo'];
@@ -79,7 +79,7 @@ echo("<center id='response' class='text-danger'>Wrong Credentials. Please check 
 }
 ?>
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" name="userName" class="form-control" placeholder="Email address" required> </div>
+                                        <input type="email" id="inputEmail" value="<?php echo $userName; ?>" name="userName" class="form-control" placeholder="Email address" required> </div>
                                     <div class="form-label-group">
                                         <input type="password" name="pssword" id="inputPassword" class="form-control" placeholder="Password" required> </div>
                                     <div class="custom-control custom-checkbox mb-3">
@@ -169,7 +169,7 @@ echo
             </div> --></div>
         </div>
         <hr>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-12 t-material text-center">
                 <div class="card bg-secondary t-quiz">
                     <div class="card-body t-body">
@@ -179,9 +179,9 @@ echo
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <hr>
-        <div class="caro_back_ground">
+        <!-- <div class="caro_back_ground">
             <div class="container ">
                 <div id="testimony_indicator" class="carousel slide carousel-fade" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -227,7 +227,7 @@ echo
                     <a class="carousel-control-next" href="#testimony_indicator" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <br>
     <br>

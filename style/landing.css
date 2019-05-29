@@ -180,6 +180,10 @@ hr {
     border-color: #fdfdfd;
 }
 
+hr.underL {
+  border: #000!important;
+}
+
 #response {
     font-weight: 400;
     text-align: center;
@@ -463,7 +467,7 @@ overflow-y: hidden;
 
 /*  USER PROFILE   */
 .profile {
-   width: 300px !important; 
+   width: 300px !important;
 
 }
 
@@ -472,4 +476,8 @@ overflow-y: hidden;
   display: inline-block !important;
   width: 30%;
   margin: 10px;
+}
+
+#hide {
+  display: none;
 }

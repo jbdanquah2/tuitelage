@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="style/lessonContent.css" type="text/css">
         <link rel="stylesheet" type="text/css" href="style/fontawesome.min.css">
         <link rel="stylesheet" type="text/css" href="style/tuitelage_css.css">
+        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
         <!-- <link rel="stylesheet" type="text/css" href="Style/materialize.min.css"> -->
 
     <body>

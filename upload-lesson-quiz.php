@@ -73,7 +73,7 @@ include_once "sidebar.php";
                         <br id="brSU">
                         <br>
                         <h3 id="lessonN" class="card-title">
-                    Lesson Quiz
+                    Add Quiz
                 </h3>
                         <br> </div>
                     <form class="form-group" name="AddTopic" method="POST" onsubmit="return Add_topic()" enctype="multipart/form-data">
@@ -82,7 +82,7 @@ include_once "sidebar.php";
                             <div class="card-header"><b>Pick a Lesson</b></div>
                             <div class="card-body">
                                 <select class="form-control" name="lessons" required>
-                                    <option value="0" selected>Pick a lesson</option>
+                                    <option value="0" selected>select a lesson</option>
                                     <?php
 
 $lessonNames=$lesson->readCompanyLesson($_SESSION['companyId']);
@@ -100,31 +100,31 @@ echo '<option  value="'.$lessonId.'">'.$lessonName.'</option>';
                         </div>
                         <!-- Select Topic-->
                         <div class="card text-black  mb-3" id="cards_holder_item">
-                            <div class="card-header"><strong>Enter A Question for the Lesson</strong></div>
+                            <div class="card-header"><strong>Enter a question for the lesson</strong></div>
                             <div class="card-body">
                                 <textarea class="form-control" rows="5" placeholder="lesson Summary" name="question" required> </textarea>
                                 <br>
-                                <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span> </button>
+                                <!-- <button class="btn btn-dark" type="reset" name="clear_button">Clear <span class="glyphicon glyphicon-trash"></span> </button> -->
                             </div>
                         </div>
                         <div class="card text-black  mb-3" id="cards_holder_item">
                             <div class="card-header"><strong>Option A</strong></div>
                             <div class="card-body">
-                                <input class="form-control" type="text" name="optionA" required> Is this the answer? Select
+                                <input class="form-control" placeholder="enter first option" type="text" name="optionA" required> Is this the answer? Select
                                 <input class="btn btn-dark mb-2" value="optionA" name="quizAns" type="radio" required>
                             </div>
                         </div>
                         <div class="card text-black  mb-3" id="cards_holder_item">
                             <div class="card-header"><strong>Option B</strong></div>
                             <div class="card-body mb-2">
-                                <input class="form-control" type="text" name="optionB" required> Is this the answer? Select
+                                <input class="form-control" placeholder="enter second option" type="text" name="optionB" required> Is this the answer? Select
                                 <input class="btn btn-dark" value="optionB" name="quizAns" type="radio" required>
                             </div>
                         </div>
                         <div class="card text-black  mb-3" id="cards_holder_item">
                             <div class="card-header"><strong>Option C</strong></div>
                             <div class="card-body">
-                                <input class="form-control" type="text" name="optionC" required> Is this the answer? Select
+                                <input class="form-control" placeholder="enter third option" type="text" name="optionC" required> Is this the answer? Select
                                 <input class="btn btn-dark mb-20" value="optionC" class="form-group" name="quizAns" type="radio" required>
                             </div>
                         </div>
